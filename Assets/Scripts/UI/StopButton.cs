@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StopButton : MonoBehaviour
 {
@@ -17,6 +17,6 @@ public class StopButton : MonoBehaviour
     void OnClick()
     {
         SceneManager.LoadScene("2story");
-        
+
     }
 }

@@ -27,8 +27,8 @@ public class PickUp_Herb1 : MonoBehaviour
         if (pickUpAllowed && Input.GetKeyDown(KeyCode.E))
         {
             PickUp();
-            
-        }            
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -52,9 +52,9 @@ public class PickUp_Herb1 : MonoBehaviour
     private void PickUp()
     {
         gameObject.GetComponent<ItemOnWorld>().AddNewItem();
-        player.GetComponent<AudioSource>().clip = player.GetComponent<HeroKnight>().audios[8]; 
+        player.GetComponent<AudioSource>().clip = player.GetComponent<Player>().audios[8];
         player.GetComponent<AudioSource>().Play();
         Destroy(gameObject);
-        
+
     }
 }

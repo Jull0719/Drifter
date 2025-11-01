@@ -1,0 +1,221 @@
+﻿using System;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class Player : MonoBehaviour
+{
+    [Header("移动")]
+    public float moveSpeed = 10;
+    public float airMultiplier = 0.8f;
+    [SerializeField] private bool facingRight = true;
+    public int facingDir { get; private set; } = 1;
+    public Vector2 moveInput { get; private set; }
+
+    [Header("跳跃")]
+    public float jumpForce = 12;
+    //public bool doubleJump;
+    //private int m_currentJump = 0;
+
+    [Header("攻击")]
+    public float comboLimitedTime = 4; // 组合攻击限制时间
+    public float attackVelocityDuration = 0.2f; // 攻击反馈持续时间
+    public Vector2[] attackVelocity; //攻击反馈
+    private Coroutine queueAttackCo;
+
+    public Animator anim { get; private set; }
+    public Rigidbody2D rb { get; private set; }
+    public Sensor_Ground groundSensor { get; private set; }
+    public PlayerInput input { get; private set; }
+
+    // 当前状态
+    private PlayerState currentState;
+
+    public Player_IdleState idleState { get; private set; }
+    public Player_MoveState moveState { get; private set; }
+    public Player_JumpState jumpState { get; private set; }
+    public Player_FallState fallState { get; private set; }
+    public Player_AttackState attackState { get; private set; }
+
+    private Scene m_scene;
+    private GameObject[] dialogs;
+
+    [HideInInspector] public int Health;
+
+    public AudioClip[] audios;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
+        groundSensor = GetComponentInChildren<Sensor_Ground>();
+
+        input = new PlayerInput();
+
+        idleState = new Player_IdleState(this, "idle");
+        moveState = new Player_MoveState(this, "move");
+        jumpState = new Player_JumpState(this, "jump");
+        fallState = new Player_FallState(this, "jump");
+        attackState = new Player_AttackState(this, "attack");
+
+        dialogs = GameObject.FindGameObjectsWithTag("dialog");
+    }
+
+    private void OnEnable()
+    {
+        input.Enable();
+
+        input.Gameplay.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        input.Gameplay.Move.canceled += ctx => moveInput = Vector2.zero;
+    }
+
+    private void OnDisable()
+    {
+        input.Disable();
+    }
+
+    void Start()
+    {
+        InitializedState(idleState);
+
+        Health = 100;
+        m_scene = SceneManager.GetActiveScene();
+    }
+
+    #region FSM
+    public void InitializedState(PlayerState startState)
+    {
+        currentState = startState;
+        currentState.OnEnter();
+    }
+
+    public void OnUpdate()
+    {
+        currentState.OnUpdate();
+    }
+
+    public void ChangeState(PlayerState newState)
+    {
+        currentState.OnExit();
+        currentState = newState;
+        currentState.OnEnter();
+    }
+    #endregion
+
+    void Update()
+    {
+        OnUpdate();
+
+        /*
+        //Death
+        if (Health == 0)
+        {
+            anim.SetTrigger("Death");
+            Destroy(gameObject, 2f);
+        }
+
+        //控制攻击组的计时器
+        m_timeSinceAttack += Time.deltaTime;
+
+        //Attack
+        else if (Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.5f && !ShowDailog() && m_scene.name != "Country")
+        {
+            m_currentAttack++;
+
+            // 两种攻击之前循环切换
+            if (m_currentAttack > 2)
+                m_currentAttack = 1;
+
+            //设置第一种攻击到第二种攻击的间隔时间
+            if (m_timeSinceAttack > 1.5f)
+                m_currentAttack = 1;
+
+            if (m_currentAttack == 1)
+            {
+                //播放普攻音效
+                this.GetComponent<AudioSource>().clip = audios[0];
+                this.GetComponent<AudioSource>().Play();
+            }
+            else if (m_currentAttack == 2)
+            {
+                //播放重击音效
+                this.GetComponent<AudioSource>().clip = audios[1];
+                this.GetComponent<AudioSource>().Play();
+            }
+            anim.SetTrigger("Attack" + m_currentAttack);
+            m_timeSinceAttack = 0.0f;                           //重置攻击冷却时间
+        }
+
+        // Jump
+        else if (Input.GetKeyDown("space"))
+        {
+            if (groundSensor.grounded)
+            {
+                m_currentJump = 2;
+                anim.SetTrigger("Jump");
+                SetVelocity(rb.velocity.x, jumpForce);
+            }
+            else if (m_currentJump == 1 && doubleJump)
+            {
+                anim.SetTrigger("Jump");
+                SetVelocity(rb.velocity.x, jumpForce);
+            }
+            m_currentJump--;
+        }
+        */
+    }
+
+    bool ShowDailog()
+    {
+        bool temp = false;
+        foreach (var dialog in dialogs)
+        {
+            if (dialog.activeSelf == true)
+            {
+                temp = true;
+            }
+        }
+        return temp;
+    }
+
+    // 再次进入攻击状态
+    public void EnterComboAttack()
+    {
+        if (queueAttackCo != null)
+            StopCoroutine(queueAttackCo);
+
+        queueAttackCo = StartCoroutine(QueueAttackCo());
+    }
+
+    IEnumerator QueueAttackCo()
+    {
+        yield return new WaitForEndOfFrame();
+        ChangeState(attackState);
+    }
+
+    // 状态结束
+    public void SetAnimationTrigger() => currentState.CallAnimationTrigger();
+
+    // 设置速度
+    public void SetVelocity(float xVelocity, float yVelocity)
+    {
+        rb.velocity = new Vector2(xVelocity, yVelocity);
+        HandleFlipped(xVelocity);
+    }
+
+    // 控制人物朝向
+    private void HandleFlipped(float xVelocity)
+    {
+        if (xVelocity > 0 && !facingRight)
+            Flip();
+        else if (xVelocity < 0 && facingRight)
+            Flip();
+    }
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        facingDir *= -1;
+        transform.Rotate(0, 180, 0);
+    }
+}

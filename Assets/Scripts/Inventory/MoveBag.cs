@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems; //Unity事件管理库
 
-public class MoveBag : MonoBehaviour,IDragHandler
+public class MoveBag : MonoBehaviour, IDragHandler
 {
     //获得背包坐标
     RectTransform currentRect;  //当前背包的坐标

@@ -1,13 +1,19 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Sensor_Ground : MonoBehaviour
 {
+    [Header("碰撞检测")]
+    public bool grounded;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private float groundCheckDistance = 1f;
 
     private int m_ColCount = -1;
     private Scene m_scene;
 
+    #region 关卡
     private float m_ColCountLadder1 = 0;
     private int m_ColCountWood1 = 0;
     private int m_ColCountWood2 = 0;
@@ -31,6 +37,7 @@ public class Sensor_Ground : MonoBehaviour
     [Header("机关--关卡2")]
     public GameObject m_Ladder3;
     public GameObject KillZone;
+    #endregion
 
     [Header("玩家")]
     public GameObject player;
@@ -50,7 +57,7 @@ public class Sensor_Ground : MonoBehaviour
 
     public bool State()
     {
-        return m_ColCount > 0;
+        return grounded;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -65,7 +72,7 @@ public class Sensor_Ground : MonoBehaviour
                 {
                     m_ColCountSwitch1 = m_ColCountSwitch1 - 3;
                 }
-                player.GetComponent<AudioSource>().clip = player.GetComponent<HeroKnight>().audios[6];
+                player.GetComponent<AudioSource>().clip = player.GetComponent<Player>().audios[6];
                 player.GetComponent<AudioSource>().Play();
                 break;
             case "Switch2":
@@ -75,21 +82,21 @@ public class Sensor_Ground : MonoBehaviour
                 {
                     m_ColCountSwitch2 = m_ColCountSwitch2 - 2;
                 }
-                player.GetComponent<AudioSource>().clip = player.GetComponent<HeroKnight>().audios[6];
+                player.GetComponent<AudioSource>().clip = player.GetComponent<Player>().audios[6];
                 player.GetComponent<AudioSource>().Play();
                 break;
             case "Switch3":
                 m_ColCountSwitch4 = 0;
                 m_ColCountSwitch3 = 1;
                 m_Switch3.transform.GetComponent<Animator>().SetTrigger("Switch3");
-                player.GetComponent<AudioSource>().clip = player.GetComponent<HeroKnight>().audios[6];
+                player.GetComponent<AudioSource>().clip = player.GetComponent<Player>().audios[6];
                 player.GetComponent<AudioSource>().Play();
                 break;
             case "Switch4":
                 m_ColCountSwitch3 = 0;
                 m_ColCountSwitch4 = 1;
                 m_Switch4.transform.GetComponent<Animator>().SetTrigger("Switch4");
-                player.GetComponent<AudioSource>().clip = player.GetComponent<HeroKnight>().audios[6];
+                player.GetComponent<AudioSource>().clip = player.GetComponent<Player>().audios[6];
                 player.GetComponent<AudioSource>().Play();
                 break;
             case "Ladder2":
@@ -118,7 +125,7 @@ public class Sensor_Ground : MonoBehaviour
                 break;
             case "Ladder2":
                 moveChange = true;
-                player.transform.position = new Vector3(m_Ladder2.transform.position.x+36.5f, player.transform.position.y, 0);
+                player.transform.position = new Vector3(m_Ladder2.transform.position.x + 36.5f, player.transform.position.y, 0);
                 break;
         }
 
@@ -135,7 +142,7 @@ public class Sensor_Ground : MonoBehaviour
         switch (other.name)
         {
             case "Switch1":
-                if(m_ColCountSwitch1 == 3)
+                if (m_ColCountSwitch1 == 3)
                 {
                     m_ColCountSwitch1 = 0;
                 }
@@ -153,16 +160,18 @@ public class Sensor_Ground : MonoBehaviour
 
     void Update()
     {
+        HandleCollisionDetected();
+
         m_scene = SceneManager.GetActiveScene();
 
         //消失平台
         if (m_ColCountLadder1 > 0.8)
         {
             m_Ladder1.SetActive(false);
-            if(m_ColCount == 1)
+            if (m_ColCount == 1)
             {
                 m_ColCount = m_ColCount - 1;
-            }            
+            }
         }
 
         //出现平台
@@ -242,12 +251,12 @@ public class Sensor_Ground : MonoBehaviour
             }
         }
         //TODO:之后需要修改
-        else if(m_scene.name=="SampleScene")
+        else if (m_scene.name == "SampleScene")
         {
             Vector3 tempPosition = m_Ladder2.transform.position;
             if (toStop1)
             {
-                tempPosition = Vector3.MoveTowards(tempPosition,new Vector3(tempPosition.x,stopY1,0), speed1 * Time.deltaTime);
+                tempPosition = Vector3.MoveTowards(tempPosition, new Vector3(tempPosition.x, stopY1, 0), speed1 * Time.deltaTime);
                 m_Ladder2.transform.position = tempPosition;
                 if (m_Ladder2.transform.position.y == stopY1)
                 {
@@ -266,10 +275,10 @@ public class Sensor_Ground : MonoBehaviour
         }
 
         //掉落--重新加载场景
-        if (m_ColCount == -1)
-        {
-            SceneManager.LoadScene("SampleScene");
-        }
+        //if (m_ColCount == -1)
+        //{
+        //    SceneManager.LoadScene("SampleScene");
+        //}
 
         //TODO:改名字
         if (m_scene.name == "Dark")
@@ -299,5 +308,20 @@ public class Sensor_Ground : MonoBehaviour
                 toStop2 = true;
             }
         }
+    }
+
+
+    // 检测碰撞
+    private void HandleCollisionDetected()
+    {
+        grounded = Physics2D.Raycast(groundCheckPoint.position, Vector3.down, groundCheckDistance, groundLayer);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (groundCheckPoint == null)
+            groundCheckPoint = transform;
+
+        Gizmos.DrawLine(groundCheckPoint.position, groundCheckPoint.position + Vector3.down * groundCheckDistance);
     }
 }

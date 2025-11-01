@@ -73,12 +73,12 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         agent = GetComponent<NavMeshAgent>();
-        playerAnim = GameObject.FindWithTag("Warrior").GetComponent<Animator>();
+        playerAnim = player.GetComponent<Animator>();
 
         Health = 100;
         speed = agent.speed;
         guardPos = transform.position;
-        leftPoint = new Vector3(guardPos.x-patrolLeft, guardPos.y, 0);
+        leftPoint = new Vector3(guardPos.x - patrolLeft, guardPos.y, 0);
         rightPoint = new Vector3(guardPos.x + patrolRight, guardPos.y, 0);
         agent.destination = leftPoint;
         remainLookAtTime = lookAtTime;
@@ -96,7 +96,7 @@ public class EnemyController : MonoBehaviour
         SwitchStates();
         SwitchAnimation();
         lastAttackTime -= Time.deltaTime;
-        monster.transform.position = new Vector3 (transform.position.x,monster.transform.position.y,0);
+        monster.transform.position = new Vector3(transform.position.x, monster.transform.position.y, 0);
     }
 
     void SwitchAnimation()
@@ -125,7 +125,7 @@ public class EnemyController : MonoBehaviour
                 isChase = false;
 
                 //判断是否在原位置（追踪拉脱后回到原位置）
-                if (transform.position!= guardPos)
+                if (transform.position != guardPos)
                 {
                     isWalk = true;
                     agent.isStopped = false;
@@ -153,7 +153,7 @@ public class EnemyController : MonoBehaviour
                     agent.isStopped = false;
                     agent.destination = leftPoint;
                 }
-                else if(transform.position.x > rightPoint.x)
+                else if (transform.position.x > rightPoint.x)
                 {
                     isWalk = true;
                     agent.isStopped = false;
@@ -165,7 +165,7 @@ public class EnemyController : MonoBehaviour
                     agent.isStopped = false;
                 }
 
-                if (Vector2.SqrMagnitude(agent.destination- transform.position) <= 2)
+                if (Vector2.SqrMagnitude(agent.destination - transform.position) <= 2)
                 {
                     isWalk = false;
 
@@ -174,14 +174,14 @@ public class EnemyController : MonoBehaviour
                     {
                         remainLookAtTime -= Time.deltaTime;
                     }
-                    
+
                     //观望一会儿后向相反方向巡逻
                     else
                     {
                         isWalk = true;
                         remainLookAtTime = 2.0f;
 
-                        if (Vector2.SqrMagnitude(agent.destination-leftPoint) <= 3)
+                        if (Vector2.SqrMagnitude(agent.destination - leftPoint) <= 3)
                         {
                             agent.destination = rightPoint;
                         }
@@ -233,8 +233,8 @@ public class EnemyController : MonoBehaviour
                         {
                             //重置攻击冷却时间
                             lastAttackTime = 1.5f;
-                            bashNum = UnityEngine.Random.Range(0f, 1.0f);                       
-                            Attack();                           
+                            bashNum = UnityEngine.Random.Range(0f, 1.0f);
+                            Attack();
                         }
                     }
                     //不在攻击范围内追踪敌人
@@ -278,7 +278,7 @@ public class EnemyController : MonoBehaviour
         //追踪状态下朝向玩家
         if (enemyStates == EnemyStates.CHASE)
         {
-            if (player.transform .position.x < monster.transform.position.x)
+            if (player.transform.position.x < monster.transform.position.x)
             {
                 monster.transform.localScale = new Vector3(-5, 5, 1);
                 monster.transform.GetChild(0).gameObject.transform.localScale = new Vector3(-0.16f, 0.16f, 0);

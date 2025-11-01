@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Slot : MonoBehaviour,IPointerClickHandler
+public class Slot : MonoBehaviour, IPointerClickHandler
 {
 
     public int slotID; //空格ID 等于 物品ID
@@ -24,13 +24,13 @@ public class Slot : MonoBehaviour,IPointerClickHandler
     public void ItemOnClicked()
     {
         InventoryManager.UpdateItemInfo(slotInfo);
-        
+
     }
 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Right)
+        if (eventData.button == PointerEventData.InputButton.Right)
         {
 
         }
@@ -39,7 +39,7 @@ public class Slot : MonoBehaviour,IPointerClickHandler
 
     public void SetupSlot(Item item)
     {
-        if(item == null) //没有物品时
+        if (item == null) //没有物品时
         {
             itemInSlot.SetActive(false);
             return;

@@ -13,13 +13,13 @@ public class ItemOnWorld : MonoBehaviour
     public void AddNewItem()
     {
         //如果背包中没有物体,背包内加入这个物体
-        if(!playerInventory.itemlist.Contains(thisItem))
+        if (!playerInventory.itemlist.Contains(thisItem))
         {
             //playerInventory.itemlist.Add(thisItem);
             //InventoryManager.CreateNewItem(thisItem);
             for (int i = 0; i < playerInventory.itemlist.Count; i++)
             {
-                if(playerInventory.itemlist[i] == null)
+                if (playerInventory.itemlist[i] == null)
                 {
                     playerInventory.itemlist[i] = thisItem;
                     thisItem.itemHeld += 1;

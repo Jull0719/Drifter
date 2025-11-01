@@ -16,7 +16,7 @@ public class DialogSystem : MonoBehaviour
     public float textSpeed;
 
     [Header("头像")]
-    public Sprite face01,face02;
+    public Sprite face01, face02;
 
     public GameObject win;
 
@@ -32,18 +32,19 @@ public class DialogSystem : MonoBehaviour
         GetTextFromFile(textFile);
     }
 
-    private void OnEnable(){
-       // textLabel.text = textList[index];
-       // index++;
-       textFinished = true;
-       StartCoroutine(SetTextUI());
+    private void OnEnable()
+    {
+        // textLabel.text = textList[index];
+        // index++;
+        textFinished = true;
+        StartCoroutine(SetTextUI());
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && index == textList.Count)
+        if (Input.GetMouseButtonDown(0) && index == textList.Count)
         {
             switch (gameObject.name)
             {
@@ -67,19 +68,19 @@ public class DialogSystem : MonoBehaviour
         }
         //if(Input.GetMouseButtonDown(0) && textFinished)
         //{
-            //textLabel.text = textList[index];
-            //index++;
-          //  StartCoroutine(SetTextUI());
+        //textLabel.text = textList[index];
+        //index++;
+        //  StartCoroutine(SetTextUI());
 
         //}
 
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             if (textFinished && !cancelTyping)
             {
                 StartCoroutine(SetTextUI());
             }
-            else if(!textFinished)
+            else if (!textFinished)
             {
                 cancelTyping = true;
             }
@@ -93,7 +94,7 @@ public class DialogSystem : MonoBehaviour
 
         var lineData = file.text.Split('\n');
 
-        foreach(var line in lineData)
+        foreach (var line in lineData)
         {
             textList.Add(line);
         }
@@ -104,7 +105,7 @@ public class DialogSystem : MonoBehaviour
         textFinished = false;
         textLabel.text = "";
 
-        switch(textList[index])
+        switch (textList[index])
         {
             case "A\r":
                 faceImage.sprite = face01;
@@ -119,12 +120,12 @@ public class DialogSystem : MonoBehaviour
 
         //for (int i = 0; i < textList[index].Length; i++)
         //{
-          //  textLabel.text += textList[index][i];
-            //yield return new WaitForSeconds(textSpeed);        
+        //  textLabel.text += textList[index][i];
+        //yield return new WaitForSeconds(textSpeed);        
         //}
 
         int letter = 0;
-        while(!cancelTyping && letter < textList[index].Length -1)
+        while (!cancelTyping && letter < textList[index].Length - 1)
         {
             textLabel.text += textList[index][letter];
             letter++;

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
@@ -61,7 +61,7 @@ public class PlayerScript : MonoBehaviour
     {
         //限制生命
         lifeLimited();
-        
+
         //使用生命药水
         UseLifePotion();
 
@@ -90,7 +90,7 @@ public class PlayerScript : MonoBehaviour
             Destroy(other.gameObject);
             coinNum += 1;
             coinNumText.text = coinNum.ToString();
-            this.GetComponent<AudioSource>().clip = this.GetComponent<HeroKnight>().audios[7];
+            this.GetComponent<AudioSource>().clip = this.GetComponent<Player>().audios[7];
             this.GetComponent<AudioSource>().Play();
         }
 
@@ -104,10 +104,10 @@ public class PlayerScript : MonoBehaviour
             //}
             //else
             //{
-                other.GetComponent<ItemOnWorld>().AddNewItem();
+            other.GetComponent<ItemOnWorld>().AddNewItem();
             //}
             Destroy(other.gameObject);
-            this.GetComponent<AudioSource>().clip = this.GetComponent<HeroKnight>().audios[7];
+            this.GetComponent<AudioSource>().clip = this.GetComponent<Player>().audios[7];
             this.GetComponent<AudioSource>().Play();
         }
 
@@ -122,7 +122,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.name == "BossZone")
+        if (other.gameObject.name == "BossZone")
         {
             BossHp.SetActive(false);
         }
@@ -206,7 +206,7 @@ public class PlayerScript : MonoBehaviour
 
     void ExamFinal()
     {
-        if(playerInventory.itemlist.Contains(Item_herb1) && playerInventory.itemlist.Contains(Item_herb2) &&
+        if (playerInventory.itemlist.Contains(Item_herb1) && playerInventory.itemlist.Contains(Item_herb2) &&
             playerInventory.itemlist.Contains(Item_herb3) && playerInventory.itemlist.Contains(Item_herb4))
         {
             dialog.SetActive(true);

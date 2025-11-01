@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonPause : MonoBehaviour {
+public class ButtonPause : MonoBehaviour
+{
 
     //the ButtonPauseMenu
     public GameObject ingameMenu;

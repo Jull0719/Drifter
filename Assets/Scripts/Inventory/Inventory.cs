@@ -4,9 +4,9 @@ using UnityEngine;
 
 
 //背包系统为列表
-[CreateAssetMenu(fileName ="New Inventory",menuName ="Inventory/New Inventory")]
+[CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory/New Inventory")]
 public class Inventory : ScriptableObject
 {
-    public List<Item> itemlist = new List<Item>(); 
+    public List<Item> itemlist = new List<Item>();
 
 }

@@ -19,9 +19,9 @@ public class EnemyHealthBar : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {  
+    {
         hpImage.fillAmount = hp / maxHp;
-        if(hpEffectImage.fillAmount > hpImage.fillAmount)
+        if (hpEffectImage.fillAmount > hpImage.fillAmount)
         {
             hpEffectImage.fillAmount -= hurtSpeed;
         }

@@ -184,7 +184,7 @@ public class BossController : MonoBehaviour
                 break;
             case BossStates.DEAD:
                 agent.enabled = false;
-                player.GetComponent<AudioSource>().clip = player.GetComponent<HeroKnight>().audios[5];
+                player.GetComponent<AudioSource>().clip = player.GetComponent<Player>().audios[5];
                 player.GetComponent<AudioSource>().Play();
                 herb.SetActive(true);       //草药出现
                 Destroy(gameObject, 2f);    //延时销毁
@@ -205,7 +205,7 @@ public class BossController : MonoBehaviour
                 {
                     //补血
                     bossAnim.SetTrigger("Cast");
-                    player.GetComponent<AudioSource>().clip = player.GetComponent<HeroKnight>().audios[4];
+                    player.GetComponent<AudioSource>().clip = player.GetComponent<Player>().audios[4];
                     player.GetComponent<AudioSource>().Play();
                 }
 
@@ -213,14 +213,14 @@ public class BossController : MonoBehaviour
                 {
                     //法术攻击
                     bossAnim.SetTrigger("Spell");
-                    player.GetComponent<AudioSource>().clip = player.GetComponent<HeroKnight>().audios[3];
+                    player.GetComponent<AudioSource>().clip = player.GetComponent<Player>().audios[3];
                     player.GetComponent<AudioSource>().Play();
                 }
                 else
                 {
                     //普通攻击
                     bossAnim.SetTrigger("Attack");
-                    player.GetComponent<AudioSource>().clip = player.GetComponent<HeroKnight>().audios[2];
+                    player.GetComponent<AudioSource>().clip = player.GetComponent<Player>().audios[2];
                     player.GetComponent<AudioSource>().Play();
                 }
             }
@@ -231,14 +231,14 @@ public class BossController : MonoBehaviour
                 {
                     //法术攻击
                     bossAnim.SetTrigger("Spell");
-                    player.GetComponent<AudioSource>().clip = player.GetComponent<HeroKnight>().audios[3];
+                    player.GetComponent<AudioSource>().clip = player.GetComponent<Player>().audios[3];
                     player.GetComponent<AudioSource>().Play();
                 }
                 else
                 {
                     //普通攻击
                     bossAnim.SetTrigger("Attack");
-                    player.GetComponent<AudioSource>().clip = player.GetComponent<HeroKnight>().audios[2];
+                    player.GetComponent<AudioSource>().clip = player.GetComponent<Player>().audios[2];
                     player.GetComponent<AudioSource>().Play();
                 }
             }

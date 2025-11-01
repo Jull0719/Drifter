@@ -8,9 +8,9 @@ public class InventoryManager : MonoBehaviour
 
     static InventoryManager instance;
 
-    [Header("背包管理器")] 
-    [Tooltip("背包所属者")]public Inventory myBag;   //是谁的背包，比如：主角自己、商人
-    [Tooltip("背包网格")]public GameObject slotGrid; //背包格
+    [Header("背包管理器")]
+    [Tooltip("背包所属者")] public Inventory myBag;   //是谁的背包，比如：主角自己、商人
+    [Tooltip("背包网格")] public GameObject slotGrid; //背包格
     //[Tooltip("格子")] public Slot slotPrefab;
     public GameObject emptySlot;
     [Tooltip("格子描述")] public Text itemInformation;  //格子中物品的描述
@@ -24,7 +24,7 @@ public class InventoryManager : MonoBehaviour
         if (instance != null)
             Destroy(this);
         instance = this;
-      
+
     }
 
     //在游戏一开始显示当前背包里的东西
@@ -34,7 +34,7 @@ public class InventoryManager : MonoBehaviour
         //默认物品描述什么都不显示
         instance.itemInformation.text = "";
     }
-    
+
     //更新物体描述
     public static void UpdateItemInfo(string itemDescription)
     {

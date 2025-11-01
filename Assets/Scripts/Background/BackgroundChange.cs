@@ -9,7 +9,6 @@ public class BackgroundChange : MonoBehaviour
     private int count;
     public Tilemap[] bgList;
 
-    // Start is called before the first frame update
     void Start()
     {
         sumTime = 8;

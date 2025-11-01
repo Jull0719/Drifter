@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class homeHelpButton : MonoBehaviour
 {
-        void Start()
+    void Start()
     {
         this.GetComponent<Button>().onClick.AddListener(OnClick);
     }
@@ -15,6 +15,6 @@ public class homeHelpButton : MonoBehaviour
     void OnClick()
     {
         SceneManager.LoadScene("BeginningIllustrate");
-        
+
     }
 }

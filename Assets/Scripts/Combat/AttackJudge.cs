@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class AttackJudge : MonoBehaviour
 {
+    private Player player;
+
     private GameObject[] monsterList;
-    private GameObject player;
     private GameObject boss;
     public GameObject coin;
     public GameObject lifepotion;
@@ -13,7 +14,8 @@ public class AttackJudge : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        player = GetComponentInParent<Player>();
+
         boss = GameObject.FindWithTag("Boss");
     }
 
@@ -22,9 +24,12 @@ public class AttackJudge : MonoBehaviour
         monsterList = GameObject.FindGameObjectsWithTag("Monster");
     }
 
+    private void SetAnimationTrigger() => player.SetAnimationTrigger();
+
     public void PlayerAttack1()
     {
-        foreach (var monster in monsterList){
+        foreach (var monster in monsterList)
+        {
 
             EnemyController enemyController = monster.GetComponent<EnemyController>();
 
@@ -102,7 +107,7 @@ public class AttackJudge : MonoBehaviour
                 player.GetComponent<PlayerScript>().currentHp -= 6f;
                 if (player.GetComponent<PlayerScript>().currentHp <= 0)
                 {
-                    player.GetComponent<HeroKnight>().Health = 0;
+                    player.GetComponent<Player>().Health = 0;
                     Time.timeScale = 0;
                     fail.SetActive(true);
                 }
@@ -122,7 +127,7 @@ public class AttackJudge : MonoBehaviour
                 player.GetComponent<PlayerScript>().currentHp -= 8f;
                 if (player.GetComponent<PlayerScript>().currentHp <= 0)
                 {
-                    player.GetComponent<HeroKnight>().Health = 0;
+                    player.GetComponent<Player>().Health = 0;
                     Time.timeScale = 0;
                     fail.SetActive(true);
                 }
@@ -141,7 +146,7 @@ public class AttackJudge : MonoBehaviour
             {
                 fail.SetActive(true);
                 Time.timeScale = 0;
-                player.GetComponent<HeroKnight>().Health = 0;
+                player.GetComponent<Player>().Health = 0;
             }
         }
     }
@@ -157,7 +162,7 @@ public class AttackJudge : MonoBehaviour
             {
                 fail.SetActive(true);
                 Time.timeScale = 0;
-                player.GetComponent<HeroKnight>().Health = 0;
+                player.GetComponent<Player>().Health = 0;
             }
         }
     }
@@ -181,10 +186,12 @@ public class AttackJudge : MonoBehaviour
             if (enemyController.MonsterInAttackRange())
             {
                 //怪物死后掉落金币
-                Instantiate(coin, new Vector3(monster.transform.position.x+0.2f, monster.transform.position.y,0), Quaternion.identity);
+                Instantiate(coin, new Vector3(monster.transform.position.x + 0.2f, monster.transform.position.y, 0), Quaternion.identity);
                 Instantiate(lifepotion, new Vector3(monster.transform.position.x - 0.2f, monster.transform.position.y, 0), Quaternion.identity);
-                Instantiate(coin, new Vector3(monster.transform.position.x, monster.transform.position.y-0.2f,0), Quaternion.identity);
+                Instantiate(coin, new Vector3(monster.transform.position.x, monster.transform.position.y - 0.2f, 0), Quaternion.identity);
             }
         }
     }
+
+
 }

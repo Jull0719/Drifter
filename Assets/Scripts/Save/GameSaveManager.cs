@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;    //文件输入与输出
 using System.Runtime.Serialization.Formatters.Binary;   //将数据转化为二进制
+using UnityEngine;
 
 public class GameSaveManager : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class GameSaveManager : MonoBehaviour
         //输出文件夹路径
         Debug.Log(Application.persistentDataPath);
         //如果在游戏绝对路径下方，没有包含存储文件夹，创建文件夹
-        if(!Directory.Exists(Application.persistentDataPath + "/game_SaveData"))
+        if (!Directory.Exists(Application.persistentDataPath + "/game_SaveData"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/game_SaveData");
         }
@@ -33,7 +33,7 @@ public class GameSaveManager : MonoBehaviour
     {
         BinaryFormatter bf = new BinaryFormatter();
 
-        if(File.Exists(Application.persistentDataPath + "/game_SaveData/inventory.txt"))
+        if (File.Exists(Application.persistentDataPath + "/game_SaveData/inventory.txt"))
         {
             FileStream file = File.Open(Application.persistentDataPath + "/game_SaveData/inventory.txt", FileMode.Open);
 
