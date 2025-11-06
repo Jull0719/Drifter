@@ -3,13 +3,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     [Header("移动")]
     public float moveSpeed = 10;
     public float airMultiplier = 0.8f;
-    [SerializeField] private bool facingRight = true;
-    public int facingDir { get; private set; } = 1;
     public Vector2 moveInput { get; private set; }
 
     [Header("跳跃")]
@@ -23,19 +21,13 @@ public class Player : MonoBehaviour
     public Vector2[] attackVelocity; //攻击反馈
     private Coroutine queueAttackCo;
 
-    public Animator anim { get; private set; }
-    public Rigidbody2D rb { get; private set; }
-    public Sensor_Ground groundSensor { get; private set; }
-    public PlayerInput input { get; private set; }
-
-    // 当前状态
-    private PlayerState currentState;
-
     public Player_IdleState idleState { get; private set; }
     public Player_MoveState moveState { get; private set; }
     public Player_JumpState jumpState { get; private set; }
     public Player_FallState fallState { get; private set; }
     public Player_AttackState attackState { get; private set; }
+
+    public PlayerInputSet input { get; private set; }
 
     private Scene m_scene;
     private GameObject[] dialogs;
@@ -44,19 +36,17 @@ public class Player : MonoBehaviour
 
     public AudioClip[] audios;
 
-    private void Awake()
+    protected override void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
-        groundSensor = GetComponentInChildren<Sensor_Ground>();
+        base.Awake();
 
-        input = new PlayerInput();
+        input = new PlayerInputSet();
 
-        idleState = new Player_IdleState(this, "idle");
-        moveState = new Player_MoveState(this, "move");
-        jumpState = new Player_JumpState(this, "jump");
-        fallState = new Player_FallState(this, "jump");
-        attackState = new Player_AttackState(this, "attack");
+        idleState = new Player_IdleState(this, stateMachine, "idle");
+        moveState = new Player_MoveState(this, stateMachine, "move");
+        jumpState = new Player_JumpState(this, stateMachine, "jump");
+        fallState = new Player_FallState(this, stateMachine, "jump");
+        attackState = new Player_AttackState(this, stateMachine, "attack");
 
         dialogs = GameObject.FindGameObjectsWithTag("dialog");
     }
@@ -74,38 +64,18 @@ public class Player : MonoBehaviour
         input.Disable();
     }
 
-    void Start()
+    protected override void Start()
     {
-        InitializedState(idleState);
+        base.Start();
+        stateMachine.InitializedState(idleState);
 
         Health = 100;
         m_scene = SceneManager.GetActiveScene();
     }
 
-    #region FSM
-    public void InitializedState(PlayerState startState)
+    protected override void Update()
     {
-        currentState = startState;
-        currentState.OnEnter();
-    }
-
-    public void OnUpdate()
-    {
-        currentState.OnUpdate();
-    }
-
-    public void ChangeState(PlayerState newState)
-    {
-        currentState.OnExit();
-        currentState = newState;
-        currentState.OnEnter();
-    }
-    #endregion
-
-    void Update()
-    {
-        OnUpdate();
-
+        base.Update();
         /*
         //Death
         if (Health == 0)
@@ -190,32 +160,6 @@ public class Player : MonoBehaviour
     IEnumerator QueueAttackCo()
     {
         yield return new WaitForEndOfFrame();
-        ChangeState(attackState);
-    }
-
-    // 状态结束
-    public void SetAnimationTrigger() => currentState.CallAnimationTrigger();
-
-    // 设置速度
-    public void SetVelocity(float xVelocity, float yVelocity)
-    {
-        rb.velocity = new Vector2(xVelocity, yVelocity);
-        HandleFlipped(xVelocity);
-    }
-
-    // 控制人物朝向
-    private void HandleFlipped(float xVelocity)
-    {
-        if (xVelocity > 0 && !facingRight)
-            Flip();
-        else if (xVelocity < 0 && facingRight)
-            Flip();
-    }
-
-    private void Flip()
-    {
-        facingRight = !facingRight;
-        facingDir *= -1;
-        transform.Rotate(0, 180, 0);
+        stateMachine.ChangeState(attackState);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_JumpState : Player_AiredState
 {
-    public Player_JumpState(Player player, string stateName) : base(player, stateName)
+    public Player_JumpState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
     {
     }
 
@@ -20,6 +20,6 @@ public class Player_JumpState : Player_AiredState
         base.OnUpdate();
 
         if (rb.velocity.y < 0)
-            player.ChangeState(player.fallState);
+            stateMachine.ChangeState(player.fallState);
     }
 }

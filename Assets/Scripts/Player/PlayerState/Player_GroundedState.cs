@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_GroundedState : PlayerState
 {
-    public Player_GroundedState(Player player, string stateName) : base(player, stateName)
+    public Player_GroundedState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
     {
     }
 
@@ -13,17 +13,17 @@ public class Player_GroundedState : PlayerState
         base.OnUpdate();
 
         // 跳跃
-        if (groundSensor.grounded && input.Gameplay.Jump.WasPressedThisFrame())
+        if (player.groundDetected && input.Gameplay.Jump.WasPressedThisFrame())
         {
-            player.ChangeState(player.jumpState);
+            stateMachine.ChangeState(player.jumpState);
         }
 
         // 从平台掉下
-        if (!groundSensor.grounded)
-            player.ChangeState(player.fallState);
+        if (!player.groundDetected)
+            stateMachine.ChangeState(player.fallState);
 
         // 攻击
         if (input.Gameplay.Attack.WasPressedThisFrame())
-            player.ChangeState(player.attackState);
+            stateMachine.ChangeState(player.attackState);
     }
 }

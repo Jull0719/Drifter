@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_FallState : Player_AiredState
 {
-    public Player_FallState(Player player, string stateName) : base(player, stateName)
+    public Player_FallState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
     {
     }
 
@@ -12,7 +12,7 @@ public class Player_FallState : Player_AiredState
     {
         base.OnUpdate();
 
-        if (groundSensor.grounded)
-            player.ChangeState(player.idleState);
+        if (player.groundDetected)
+            stateMachine.ChangeState(player.idleState);
     }
 }

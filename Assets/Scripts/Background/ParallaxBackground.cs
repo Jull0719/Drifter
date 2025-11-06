@@ -18,7 +18,7 @@ public class ParallaxBackground : MonoBehaviour
         CalculateBackgroundWidth();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // 摄像机前一帧和后一帧之间移动的距离
         float currentCameraPositionX = mainCamera.transform.position.x;
@@ -36,6 +36,7 @@ public class ParallaxBackground : MonoBehaviour
         }
     }
 
+    // 计算背景图片的宽度
     private void CalculateBackgroundWidth()
     {
         foreach (var layer in layers)

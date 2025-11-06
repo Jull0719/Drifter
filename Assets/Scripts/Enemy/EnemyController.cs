@@ -280,12 +280,12 @@ public class EnemyController : MonoBehaviour
         {
             if (player.transform.position.x < monster.transform.position.x)
             {
-                monster.transform.localScale = new Vector3(-5, 5, 1);
+                monster.transform.localScale = new Vector3(-1, 1, 1);
                 monster.transform.GetChild(0).gameObject.transform.localScale = new Vector3(-0.16f, 0.16f, 0);
             }
             else
             {
-                monster.transform.localScale = new Vector3(5, 5, 1);
+                monster.transform.localScale = new Vector3(1, 1, 1);
                 monster.transform.GetChild(0).gameObject.transform.localScale = new Vector3(0.16f, 0.16f, 0);
             }
         }
@@ -294,12 +294,12 @@ public class EnemyController : MonoBehaviour
         {
             if (agent.destination.x < monster.transform.position.x)
             {
-                monster.transform.localScale = new Vector3(-5, 5, 1);
+                monster.transform.localScale = new Vector3(-1, 1, 1);
                 monster.transform.GetChild(0).gameObject.transform.localScale = new Vector3(-0.16f, 0.16f, 0);
             }
             else
             {
-                monster.transform.localScale = new Vector3(5, 5, 1);
+                monster.transform.localScale = new Vector3(1, 1, 1);
                 monster.transform.GetChild(0).gameObject.transform.localScale = new Vector3(0.16f, 0.16f, 0);
             }
         }

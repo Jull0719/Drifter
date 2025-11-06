@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_MoveState : Player_GroundedState
 {
-    public Player_MoveState(Player player, string stateName) : base(player, stateName)
+    public Player_MoveState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
     {
     }
 
@@ -20,6 +20,6 @@ public class Player_MoveState : Player_GroundedState
         player.SetVelocity(player.moveInput.x * player.moveSpeed, rb.velocity.y);
 
         if (player.moveInput.x == 0)
-            player.ChangeState(player.idleState);
+            stateMachine.ChangeState(player.idleState);
     }
 }

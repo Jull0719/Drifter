@@ -14,7 +14,7 @@ public class AttackJudge : MonoBehaviour
 
     void Start()
     {
-        player = GetComponentInParent<Player>();
+        player = GameObject.Find("Player").GetComponent<Player>();
 
         boss = GameObject.FindWithTag("Boss");
     }
@@ -23,8 +23,6 @@ public class AttackJudge : MonoBehaviour
     {
         monsterList = GameObject.FindGameObjectsWithTag("Monster");
     }
-
-    private void SetAnimationTrigger() => player.SetAnimationTrigger();
 
     public void PlayerAttack1()
     {
@@ -121,7 +119,7 @@ public class AttackJudge : MonoBehaviour
             EnemyController enemyController = monster.GetComponent<EnemyController>();
             if (enemyController.TargetInAttackRange())
             {
-                player.transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("Hurt");
+                //player.transform.GetChild(0).gameObject.GetComponent<Animator>().SetTrigger("Hurt");
 
                 //小怪重击下玩家血量减少
                 player.GetComponent<PlayerScript>().currentHp -= 8f;
