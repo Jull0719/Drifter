@@ -12,7 +12,15 @@ public class Player_AiredState : PlayerState
     {
         base.OnUpdate();
 
+        // 空中移动
         if (player.moveInput.x != 0)
             player.SetVelocity(player.moveInput.x * player.moveSpeed * player.airMultiplier, rb.velocity.y);
+
+        // 二段跳
+        if (input.Gameplay.Jump.WasPressedThisFrame() && player.canDoubleJump)
+        {
+            player.EnabledDoubleJump(false);
+            stateMachine.ChangeState(player.jumpState);
+        }
     }
 }

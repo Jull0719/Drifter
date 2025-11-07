@@ -12,8 +12,7 @@ public class Player : Entity
 
     [Header("跳跃")]
     public float jumpForce = 12;
-    //public bool doubleJump;
-    //private int m_currentJump = 0;
+    public bool canDoubleJump = true;
 
     [Header("攻击")]
     public float comboLimitedTime = 4; // 组合攻击限制时间
@@ -162,4 +161,7 @@ public class Player : Entity
         yield return new WaitForEndOfFrame();
         stateMachine.ChangeState(attackState);
     }
+
+    // 二段跳
+    public void EnabledDoubleJump(bool enable) => canDoubleJump = enable;
 }

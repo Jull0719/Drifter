@@ -13,5 +13,5 @@ public class Entity_AnimationTriggers : MonoBehaviour
 
     private void SetAnimationTrigger() => entity.CurrentStateAnimationTrigger();
 
-    private void SetAttackTrigger() { }
+    private void SetAttackTrigger() => entity.PerformAttack();
 }

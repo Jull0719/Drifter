@@ -46,6 +46,25 @@ public class Enemy : Entity
         stateMachine.InitializedState(idleState);
     }
 
+    public override void TakeDamage(float damage, Entity damageDealer)
+    {
+        base.TakeDamage(damage, damageDealer);
+
+        Player player = damageDealer.GetComponent<Player>();
+
+        if (player != null)
+        {
+            // 如果已处于Battle/Attack状态下，则不再进入
+            if (stateMachine.currentState == battleState || stateMachine.currentState == attackState)
+                return;
+
+            // 获取Player
+            this.player = player;
+            stateMachine.ChangeState(battleState);
+        }
+    }
+
+    // 检测Player
     public bool DetectedPlayer()
     {
         if (playerDetectedPoint == null)
@@ -58,6 +77,7 @@ public class Enemy : Entity
             return false;
         else
         {
+            // 获取Player
             player = hit.collider.GetComponent<Player>();
             return true;
         }
@@ -70,12 +90,15 @@ public class Enemy : Entity
         if (playerDetectedPoint == null)
             playerDetectedPoint = transform;
 
+        // 检测Player
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(playerDetectedPoint.position, playerDetectedPoint.position + Vector3.right * facingDir * playerDetectedDistance);
 
+        // 攻击距离
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(playerDetectedPoint.position, playerDetectedPoint.position + Vector3.right * facingDir * attackDetectedDistance);
 
+        // 撤退
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(playerDetectedPoint.position, playerDetectedPoint.position + Vector3.right * facingDir * retreatDistance);
     }

@@ -14,11 +14,10 @@ public class Enemy_BattleState : EnemyState
     public override void OnEnter()
     {
         base.OnEnter();
+        UpdateBattleTimer();
 
         if (player == null)
             player = enemy.player;
-
-        UpdateBattleTimer();
 
         if (ShouldRetreat())
         {

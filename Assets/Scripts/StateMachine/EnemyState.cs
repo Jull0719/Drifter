@@ -15,7 +15,7 @@ public class EnemyState : EntityState
     {
         base.UpdateAnimationParameters();
 
-        float battleAnimSpeedMultiplier = enemy.battleSpeed * enemy.moveAnimSpeedMultiplier / enemy.moveSpeed;
+        float battleAnimSpeedMultiplier = enemy.battleSpeed / enemy.moveSpeed;
         anim.SetFloat("moveAnimSpeedMultiplier", enemy.moveAnimSpeedMultiplier);
         anim.SetFloat("battleAnimSpeedMultiplier", battleAnimSpeedMultiplier);
         anim.SetFloat("xVelocity", rb.velocity.x);
