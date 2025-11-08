@@ -3,7 +3,12 @@ guid: 8120b540056d210428b827a6a0bc100c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - damageMaterial: {fileID: 2100000, guid: 31fdb629b16ecf64fb98fbaecba77220, type: 2}
+  - attackPoint: {instanceID: 0}
+  - groundDetectedPoint: {instanceID: 0}
+  - firstWallDetectedPoint: {instanceID: 0}
+  - secondWallDetectedPoint: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -11,7 +11,7 @@ public class Entity_AnimationTriggers : MonoBehaviour
         entity = GetComponentInParent<Entity>();
     }
 
-    private void SetAnimationTrigger() => entity.CurrentStateAnimationTrigger();
+    private void CurrentAnimationTrigger() => entity.CurrentStateAnimationTrigger();
 
     private void SetAttackTrigger() => entity.PerformAttack();
 }
