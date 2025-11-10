@@ -23,7 +23,6 @@ public class Entity : MonoBehaviour
     [SerializeField] protected Material damageVfxMaterial;
     [SerializeField] protected float damageVfxDuration = 0.3f;
     private Material defaultMaterial;
-    protected SpriteRenderer sr;
     protected Coroutine damageVfxCo;
     [Space]
 
@@ -52,7 +51,12 @@ public class Entity : MonoBehaviour
 
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
+    public Collider2D col { get; private set; }
     public StateMachine stateMachine { get; private set; }
+
+    protected SpriteRenderer sr;
+
+    protected Coroutine fadeCo;
 
     protected virtual void Awake()
     {
@@ -60,6 +64,8 @@ public class Entity : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
+        col = GetComponent<Collider2D>();
+
         sr = GetComponentInChildren<SpriteRenderer>();
 
         defaultMaterial = sr.material;
@@ -81,6 +87,7 @@ public class Entity : MonoBehaviour
     // 受击
     public virtual void TakeDamage(float damage, Entity damageDealer)
     {
+        //Debug.Log("Entity - " + gameObject.name + "受到攻击");
         if (isDead) return;
 
         ReduceHealth(damage);
@@ -101,10 +108,16 @@ public class Entity : MonoBehaviour
             Die();
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         isDead = true;
         Debug.Log(gameObject.name + " is Died.");
+        OnDie();
+    }
+
+    public virtual void OnDie()
+    {
+
     }
 
     // 计算受击占总生命值比例
@@ -161,10 +174,7 @@ public class Entity : MonoBehaviour
     public void PerformAttack()
     {
         foreach (var target in TargetDetected())
-        {
-            Debug.Log(target.name + "受到攻击");
             target.GetComponent<Entity>().TakeDamage(damage, this);
-        }
     }
 
     // 攻击检测
@@ -225,5 +235,27 @@ public class Entity : MonoBehaviour
 
         // 攻击
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+    }
+
+
+    // 逐渐变透明
+    public void Fade()
+    {
+        if (fadeCo != null)
+            StopCoroutine(fadeCo);
+
+        fadeCo = StartCoroutine(FadeCo());
+    }
+
+    IEnumerator FadeCo()
+    {
+        Color currentColor = sr.color;
+        while (currentColor.a > 0)
+        {
+            currentColor.a -= Time.deltaTime * 0.3f;
+            sr.color = currentColor;
+            yield return null;
+        }
+        sr.color = currentColor;
     }
 }

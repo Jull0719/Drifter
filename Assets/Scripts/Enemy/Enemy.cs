@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ public class Enemy : Entity
     public Enemy_MoveState moveState { get; private set; }
     public Enemy_AttackState attackState { get; private set; }
     public Enemy_BattleState battleState { get; private set; }
+    public Enemy_DeadState deadState { get; private set; }
 
     protected override void Awake()
     {
@@ -38,6 +40,7 @@ public class Enemy : Entity
         moveState = new Enemy_MoveState(this, stateMachine, "move");
         attackState = new Enemy_AttackState(this, stateMachine, "attack");
         battleState = new Enemy_BattleState(this, stateMachine, "battle");
+        deadState = new Enemy_DeadState(this, stateMachine, "dead");
     }
 
     protected override void Start()
@@ -46,9 +49,20 @@ public class Enemy : Entity
         stateMachine.InitializedState(idleState);
     }
 
+    public override void OnDie()
+    {
+        base.OnDie();
+        stateMachine.ChangeState(deadState);
+        Destroy(gameObject, 3);
+    }
+
+    // 受击
     public override void TakeDamage(float damage, Entity damageDealer)
     {
         base.TakeDamage(damage, damageDealer);
+
+        //Debug.Log("Enemy - " + gameObject.name + "受到攻击");
+        if (isDead) return;
 
         Player player = damageDealer.GetComponent<Player>();
 
@@ -101,5 +115,21 @@ public class Enemy : Entity
         // 撤退
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(playerDetectedPoint.position, playerDetectedPoint.position + Vector3.right * facingDir * retreatDistance);
+    }
+
+    private void OnEnable()
+    {
+        Player.OnPlayerDeath += HandlePlayerDeath;
+    }
+
+    private void OnDisable()
+    {
+        Player.OnPlayerDeath -= HandlePlayerDeath;
+    }
+
+    // Player死亡 -> 进入idleState
+    private void HandlePlayerDeath()
+    {
+        stateMachine.ChangeState(idleState);
     }
 }

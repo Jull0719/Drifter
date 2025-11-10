@@ -25,8 +25,12 @@ public class Player : Entity
     public Player_JumpState jumpState { get; private set; }
     public Player_FallState fallState { get; private set; }
     public Player_AttackState attackState { get; private set; }
+    public Player_DeadState deadState { get; private set; }
 
     public PlayerInputSet input { get; private set; }
+
+    // 事件
+    public static event Action OnPlayerDeath;
 
     private Scene m_scene;
     private GameObject[] dialogs;
@@ -46,6 +50,7 @@ public class Player : Entity
         jumpState = new Player_JumpState(this, stateMachine, "jump");
         fallState = new Player_FallState(this, stateMachine, "jump");
         attackState = new Player_AttackState(this, stateMachine, "attack");
+        deadState = new Player_DeadState(this, stateMachine, "dead");
 
         dialogs = GameObject.FindGameObjectsWithTag("dialog");
     }
@@ -145,6 +150,15 @@ public class Player : Entity
             }
         }
         return temp;
+    }
+
+    // 死亡
+    public override void OnDie()
+    {
+        base.OnDie();
+
+        OnPlayerDeath?.Invoke();
+        stateMachine.ChangeState(deadState);
     }
 
     // 再次进入攻击状态
