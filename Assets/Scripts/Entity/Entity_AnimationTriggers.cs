@@ -4,23 +4,16 @@ using UnityEngine;
 
 public class Entity_AnimationTriggers : MonoBehaviour
 {
-    private Entity entity;
-    private Entity_Combat combat;
+    protected Entity entity;
+    protected Entity_Combat combat;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         entity = GetComponentInParent<Entity>();
+        combat = GetComponentInParent<Entity_Combat>();
     }
 
-    private void Start()
-    {
-        combat = entity.combat;
-    }
+    protected void CurrentAnimationTrigger() => entity.CurrentStateAnimationTrigger();
 
-    private void CurrentAnimationTrigger() => entity.CurrentStateAnimationTrigger();
-
-    private void SetAttackTrigger()
-    {
-        combat.PerformAttack();
-    }
+    protected void SetAttackTrigger() => combat.PerformAttack();
 }

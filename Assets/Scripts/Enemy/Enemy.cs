@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Entity
+public class Enemy : Entity, ICounterable
 {
     [Header("移动")]
     public float moveSpeed = 3f;
@@ -21,8 +21,13 @@ public class Enemy : Entity
     public Vector2 retreatVelocity = new Vector2(2, 2);
 
     [Header("战斗")]
-    public float battleSpeed = 4f; // 追逐速度
-    public float battleDuration = 5f; // 战斗持续时间
+    public float battleSpeed = 4f;
+    public float battleDuration = 5f;
+
+    [Header("反击")]
+    public bool canBeStunned;
+    public float stunnedDuration = 2f;
+    public Vector2 stunnedVelocity = new Vector2(4, 2);
 
     public Player player { get; private set; }
 
@@ -31,7 +36,7 @@ public class Enemy : Entity
     public Enemy_AttackState attackState { get; private set; }
     public Enemy_BattleState battleState { get; private set; }
     public Enemy_DeadState deadState { get; private set; }
-
+    public Enemy_StunState stunState { get; private set; }
     protected override void Awake()
     {
         base.Awake();
@@ -41,12 +46,21 @@ public class Enemy : Entity
         attackState = new Enemy_AttackState(this, stateMachine, "attack");
         battleState = new Enemy_BattleState(this, stateMachine, "battle");
         deadState = new Enemy_DeadState(this, stateMachine, "dead");
+        stunState = new Enemy_StunState(this, stateMachine, "stun");
     }
 
     protected override void Start()
     {
         base.Start();
         stateMachine.InitializedState(idleState);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (Input.GetKeyDown(KeyCode.Q) && canBeStunned)
+            HandleCounter();
     }
 
     // 获取Player引用
@@ -108,5 +122,11 @@ public class Enemy : Entity
     private void HandlePlayerDeath()
     {
         stateMachine.ChangeState(idleState);
+    }
+
+    // 对Enemy的反击
+    public void HandleCounter()
+    {
+        stateMachine.ChangeState(stunState);
     }
 }

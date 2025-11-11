@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 3e53f7de08b756448ae5213eefb67710
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - damageVfxMaterial: {fileID: 2100000, guid: 31fdb629b16ecf64fb98fbaecba77220, type: 2}
+  - counterSignPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
