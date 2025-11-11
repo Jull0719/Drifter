@@ -29,9 +29,6 @@ public class Player : Entity
 
     public PlayerInputSet input { get; private set; }
 
-    // 事件
-    public static event Action OnPlayerDeath;
-
     private Scene m_scene;
     private GameObject[] dialogs;
 
@@ -150,15 +147,6 @@ public class Player : Entity
             }
         }
         return temp;
-    }
-
-    // 死亡
-    public override void OnDie()
-    {
-        base.OnDie();
-
-        OnPlayerDeath?.Invoke();
-        stateMachine.ChangeState(deadState);
     }
 
     // 再次进入攻击状态

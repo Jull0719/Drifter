@@ -25,7 +25,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
+  - Interactable
   - 
   - 
   - 
@@ -62,30 +62,15 @@ TagManager:
   - name: Decorations_Front
     uniqueID: 596137339
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: Interactable
+    uniqueID: 478703479
     locked: 0
-  - name: decorations_bottom
-    uniqueID: 4217898777
-    locked: 0
-  - name: darkground
-    uniqueID: 2067484203
-    locked: 0
-  - name: platform
-    uniqueID: 1406317649
-    locked: 0
-  - name: waterfall
-    uniqueID: 3828340065
-    locked: 0
-  - name: trap
-    uniqueID: 2145858557
-    locked: 0
-  - name: fly
-    uniqueID: 2911164523
-    locked: 0
-  - name: decorations_top
-    uniqueID: 3878125527
+  - name: Enemy
+    uniqueID: 909123653
     locked: 0
   - name: Player
     uniqueID: 2334083277
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

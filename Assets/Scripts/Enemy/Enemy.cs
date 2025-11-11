@@ -49,33 +49,10 @@ public class Enemy : Entity
         stateMachine.InitializedState(idleState);
     }
 
-    public override void OnDie()
+    // 获取Player引用
+    public void GetPlayerReference(Player player)
     {
-        base.OnDie();
-        stateMachine.ChangeState(deadState);
-        Destroy(gameObject, 3);
-    }
-
-    // 受击
-    public override void TakeDamage(float damage, Entity damageDealer)
-    {
-        base.TakeDamage(damage, damageDealer);
-
-        //Debug.Log("Enemy - " + gameObject.name + "受到攻击");
-        if (isDead) return;
-
-        Player player = damageDealer.GetComponent<Player>();
-
-        if (player != null)
-        {
-            // 如果已处于Battle/Attack状态下，则不再进入
-            if (stateMachine.currentState == battleState || stateMachine.currentState == attackState)
-                return;
-
-            // 获取Player
-            this.player = player;
-            stateMachine.ChangeState(battleState);
-        }
+        this.player = player;
     }
 
     // 检测Player
@@ -92,7 +69,7 @@ public class Enemy : Entity
         else
         {
             // 获取Player
-            player = hit.collider.GetComponent<Player>();
+            GetPlayerReference(hit.collider.GetComponent<Player>());
             return true;
         }
     }
@@ -119,12 +96,12 @@ public class Enemy : Entity
 
     private void OnEnable()
     {
-        Player.OnPlayerDeath += HandlePlayerDeath;
+        Player_Health.OnPlayerDeath += HandlePlayerDeath;
     }
 
     private void OnDisable()
     {
-        Player.OnPlayerDeath -= HandlePlayerDeath;
+        Player_Health.OnPlayerDeath -= HandlePlayerDeath;
     }
 
     // Player死亡 -> 进入idleState
