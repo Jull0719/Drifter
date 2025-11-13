@@ -7,20 +7,16 @@ public abstract class EntityState
     protected string stateName;
     protected StateMachine stateMachine;
 
-    protected Entity entity;
     protected Animator anim;
     protected Rigidbody2D rb;
 
     protected float stateTimer;
     protected bool triggerCalled;
 
-    public EntityState(Entity entity, StateMachine stateMachine, string stateName)
+    public EntityState(StateMachine stateMachine, string stateName)
     {
         this.stateMachine = stateMachine;
         this.stateName = stateName;
-
-        anim = entity.anim;
-        rb = entity.rb;
     }
 
     public virtual void OnEnter()

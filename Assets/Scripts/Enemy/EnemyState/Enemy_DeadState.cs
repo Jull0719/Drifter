@@ -5,15 +5,19 @@ using UnityEngine;
 public class Enemy_DeadState : EnemyState
 {
     private float deadTime;
-    public Enemy_DeadState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
+    private Enemy_VFX vfx;
+    private Enemy_Health health;
+
+    public Enemy_DeadState(Enemy enemy, StateMachine stateMachine, string stateName) : base(enemy, stateMachine, stateName)
     {
-        deadTime = health.GetEnemyDeadTime();
+        vfx = enemy.vfx;
+        health = enemy.health;
     }
 
     public override void OnEnter()
     {
         base.OnEnter();
-        vfx.Fade(deadTime, 0);
+        vfx.Fade(health.GetEnemyDeadTime(), 0);
         stateMachine.SwitchOffStateMachine(false);
     }
 }

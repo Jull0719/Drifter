@@ -7,9 +7,12 @@ public class PlayerState : EntityState
     protected Player player;
     protected PlayerInputSet input;
 
-    public PlayerState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
+    public PlayerState(Player player, StateMachine stateMachine, string stateName) : base(stateMachine, stateName)
     {
-        player = entity as Player;
+        this.player = player;
+
+        anim = player.anim;
+        rb = player.rb;
 
         input = player.input;
     }

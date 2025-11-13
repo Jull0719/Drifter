@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Player : Entity
@@ -20,14 +21,19 @@ public class Player : Entity
     public Vector2[] attackVelocity; //攻击反馈
     private Coroutine queueAttackCo;
 
+    public PlayerInputSet input { get; private set; }
+
     public Player_IdleState idleState { get; private set; }
     public Player_MoveState moveState { get; private set; }
     public Player_JumpState jumpState { get; private set; }
     public Player_FallState fallState { get; private set; }
     public Player_AttackState attackState { get; private set; }
+    public Player_CounterAttackState counterAttackState { get; private set; }
     public Player_DeadState deadState { get; private set; }
 
-    public PlayerInputSet input { get; private set; }
+    public Player_Health health { get; private set; }
+    public Player_Combat combat { get; private set; }
+    public Entity_VFX vfx { get; private set; }
 
     private Scene m_scene;
     private GameObject[] dialogs;
@@ -42,11 +48,17 @@ public class Player : Entity
 
         input = new PlayerInputSet();
 
+        vfx = GetComponent<Entity_VFX>();
+        health = GetComponent<Player_Health>();
+        combat = GetComponent<Player_Combat>();
+
         idleState = new Player_IdleState(this, stateMachine, "idle");
         moveState = new Player_MoveState(this, stateMachine, "move");
         jumpState = new Player_JumpState(this, stateMachine, "jump");
         fallState = new Player_FallState(this, stateMachine, "jump");
         attackState = new Player_AttackState(this, stateMachine, "attack");
+        counterAttackState = new Player_CounterAttackState(this, stateMachine, "counterAttack");
+
         deadState = new Player_DeadState(this, stateMachine, "dead");
 
         dialogs = GameObject.FindGameObjectsWithTag("dialog");

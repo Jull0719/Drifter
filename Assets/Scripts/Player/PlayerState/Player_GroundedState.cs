@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_GroundedState : PlayerState
 {
-    public Player_GroundedState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
+    public Player_GroundedState(Player player, StateMachine stateMachine, string stateName) : base(player, stateMachine, stateName)
     {
     }
 
@@ -25,5 +25,9 @@ public class Player_GroundedState : PlayerState
         // 攻击
         if (input.Gameplay.Attack.WasPressedThisFrame())
             stateMachine.ChangeState(player.attackState);
+
+        // 反击
+        if (input.Gameplay.CounterAttack.WasPressedThisFrame())
+            stateMachine.ChangeState(player.counterAttackState);
     }
 }

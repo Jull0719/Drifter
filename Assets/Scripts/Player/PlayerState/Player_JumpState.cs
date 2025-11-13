@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_JumpState : Player_AiredState
 {
-    public Player_JumpState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
+    public Player_JumpState(Player player, StateMachine stateMachine, string stateName) : base(player, stateMachine, stateName)
     {
     }
 

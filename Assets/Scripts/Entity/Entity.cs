@@ -25,21 +25,13 @@ public class Entity : MonoBehaviour
     public Collider2D col { get; private set; }
     public StateMachine stateMachine { get; private set; }
 
-    public Entity_Health health { get; private set; }
-    public Entity_VFX vfx { get; private set; }
-    public Entity_Combat combat { get; private set; }
-
     protected virtual void Awake()
     {
-        stateMachine = new StateMachine();
-
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         col = GetComponent<Collider2D>();
 
-        health = GetComponent<Entity_Health>();
-        vfx = GetComponent<Entity_VFX>();
-        combat = GetComponent<Entity_Combat>();
+        stateMachine = new StateMachine();
     }
 
     protected virtual void Start()

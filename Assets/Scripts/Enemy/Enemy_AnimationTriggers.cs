@@ -12,6 +12,14 @@ public class Enemy_AnimationTriggers : Entity_AnimationTriggers
         enemy = GetComponentInParent<Enemy>();
     }
 
-    private void OpenCounterableWindow() => enemy.canBeStunned = true;
-    private void CloseCounterableWindow() => enemy.canBeStunned = false;
+    private void OpenCounterableWindow()
+    {
+        //enemy.vfx.EnabledAttackAlert(true);
+        enemy.EnabledCounterableWindow(true);
+    }
+    private void CloseCounterableWindow()
+    {
+        //enemy.vfx.EnabledAttackAlert(false);
+        enemy.EnabledCounterableWindow(false);
+    }
 }

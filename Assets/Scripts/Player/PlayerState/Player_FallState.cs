@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_FallState : Player_AiredState
 {
-    public Player_FallState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
+    public Player_FallState(Player player, StateMachine stateMachine, string stateName) : base(player, stateMachine, stateName)
     {
     }
 

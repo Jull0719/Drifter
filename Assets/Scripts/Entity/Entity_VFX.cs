@@ -20,7 +20,9 @@ public class Entity_VFX : MonoBehaviour
         defaultMaterial = sr.material;
     }
 
-    // 受击效果
+    /// <summary>
+    /// 受击效果
+    /// </summary>
     public void OnDamageVfx()
     {
         if (damageVfxCo != null)

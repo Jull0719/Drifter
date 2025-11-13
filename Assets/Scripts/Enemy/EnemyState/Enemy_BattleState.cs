@@ -7,7 +7,7 @@ public class Enemy_BattleState : EnemyState
     private float lastTimeWasInBattle;
     private Player player;
 
-    public Enemy_BattleState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
+    public Enemy_BattleState(Enemy enemy, StateMachine stateMachine, string stateName) : base(enemy, stateMachine, stateName)
     {
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_GroundedState : EnemyState
 {
-    public Enemy_GroundedState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
+    public Enemy_GroundedState(Enemy enemy, StateMachine stateMachine, string stateName) : base(enemy, stateMachine, stateName)
     {
     }
 

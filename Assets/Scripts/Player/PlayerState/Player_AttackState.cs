@@ -13,7 +13,7 @@ public class Player_AttackState : PlayerState
     private float attackTimer;
 
     private bool comboAttackQueue; // 连击等待
-    public Player_AttackState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
+    public Player_AttackState(Player player, StateMachine stateMachine, string stateName) : base(player, stateMachine, stateName)
     {
         if (comboLimitedCount != player.attackVelocity.Length)
         {

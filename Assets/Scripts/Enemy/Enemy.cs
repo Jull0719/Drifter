@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Enemy : Entity, ICounterable
 {
+    public bool CanBeCountered { get => canBeStunned; }
+
     [Header("移动")]
     public float moveSpeed = 3f;
     public float idleTime = 2f;
@@ -36,17 +38,26 @@ public class Enemy : Entity, ICounterable
     public Enemy_AttackState attackState { get; private set; }
     public Enemy_BattleState battleState { get; private set; }
     public Enemy_DeadState deadState { get; private set; }
-    public Enemy_StunState stunState { get; private set; }
+    public Enemy_StunnedState stunState { get; private set; }
+
+    public Enemy_VFX vfx { get; private set; }
+    public Enemy_Health health { get; private set; }
+    public Entity_Combat combat { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();
+
+        vfx = GetComponent<Enemy_VFX>();
+        health = GetComponent<Enemy_Health>();
+        combat = GetComponent<Entity_Combat>();
 
         idleState = new Enemy_IdleState(this, stateMachine, "idle");
         moveState = new Enemy_MoveState(this, stateMachine, "move");
         attackState = new Enemy_AttackState(this, stateMachine, "attack");
         battleState = new Enemy_BattleState(this, stateMachine, "battle");
         deadState = new Enemy_DeadState(this, stateMachine, "dead");
-        stunState = new Enemy_StunState(this, stateMachine, "stun");
+        stunState = new Enemy_StunnedState(this, stateMachine, "stunned");
     }
 
     protected override void Start()
@@ -59,9 +70,12 @@ public class Enemy : Entity, ICounterable
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Q) && canBeStunned)
-            HandleCounter();
+        if (Input.GetKeyDown(KeyCode.Q))
+            HandleCountered();
     }
+
+    // 打开/关闭反击窗口
+    public void EnabledCounterableWindow(bool enabled) => canBeStunned = enabled;
 
     // 获取Player引用
     public void GetPlayerReference(Player player)
@@ -125,8 +139,11 @@ public class Enemy : Entity, ICounterable
     }
 
     // 对Enemy的反击
-    public void HandleCounter()
+    public void HandleCountered()
     {
+        if (CanBeCountered == false)
+            return;
+
         stateMachine.ChangeState(stunState);
     }
 }

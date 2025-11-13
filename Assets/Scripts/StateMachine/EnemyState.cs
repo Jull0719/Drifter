@@ -5,14 +5,13 @@ using UnityEngine;
 public class EnemyState : EntityState
 {
     protected Enemy enemy;
-    protected Enemy_Health health;
-    protected Enemy_VFX vfx;
 
-    public EnemyState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
+    public EnemyState(Enemy enemy, StateMachine stateMachine, string stateName) : base(stateMachine, stateName)
     {
-        enemy = (Enemy)entity;
-        health = (Enemy_Health)enemy.health;
-        vfx = (Enemy_VFX)enemy.vfx;
+        this.enemy = enemy;
+
+        anim = enemy.anim;
+        rb = enemy.rb;
     }
 
     public override void UpdateAnimationParameters()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_DeadState : PlayerState
 {
-    public Player_DeadState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
+    public Player_DeadState(Player player, StateMachine stateMachine, string stateName) : base(player, stateMachine, stateName)
     {
     }
 

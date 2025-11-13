@@ -30,7 +30,7 @@ public class Entity_Combat : MonoBehaviour
     // 攻击检测
     public Collider2D[] TargetDetected()
     {
-        return Physics2D.OverlapCircleAll(attackPoint.position, attackRadius * entity.facingDir, targetLayer);
+        return Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, targetLayer);
     }
 
     private void OnDrawGizmos()

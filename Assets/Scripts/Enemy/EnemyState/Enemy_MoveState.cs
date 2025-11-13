@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_MoveState : Enemy_GroundedState
 {
-    public Enemy_MoveState(Entity entity, StateMachine stateMachine, string stateName) : base(entity, stateMachine, stateName)
+    public Enemy_MoveState(Enemy enemy, StateMachine stateMachine, string stateName) : base(enemy, stateMachine, stateName)
     {
     }
 

@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class Player_Combat : Entity_Combat
 {
-    public override void PerformAttack()
+    [SerializeField] private float counterRecoveryTime = 0.1f;
+
+    public bool PerformCounterAttack()
     {
+        bool hasPerformedCounter = false;
         foreach (var target in TargetDetected())
         {
-            IDamagable damagable = target.GetComponent<IDamagable>();
-            damagable?.TakeDamage(damage, entity);
+            ICounterable counterable = target.GetComponent<ICounterable>();
+
+            if (counterable == null) continue;
+
+            if (counterable.CanBeCountered)
+            {
+                counterable.HandleCountered();
+                hasPerformedCounter = true;
+            }
         }
+
+        return hasPerformedCounter;
     }
+
+    // 获取从counterAttack恢复到idle的时间
+    public float GetCounterRecoveryTime() => counterRecoveryTime;
 }

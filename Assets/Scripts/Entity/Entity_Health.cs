@@ -17,11 +17,15 @@ public class Entity_Health : MonoBehaviour, IDamagable
     [Space]
 
     protected Entity entity;
+    protected Entity_VFX vfx;
+
     protected Rigidbody2D rb;
 
     protected virtual void Awake()
     {
         entity = GetComponent<Entity>();
+        vfx = GetComponent<Entity_VFX>();
+
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -42,7 +46,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
         Vector2 knockback = CalculateKnockbackPower(damage, damageDealer);
         float duration = CalculateKnockbackDuration(damage);
         entity.ReceiveKnockback(knockback, duration);
-        entity.vfx.OnDamageVfx();
+        vfx.OnDamageVfx();
     }
 
     private void ReduceHealth(float damage)
