@@ -17,8 +17,8 @@ public class Player_Combat : Entity_Combat
 
             if (counterable.CanBeCountered)
             {
-                counterable.HandleCountered();
                 hasPerformedCounter = true;
+                counterable.HandleCountered();
             }
         }
 

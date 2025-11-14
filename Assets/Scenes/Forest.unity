@@ -16213,7 +16213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackPower: {x: 3, y: 2}
   knockbackDuration: 0.3
-  heavyThresholder: 0.2
+  heavyThresholder: 0.3
   heavyKnockbackPower: {x: 7, y: 7}
   heavyKnockbackDuration: 0.4
   maxHealth: 100
@@ -16230,7 +16230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1128f9096324c64f944adc8c6c5c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
   attackRadius: 2
   targetLayer:
     serializedVersion: 2
@@ -16248,6 +16248,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e53f7de08b756448ae5213eefb67710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHitVfxPrefab: {fileID: 1053171570789327591, guid: 1f70707a9c057b844b17e8f9d48a35b2,
+    type: 3}
+  onHeavyHitVfxPrefab: {fileID: 8351000728827153880, guid: a1e3ebcb5ce8bf84cb05e12be04fa717,
+    type: 3}
+  hitVfxColor: {r: 0.4716981, g: 0.35557997, b: 0.21582414, a: 1}
   damageVfxMaterial: {fileID: 2100000, guid: 31fdb629b16ecf64fb98fbaecba77220, type: 2}
   damageVfxDuration: 0.3
   stunnedIcon: {fileID: 1612411230}
@@ -16714,7 +16719,7 @@ MonoBehaviour:
   heavyThresholder: 0.3
   heavyKnockbackPower: {x: 7, y: 7}
   heavyKnockbackDuration: 0.2
-  maxHealth: 1000
+  maxHealth: 100
 --- !u!114 &1716337664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16727,6 +16732,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be060798c84ff2c4d903e42837bb0fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHitVfxPrefab: {fileID: 1053171570789327591, guid: 1f70707a9c057b844b17e8f9d48a35b2,
+    type: 3}
+  onHeavyHitVfxPrefab: {fileID: 8351000728827153880, guid: a1e3ebcb5ce8bf84cb05e12be04fa717,
+    type: 3}
+  hitVfxColor: {r: 0.8396226, g: 0.60991454, b: 0.60991454, a: 1}
   damageVfxMaterial: {fileID: 2100000, guid: 31fdb629b16ecf64fb98fbaecba77220, type: 2}
   damageVfxDuration: 0.3
 --- !u!114 &1716337665
@@ -16741,7 +16751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1608d3ad617d1d4dbff118546fe7032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 20
   attackRadius: 1.5
   targetLayer:
     serializedVersion: 2
@@ -17171,6 +17181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be060798c84ff2c4d903e42837bb0fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHitVfxPrefab: {fileID: 0}
+  onHeavyHitVfxPrefab: {fileID: 0}
+  hitVfxColor: {r: 0, g: 0, b: 0, a: 0}
   damageVfxMaterial: {fileID: 2100000, guid: 31fdb629b16ecf64fb98fbaecba77220, type: 2}
   damageVfxDuration: 0.15
 --- !u!1 &1750700989

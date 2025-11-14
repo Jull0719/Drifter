@@ -70,7 +70,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
     }
 
     // 计算受击占总生命值比例
-    private bool IsHeavyHit(float damage) => damage / maxHealth > heavyThresholder;
+    public bool IsHeavyHit(float damage) => damage / maxHealth >= heavyThresholder;
 
     // 计算击退时间
     private float CalculateKnockbackDuration(float damage) => IsHeavyHit(damage) ? heavyKnockbackDuration : knockbackDuration;

@@ -4,20 +4,39 @@ using UnityEngine;
 
 public class Entity_VFX : MonoBehaviour
 {
-    [Header("Damage VFX")]
+    [Header("击中")]
+    [SerializeField] protected GameObject onHitVfxPrefab;
+    [SerializeField] protected GameObject onHeavyHitVfxPrefab;
+    [SerializeField] protected Color hitVfxColor = Color.white;
+
+    [Header("受击")]
     [SerializeField] protected Material damageVfxMaterial;
     [SerializeField] protected float damageVfxDuration = 0.3f;
     private Material defaultMaterial;
     protected Coroutine damageVfxCo;
 
-    [Header("Fade VFX")]
+    [Header("消隐")]
     protected Coroutine fadeCo;
     protected SpriteRenderer sr;
+
+    private Entity entity;
 
     protected void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
         defaultMaterial = sr.material;
+
+        entity = GetComponent<Entity>();
+    }
+
+    public void CreateOnHitVfx(Transform target, float damage)
+    {
+        Entity_Health health = target.GetComponent<Entity_Health>();
+        GameObject hitVfxPrefab = health.IsHeavyHit(damage) ? onHeavyHitVfxPrefab : onHitVfxPrefab;
+        hitVfxPrefab.GetComponentInChildren<SpriteRenderer>().color = hitVfxColor; // 击中效果的颜色
+
+        float yRotation = entity.facingDir == 1 ? 0 : 180; // 调整朝向，和发出攻击对象朝向保持一致
+        Instantiate(hitVfxPrefab, target.position, Quaternion.Euler(0, yRotation, 0));
     }
 
     /// <summary>

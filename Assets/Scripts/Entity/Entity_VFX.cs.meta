@@ -4,6 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - onHitVfx: {fileID: 1053171570789327591, guid: 1f70707a9c057b844b17e8f9d48a35b2,
+      type: 3}
   - damageVfxMaterial: {fileID: 2100000, guid: 31fdb629b16ecf64fb98fbaecba77220, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

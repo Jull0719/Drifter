@@ -11,10 +11,12 @@ public class Entity_Combat : MonoBehaviour
     [SerializeField] protected Transform attackPoint;
 
     protected Entity entity;
+    protected Entity_VFX vfx;
 
     private void Awake()
     {
         entity = GetComponent<Entity>();
+        vfx = GetComponent<Entity_VFX>();
     }
 
     // 实施攻击
@@ -23,7 +25,11 @@ public class Entity_Combat : MonoBehaviour
         foreach (var target in TargetDetected())
         {
             IDamagable damagable = target.GetComponent<IDamagable>();
-            damagable?.TakeDamage(damage, entity);
+
+            if (damagable == null) continue;
+
+            damagable.TakeDamage(damage, entity);
+            vfx.CreateOnHitVfx(target.transform, damage);
         }
     }
 

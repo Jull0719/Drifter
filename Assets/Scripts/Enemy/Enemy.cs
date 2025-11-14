@@ -38,7 +38,7 @@ public class Enemy : Entity, ICounterable
     public Enemy_AttackState attackState { get; private set; }
     public Enemy_BattleState battleState { get; private set; }
     public Enemy_DeadState deadState { get; private set; }
-    public Enemy_StunnedState stunState { get; private set; }
+    public Enemy_StunnedState stunnedState { get; private set; }
 
     public Enemy_VFX vfx { get; private set; }
     public Enemy_Health health { get; private set; }
@@ -57,7 +57,7 @@ public class Enemy : Entity, ICounterable
         attackState = new Enemy_AttackState(this, stateMachine, "attack");
         battleState = new Enemy_BattleState(this, stateMachine, "battle");
         deadState = new Enemy_DeadState(this, stateMachine, "dead");
-        stunState = new Enemy_StunnedState(this, stateMachine, "stunned");
+        stunnedState = new Enemy_StunnedState(this, stateMachine, "stunned");
     }
 
     protected override void Start()
@@ -144,6 +144,6 @@ public class Enemy : Entity, ICounterable
         if (CanBeCountered == false)
             return;
 
-        stateMachine.ChangeState(stunState);
+        stateMachine.ChangeState(stunnedState);
     }
 }
