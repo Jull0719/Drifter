@@ -29,7 +29,13 @@ public class Entity_Combat : MonoBehaviour
             if (damagable == null) continue;
 
             damagable.TakeDamage(damage, entity);
-            vfx.CreateOnHitVfx(target.transform, damage);
+
+            Entity_Health health = target.GetComponent<Entity_Health>();
+
+            if (health == null) continue;
+
+            bool isHeavyHit = health.IsHeavyHit(damage);
+            vfx?.CreateOnHitVfx(target.transform, isHeavyHit, damage);
         }
     }
 

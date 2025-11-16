@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Entity_Health : MonoBehaviour, IDamagable
 {
+    public event Action OnHealthChange;
+
     [Header("击退")]
     [SerializeField] protected Vector2 knockbackPower = new Vector2(3, 2);
     [SerializeField] protected float knockbackDuration = 0.15f;
@@ -27,11 +30,13 @@ public class Entity_Health : MonoBehaviour, IDamagable
         vfx = GetComponent<Entity_VFX>();
 
         rb = GetComponent<Rigidbody2D>();
+
+        currentHealth = maxHealth;
     }
 
     protected virtual void Start()
     {
-        currentHealth = maxHealth;
+
     }
 
     // 受击
@@ -52,6 +57,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
     private void ReduceHealth(float damage)
     {
         currentHealth -= damage;
+        OnHealthChange?.Invoke();
 
         if (currentHealth <= 0)
             Die();
@@ -67,6 +73,12 @@ public class Entity_Health : MonoBehaviour, IDamagable
     public virtual void OnDie()
     {
 
+    }
+
+    // 计算现在的生命值占比
+    public float GetHealthPercent()
+    {
+        return currentHealth / maxHealth;
     }
 
     // 计算受击占总生命值比例

@@ -29,10 +29,14 @@ public class Entity_VFX : MonoBehaviour
         entity = GetComponent<Entity>();
     }
 
-    public void CreateOnHitVfx(Transform target, float damage)
+    /// <summary>
+    /// 击中效果
+    /// </summary>
+    /// <param name="target">击中目标</param>
+    /// <param name="damage">击中伤害</param>
+    public void CreateOnHitVfx(Transform target, bool isHeavyHit, float damage)
     {
-        Entity_Health health = target.GetComponent<Entity_Health>();
-        GameObject hitVfxPrefab = health.IsHeavyHit(damage) ? onHeavyHitVfxPrefab : onHitVfxPrefab;
+        GameObject hitVfxPrefab = isHeavyHit ? onHeavyHitVfxPrefab : onHitVfxPrefab;
         hitVfxPrefab.GetComponentInChildren<SpriteRenderer>().color = hitVfxColor; // 击中效果的颜色
 
         float yRotation = entity.facingDir == 1 ? 0 : 180; // 调整朝向，和发出攻击对象朝向保持一致

@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    public event Action OnFlipped;
+
     [SerializeField] protected bool facingRight = true;
     public int facingDir = 1;
 
@@ -89,6 +92,7 @@ public class Entity : MonoBehaviour
         facingRight = !facingRight;
         facingDir *= -1;
         transform.Rotate(0, 180, 0);
+        OnFlipped?.Invoke();
     }
 
     // 检测地面和墙壁碰撞
