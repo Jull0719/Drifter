@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Enemy : Entity, ICounterable
 {
@@ -31,7 +32,7 @@ public class Enemy : Entity, ICounterable
     public float stunnedDuration = 2f;
     public Vector2 stunnedVelocity = new Vector2(4, 2);
 
-    public Player player { get; private set; }
+    public Transform playerTrans { get; private set; }
 
     public Enemy_IdleState idleState { get; private set; }
     public Enemy_MoveState moveState { get; private set; }
@@ -77,14 +78,30 @@ public class Enemy : Entity, ICounterable
     // 打开/关闭反击窗口
     public void EnabledCounterableWindow(bool enabled) => canBeStunned = enabled;
 
-    // 获取Player引用
-    public void GetPlayerReference(Player player)
+    // 尝试进入Battle状态
+    public void TryToEnterBattleState(Transform playerTrans)
     {
-        this.player = player;
+        // 如果已处于Battle/Attack状态下，则不再进入
+        if (stateMachine.currentState == battleState || stateMachine.currentState == attackState)
+            return;
+
+        // 获取Player
+        this.playerTrans = playerTrans;
+
+        stateMachine.ChangeState(battleState);
+    }
+
+    // 获取Player引用
+    public Transform GetPlayerReference()
+    {
+        if (playerTrans == null)
+            playerTrans = DetectedPlayer().transform;
+
+        return playerTrans;
     }
 
     // 检测Player
-    public bool DetectedPlayer()
+    public RaycastHit2D DetectedPlayer()
     {
         if (playerDetectedPoint == null)
             playerDetectedPoint = transform;
@@ -93,33 +110,9 @@ public class Enemy : Entity, ICounterable
                             playerDetectedDistance, playerLayer | groundLayer);
 
         if (hit.collider == null || hit.collider.gameObject.layer != LayerMask.NameToLayer("Player"))
-            return false;
-        else
-        {
-            // 获取Player
-            GetPlayerReference(hit.collider.GetComponent<Player>());
-            return true;
-        }
-    }
+            return default;
 
-    protected override void OnDrawGizmos()
-    {
-        base.OnDrawGizmos();
-
-        if (playerDetectedPoint == null)
-            playerDetectedPoint = transform;
-
-        // 检测Player
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(playerDetectedPoint.position, playerDetectedPoint.position + Vector3.right * facingDir * playerDetectedDistance);
-
-        // 攻击距离
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(playerDetectedPoint.position, playerDetectedPoint.position + Vector3.right * facingDir * attackDetectedDistance);
-
-        // 撤退
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(playerDetectedPoint.position, playerDetectedPoint.position + Vector3.right * facingDir * retreatDistance);
+        return hit;
     }
 
     private void OnEnable()
@@ -145,5 +138,25 @@ public class Enemy : Entity, ICounterable
             return;
 
         stateMachine.ChangeState(stunnedState);
+    }
+
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        if (playerDetectedPoint == null)
+            playerDetectedPoint = transform;
+
+        // 检测Player
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(playerDetectedPoint.position, playerDetectedPoint.position + Vector3.right * facingDir * playerDetectedDistance);
+
+        // 攻击距离
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(playerDetectedPoint.position, playerDetectedPoint.position + Vector3.right * facingDir * attackDetectedDistance);
+
+        // 撤退
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(playerDetectedPoint.position, playerDetectedPoint.position + Vector3.right * facingDir * retreatDistance);
     }
 }

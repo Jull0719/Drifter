@@ -14632,7 +14632,7 @@ Transform:
   m_GameObject: {fileID: 1414647334}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.68, y: -0.21000028, z: -10}
+  m_LocalPosition: {x: -10, y: -0.21000028, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16094,6 +16094,7 @@ GameObject:
   - component: {fileID: 1655579477}
   - component: {fileID: 1655579479}
   - component: {fileID: 1655579481}
+  - component: {fileID: 1655579483}
   - component: {fileID: 1655579482}
   m_Layer: 7
   m_Name: Enemy_Mushroom
@@ -16245,7 +16246,7 @@ MonoBehaviour:
   heavyThresholder: 0.3
   heavyKnockbackPower: {x: 7, y: 7}
   heavyKnockbackDuration: 0.4
-  maxHealth: 100
+  currentHealth: 0
   deadTime: 3
 --- !u!114 &1655579481
 MonoBehaviour:
@@ -16259,7 +16260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1128f9096324c64f944adc8c6c5c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
   attackRadius: 2
   targetLayer:
     serializedVersion: 2
@@ -16286,6 +16286,45 @@ MonoBehaviour:
   damageVfxDuration: 0.3
   stunnedIcon: {fileID: 1612411230}
   attackAlert: {fileID: 404192075}
+--- !u!114 &1655579483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655579473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce79fc8319b29d488a5ad2c9ef0545c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultStatDataSO: {fileID: 11400000, guid: 964aeaf071af83e4db811c11decff550, type: 2}
+  life:
+    maxHealth:
+      baseValue: 100
+    healthRegen:
+      baseValue: 0
+  offense:
+    damage:
+      baseValue: 10
+    critPower:
+      baseValue: 0
+    critChance:
+      baseValue: 0
+  defense:
+    armor:
+      baseValue: 0
+    evasion:
+      baseValue: 0
+  level:
+    strength:
+      baseValue: 0
+    dexterity:
+      baseValue: 0
+    intelligence:
+      baseValue: 0
+    vitality:
+      baseValue: 0
 --- !u!1 &1660110991
 GameObject:
   m_ObjectHideFlags: 0
@@ -16469,6 +16508,7 @@ GameObject:
   - component: {fileID: 1716337660}
   - component: {fileID: 1716337662}
   - component: {fileID: 1716337665}
+  - component: {fileID: 1716337666}
   - component: {fileID: 1716337664}
   - component: {fileID: 1716337659}
   m_Layer: 6
@@ -16549,7 +16589,7 @@ Transform:
   m_GameObject: {fileID: 1716337653}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.68, y: -3.41, z: 0}
+  m_LocalPosition: {x: -10, y: -3.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16749,7 +16789,7 @@ MonoBehaviour:
   heavyThresholder: 0.3
   heavyKnockbackPower: {x: 7, y: 7}
   heavyKnockbackDuration: 0.2
-  maxHealth: 100
+  currentHealth: 0
 --- !u!114 &1716337664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16781,13 +16821,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1608d3ad617d1d4dbff118546fe7032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
   attackRadius: 1.5
   targetLayer:
     serializedVersion: 2
     m_Bits: 128
   attackPoint: {fileID: 1563157129}
   counterRecoveryTime: 0.4
+--- !u!114 &1716337666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716337653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce79fc8319b29d488a5ad2c9ef0545c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultStatDataSO: {fileID: 11400000, guid: 5c09a2dde7b778e40b427f6633f81d83, type: 2}
+  life:
+    maxHealth:
+      baseValue: 100
+    healthRegen:
+      baseValue: 0
+  offense:
+    damage:
+      baseValue: 50
+    critPower:
+      baseValue: 0
+    critChance:
+      baseValue: 0
+  defense:
+    armor:
+      baseValue: 0
+    evasion:
+      baseValue: 80
+  level:
+    strength:
+      baseValue: 0
+    dexterity:
+      baseValue: 0
+    intelligence:
+      baseValue: 0
+    vitality:
+      baseValue: 0
 --- !u!1001 &1716895707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16988,7 +17066,7 @@ Transform:
   m_GameObject: {fileID: 1725704643}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.68, y: -0.21000028, z: -10}
+  m_LocalPosition: {x: -10, y: -0.21000028, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

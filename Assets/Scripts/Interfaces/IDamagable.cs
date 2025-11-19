@@ -1,4 +1,6 @@
-﻿public interface IDamagable
+﻿using UnityEngine;
+
+public interface IDamagable
 {
-    public void TakeDamage(float damage, Entity damageDealer);
+    public bool TakeDamage(float damage, Transform damageDealer);
 }
