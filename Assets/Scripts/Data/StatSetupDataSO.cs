@@ -9,7 +9,7 @@ public class StatSetupDataSO : ScriptableObject
 
     [Header("Offense")]
     public float damage = 10; // 物理攻击
-    public float critPower; // 暴击倍率
+    public float critPower = 1; // 暴击倍率
     public float critChance; // 暴击概率
 
     [Header("Defense")]

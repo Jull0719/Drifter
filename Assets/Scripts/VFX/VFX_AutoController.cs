@@ -17,7 +17,8 @@ public class VFX_AutoController : MonoBehaviour
     [Space]
     [Header("旋转")]
     [SerializeField] private bool isAutoRotate;
-    [SerializeField] private float rotation = 200;
+    [SerializeField] private float minRotation = 0;
+    [SerializeField] private float maxRotation = 360;
 
     private void Start()
     {
@@ -40,7 +41,7 @@ public class VFX_AutoController : MonoBehaviour
     // 旋转一定角度
     private void AutoRotate()
     {
-        float rotationZ = Random.Range(-rotation, rotation);
+        float rotationZ = Random.Range(minRotation, maxRotation);
         transform.Rotate(0, 0, rotationZ);
     }
 

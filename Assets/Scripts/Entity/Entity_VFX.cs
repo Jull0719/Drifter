@@ -7,7 +7,7 @@ public class Entity_VFX : MonoBehaviour
 {
     [Header("击中")]
     [SerializeField] protected GameObject onHitVfxPrefab;
-    [SerializeField] protected GameObject onHeavyHitVfxPrefab;
+    [SerializeField] protected GameObject onCritHitVfxPrefab;
     [SerializeField] protected Color hitVfxColor = Color.white;
 
     [Header("受击")]
@@ -35,9 +35,9 @@ public class Entity_VFX : MonoBehaviour
     /// </summary>
     /// <param name="target">击中目标</param>
     /// <param name="damage">击中伤害</param>
-    public void CreateOnHitVfx(Transform target, bool isHeavyHit, float damage)
+    public void CreateOnHitVfx(Transform target, bool isCrit)
     {
-        GameObject hitVfxPrefab = isHeavyHit ? onHeavyHitVfxPrefab : onHitVfxPrefab;
+        GameObject hitVfxPrefab = isCrit ? onCritHitVfxPrefab : onHitVfxPrefab;
         hitVfxPrefab.GetComponentInChildren<SpriteRenderer>().color = hitVfxColor; // 击中效果的颜色
 
         float yRotation = entity.facingDir == 1 ? 0 : 180; // 调整朝向，和发出攻击对象朝向保持一致

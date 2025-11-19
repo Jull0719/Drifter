@@ -7,13 +7,11 @@ public class Entity_Combat : MonoBehaviour
     [SerializeField] protected LayerMask targetLayer;
     [SerializeField] protected Transform attackPoint;
 
-    protected Entity entity;
     protected Entity_VFX vfx;
     protected Entity_Stats stats;
 
     private void Awake()
     {
-        entity = GetComponent<Entity>();
         vfx = GetComponent<Entity_VFX>();
         stats = GetComponent<Entity_Stats>();
     }
@@ -27,15 +25,11 @@ public class Entity_Combat : MonoBehaviour
             IDamagable damagable = target.GetComponent<IDamagable>();
             if (damagable == null) continue;
 
-            float physcialDamage = stats.GetPhysicalDamage();
-            targetGotHit = damagable.TakeDamage(physcialDamage, entity.transform);
+            float physcialDamage = stats.GetPhysicalDamage(out bool isCrit);
+            targetGotHit = damagable.TakeDamage(physcialDamage, transform);
 
             if (targetGotHit)
-                vfx?.CreateOnHitVfx(target.transform, false, physcialDamage);
-
-            //Entity_Health health = target.GetComponent<Entity_Health>();
-            //if (health == null) continue;
-            //bool isHeavyHit = health.IsHeavyHit(physcialDamage);
+                vfx?.CreateOnHitVfx(target.transform, isCrit);
         }
     }
 

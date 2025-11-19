@@ -19,23 +19,49 @@ public class Entity_Stats : MonoBehaviour
     }
 
     // 获取物理攻击
-    public float GetPhysicalDamage()
+    public float GetPhysicalDamage(out bool isCrit)
     {
         float basePhysicalDamage = offense.damage.GetBaseValue();
         float bonusPhysicalDamage = level.strength.GetBaseValue(); // 1点体力 -> 1点物理攻击
         float totalPhysicalDamage = basePhysicalDamage + bonusPhysicalDamage;
 
-        return totalPhysicalDamage;
+        isCrit = Random.Range(0, 100) < GetCritChance();
+
+        float finalPhyscialDamage = isCrit ? totalPhysicalDamage * GetCritPower() : totalPhysicalDamage;
+        return finalPhyscialDamage;
     }
 
-    // 获取闪避率
+    // 获取暴击倍率
+    public float GetCritPower()
+    {
+        float baseCritPower = offense.critPower.GetBaseValue(); // 默认为1
+        float bonusCritPower = level.strength.GetBaseValue() * 0.05f; // 1点力量 -> 0.05暴击倍率 （1.05倍基础攻击力）
+        return baseCritPower + bonusCritPower;
+    }
+
+    // 获取暴击概率
+    public float GetCritChance()
+    {
+        float baseCritChance = offense.critChance.GetBaseValue();
+        float bonusCritChance = level.dexterity.GetBaseValue() * 0.3f; // 1点敏捷 -> 0.3%暴击概率
+        float totalCritChance = baseCritChance + bonusCritChance;
+
+        // 限制暴击概率上限：60%
+        float critChanceCap = 60;
+        float finalCritChance = Mathf.Clamp(totalCritChance, 0, critChanceCap);
+
+        return finalCritChance;
+    }
+
+
+    // 获取闪避概率
     public float GetEvasion()
     {
         float baseEvasion = defense.evasion.GetBaseValue();
-        float bonusEvasion = level.dexterity.GetBaseValue() * 0.5f; // 1点敏捷 -> 0.5%闪避率
+        float bonusEvasion = level.dexterity.GetBaseValue() * 0.5f; // 1点敏捷 -> 0.5%闪避概率
         float totalEvasion = baseEvasion + bonusEvasion;
 
-        // 限制闪避率上限：65%
+        // 限制闪避概率上限：65%
         float evasionCap = 65;
         float finalEvasion = Mathf.Clamp(totalEvasion, 0, evasionCap);
 
