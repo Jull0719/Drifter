@@ -60,6 +60,12 @@ public class Entity_Stats : MonoBehaviour
         return finalCritChance;
     }
 
+    // 攻击速度
+    public float GetAttackSpeed()
+    {
+        return offense.attackSpeed.GetBaseValue();
+    }
+
     // 闪避概率
     public float GetEvasion()
     {
@@ -113,6 +119,7 @@ public class Entity_Stats : MonoBehaviour
         life.healthRegen.SetBaseValue(defaultStatDataSO.healthRegen);
 
         // Offense
+        offense.attackSpeed.SetBaseValue(defaultStatDataSO.attackSpeed);
         offense.damage.SetBaseValue(defaultStatDataSO.damage);
         offense.critChance.SetBaseValue(defaultStatDataSO.critChance);
         offense.critPower.SetBaseValue(defaultStatDataSO.critPower);

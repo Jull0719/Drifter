@@ -8,6 +8,7 @@ public class StatSetupDataSO : ScriptableObject
     public float healthRegen; // 再生速率
 
     [Header("Offense")]
+    public float attackSpeed = 1; // 攻击速度
     public float damage = 10; // 物理攻击
     public float critPower = 1; // 暴击倍率
     public float critChance; // 暴击概率

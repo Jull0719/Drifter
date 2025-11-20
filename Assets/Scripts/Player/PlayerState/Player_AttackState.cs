@@ -25,6 +25,8 @@ public class Player_AttackState : PlayerState
     public override void OnEnter()
     {
         base.OnEnter();
+        SyncAttackSpeed();
+
         comboAttackQueue = false;
 
         ResetComboIndexIfNeeded();

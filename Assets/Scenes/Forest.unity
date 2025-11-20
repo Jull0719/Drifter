@@ -16124,6 +16124,8 @@ MonoBehaviour:
   offense:
     damage:
       baseValue: 10
+    attackSpeed:
+      baseValue: 1
     critPower:
       baseValue: 1
     critChance:
@@ -16668,6 +16670,8 @@ MonoBehaviour:
   offense:
     damage:
       baseValue: 10
+    attackSpeed:
+      baseValue: 1.5
     critPower:
       baseValue: 1
     critChance:
