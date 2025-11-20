@@ -16063,6 +16063,8 @@ MonoBehaviour:
   heavyKnockbackPower: {x: 7, y: 7}
   heavyKnockbackDuration: 0.4
   currentHealth: 0
+  canRegenerateHealth: 1
+  healthRegenInterval: 0
   deadTime: 3
 --- !u!114 &1655579481
 MonoBehaviour:
@@ -16607,6 +16609,8 @@ MonoBehaviour:
   heavyKnockbackPower: {x: 7, y: 7}
   heavyKnockbackDuration: 0.2
   currentHealth: 0
+  canRegenerateHealth: 1
+  healthRegenInterval: 2
 --- !u!114 &1716337664
 MonoBehaviour:
   m_ObjectHideFlags: 0

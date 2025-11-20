@@ -18,6 +18,9 @@ public class Entity_Health : MonoBehaviour, IDamagable
     [SerializeField] protected float currentHealth;
     protected bool isDead;
     [Space]
+    [Header("回血")]
+    [SerializeField] protected bool canRegenerateHealth = true;
+    [SerializeField] protected float healthRegenInterval;
 
     protected Entity entity;
     protected Entity_VFX vfx;
@@ -38,7 +41,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
 
     protected virtual void Start()
     {
-
+        InvokeRepeating(nameof(RegenerateHealth), 0, healthRegenInterval);
     }
 
     // 受击
@@ -67,7 +70,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
 
         ReduceHealth(finalPhysicalDamage);
 
-        Knockback(finalPhysicalDamage, damageDealer);
+        TakeKnockback(finalPhysicalDamage, damageDealer);
         vfx.OnDamageVfx();
 
         return true;
@@ -76,6 +79,29 @@ public class Entity_Health : MonoBehaviour, IDamagable
     // 闪避
     protected bool AttackEvaded() => UnityEngine.Random.Range(0, 100) < stats.GetEvasion();
 
+    // 生命值再生
+    private void RegenerateHealth()
+    {
+        if (canRegenerateHealth == false)
+            return;
+
+        IncreaseHealth(stats.GetRegenerateHealth());
+    }
+
+    // 生命值增加
+    private void IncreaseHealth(float healthAmount)
+    {
+        if (isDead)
+            return;
+
+        float newHealth = currentHealth + healthAmount;
+        float maxHealth = stats.GetMaxHealth();
+
+        currentHealth = Mathf.Min(maxHealth, newHealth);
+        OnHealthChange?.Invoke();
+    }
+
+    // 生命值减少
     private void ReduceHealth(float damage)
     {
         currentHealth -= damage;
@@ -88,6 +114,8 @@ public class Entity_Health : MonoBehaviour, IDamagable
     protected virtual void Die()
     {
         isDead = true;
+        currentHealth = 0;
+
         OnDie();
     }
 
@@ -106,7 +134,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
     public bool IsHeavyHit(float damage) => damage / stats.GetMaxHealth() >= heavyThresholder;
 
     // 击退
-    private void Knockback(float damage, Transform damageDealer)
+    private void TakeKnockback(float damage, Transform damageDealer)
     {
         // 击退
         Vector2 knockback = CalculateKnockbackPower(damage, damageDealer);

@@ -10,7 +10,7 @@ public class Entity_Stats : MonoBehaviour
     [SerializeField] private StatGroup_Defense defense;
     [SerializeField] private StatGroup_Level level;
 
-    // 获取最大生命值
+    // 最大生命值
     public float GetMaxHealth()
     {
         float baseHealth = life.maxHealth.GetBaseValue();
@@ -19,7 +19,13 @@ public class Entity_Stats : MonoBehaviour
         return finalHealth;
     }
 
-    // 获取物理攻击
+    // 再生生命值
+    public float GetRegenerateHealth()
+    {
+        return life.healthRegen.GetBaseValue();
+    }
+
+    // 物理攻击
     public float GetPhysicalDamage(out bool isCrit)
     {
         float basePhysicalDamage = offense.damage.GetBaseValue();
@@ -32,7 +38,7 @@ public class Entity_Stats : MonoBehaviour
         return finalPhyscialDamage;
     }
 
-    // 获取暴击倍率
+    // 暴击倍率
     public float GetCritPower()
     {
         float baseCritPower = offense.critPower.GetBaseValue(); // 默认为1
@@ -40,7 +46,7 @@ public class Entity_Stats : MonoBehaviour
         return baseCritPower + bonusCritPower;
     }
 
-    // 获取暴击概率
+    // 暴击概率
     public float GetCritChance()
     {
         float baseCritChance = offense.critChance.GetBaseValue();
@@ -54,8 +60,7 @@ public class Entity_Stats : MonoBehaviour
         return finalCritChance;
     }
 
-
-    // 获取闪避概率
+    // 闪避概率
     public float GetEvasion()
     {
         float baseEvasion = defense.evasion.GetBaseValue();
@@ -69,7 +74,7 @@ public class Entity_Stats : MonoBehaviour
         return finalEvasion;
     }
 
-    // 获取护甲减伤
+    // 护甲减伤
     public float GetArmorMitigation(float armorReduction)
     {
         float baseArmor = defense.armor.GetBaseValue();
@@ -89,7 +94,7 @@ public class Entity_Stats : MonoBehaviour
         return finalMitigation;
     }
 
-    // 获取护甲穿透
+    // 护甲穿透
     public float GetArmorReduction()
     {
         float armorReduction = offense.armorReduction.GetBaseValue();
