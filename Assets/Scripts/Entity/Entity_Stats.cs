@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.PackageManager;
+using UnityEngine;
 
 public class Entity_Stats : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class Entity_Stats : MonoBehaviour
     public float GetPhysicalDamage(out bool isCrit)
     {
         float basePhysicalDamage = offense.damage.GetBaseValue();
-        float bonusPhysicalDamage = level.strength.GetBaseValue(); // 1点体力 -> 1点物理攻击
+        float bonusPhysicalDamage = level.strength.GetBaseValue(); // 1点力量 -> 1点物理攻击
         float totalPhysicalDamage = basePhysicalDamage + bonusPhysicalDamage;
 
         isCrit = Random.Range(0, 100) < GetCritChance();
@@ -66,6 +67,35 @@ public class Entity_Stats : MonoBehaviour
         float finalEvasion = Mathf.Clamp(totalEvasion, 0, evasionCap);
 
         return finalEvasion;
+    }
+
+    // 获取护甲减伤
+    public float GetArmorMitigation(float armorReduction)
+    {
+        float baseArmor = defense.armor.GetBaseValue();
+        float bonusArmor = level.vitality.GetBaseValue(); // 1点体力 -> 1点护甲
+        float totalArmor = (baseArmor + bonusArmor);
+
+        float reductionMultiplier = 1 - armorReduction; // 实际的护甲系数 = 1 - 护甲穿透率（减少的护甲）
+        float effectiveArmor = totalArmor * reductionMultiplier;
+
+        // mitigation -> 减伤比例
+        float mitigation = effectiveArmor / (100 + effectiveArmor);
+
+        // 限制减伤比例上限：65%
+        float mitigationCap = 0.65f;
+        float finalMitigation = Mathf.Clamp(mitigation, 0, mitigationCap);
+
+        return finalMitigation;
+    }
+
+    // 获取护甲穿透
+    public float GetArmorReduction()
+    {
+        float armorReduction = offense.armorReduction.GetBaseValue();
+        float finalArmorReduction = Mathf.Clamp01(armorReduction);
+
+        return finalArmorReduction;
     }
 
     [ContextMenu("Apply Default Stat Setup")]

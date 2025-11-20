@@ -58,9 +58,16 @@ public class Entity_Health : MonoBehaviour, IDamagable
         }
 
         //Debug.Log("Entity - " + gameObject.name + "受到攻击");
-        ReduceHealth(damage);
 
-        Knockback(damage, damageDealer);
+        Entity_Stats attackerStats = damageDealer.GetComponent<Entity_Stats>();
+        float armorReduction = attackerStats ? attackerStats.GetArmorReduction() : 0;
+
+        float armorMitigation = stats.GetArmorMitigation(armorReduction);
+        float finalPhysicalDamage = damage * (1 - armorMitigation);
+
+        ReduceHealth(finalPhysicalDamage);
+
+        Knockback(finalPhysicalDamage, damageDealer);
         vfx.OnDamageVfx();
 
         return true;

@@ -16126,6 +16126,8 @@ MonoBehaviour:
       baseValue: 1
     critChance:
       baseValue: 0
+    armorReduction:
+      baseValue: 0
   defense:
     armor:
       baseValue: 0
@@ -16663,9 +16665,11 @@ MonoBehaviour:
     damage:
       baseValue: 10
     critPower:
-      baseValue: 1.5
+      baseValue: 1
     critChance:
-      baseValue: 100
+      baseValue: 0
+    armorReduction:
+      baseValue: 0
   defense:
     armor:
       baseValue: 0
