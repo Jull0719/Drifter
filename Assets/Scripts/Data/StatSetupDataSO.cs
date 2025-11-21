@@ -12,6 +12,7 @@ public class StatSetupDataSO : ScriptableObject
     public float damage = 10; // 物理攻击
     public float critPower = 1; // 暴击倍率
     public float critChance; // 暴击概率
+    public float armorReduction; // 护甲穿透
 
     [Header("Defense")]
     public float armor; // 护甲

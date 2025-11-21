@@ -5,16 +5,16 @@ public class Entity_Stats : MonoBehaviour
 {
     [SerializeField] protected StatSetupDataSO defaultStatDataSO;
 
-    [SerializeField] private StatGroup_Life life;
-    [SerializeField] private StatGroup_Offense offense;
-    [SerializeField] private StatGroup_Defense defense;
-    [SerializeField] private StatGroup_Level level;
+    public StatGroup_Life life;
+    public StatGroup_Offense offense;
+    public StatGroup_Defense defense;
+    public StatGroup_Level level;
 
     // 最大生命值
     public float GetMaxHealth()
     {
-        float baseHealth = life.maxHealth.GetBaseValue();
-        float bonusHealth = level.vitality.GetBaseValue() * 5; // 1点体力 -> 5点生命值上限
+        float baseHealth = life.maxHealth.GetValue();
+        float bonusHealth = level.vitality.GetValue() * 5; // 1点体力 -> 5点生命值上限
         float finalHealth = baseHealth + bonusHealth;
         return finalHealth;
     }
@@ -22,14 +22,14 @@ public class Entity_Stats : MonoBehaviour
     // 再生生命值
     public float GetRegenerateHealth()
     {
-        return life.healthRegen.GetBaseValue();
+        return life.healthRegen.GetValue();
     }
 
     // 物理攻击
     public float GetPhysicalDamage(out bool isCrit)
     {
-        float basePhysicalDamage = offense.damage.GetBaseValue();
-        float bonusPhysicalDamage = level.strength.GetBaseValue(); // 1点力量 -> 1点物理攻击
+        float basePhysicalDamage = offense.damage.GetValue();
+        float bonusPhysicalDamage = level.strength.GetValue(); // 1点力量 -> 1点物理攻击
         float totalPhysicalDamage = basePhysicalDamage + bonusPhysicalDamage;
 
         isCrit = Random.Range(0, 100) < GetCritChance();
@@ -41,16 +41,16 @@ public class Entity_Stats : MonoBehaviour
     // 暴击倍率
     public float GetCritPower()
     {
-        float baseCritPower = offense.critPower.GetBaseValue(); // 默认为1
-        float bonusCritPower = level.strength.GetBaseValue() * 0.05f; // 1点力量 -> 0.05暴击倍率 （1.05倍基础攻击力）
+        float baseCritPower = offense.critPower.GetValue(); // 默认为1
+        float bonusCritPower = level.strength.GetValue() * 0.05f; // 1点力量 -> 0.05暴击倍率 （1.05倍基础攻击力）
         return baseCritPower + bonusCritPower;
     }
 
     // 暴击概率
     public float GetCritChance()
     {
-        float baseCritChance = offense.critChance.GetBaseValue();
-        float bonusCritChance = level.dexterity.GetBaseValue() * 0.3f; // 1点敏捷 -> 0.3%暴击概率
+        float baseCritChance = offense.critChance.GetValue();
+        float bonusCritChance = level.dexterity.GetValue() * 0.3f; // 1点敏捷 -> 0.3%暴击概率
         float totalCritChance = baseCritChance + bonusCritChance;
 
         // 限制暴击概率上限：60%
@@ -63,14 +63,14 @@ public class Entity_Stats : MonoBehaviour
     // 攻击速度
     public float GetAttackSpeed()
     {
-        return offense.attackSpeed.GetBaseValue();
+        return offense.attackSpeed.GetValue();
     }
 
     // 闪避概率
     public float GetEvasion()
     {
-        float baseEvasion = defense.evasion.GetBaseValue();
-        float bonusEvasion = level.dexterity.GetBaseValue() * 0.5f; // 1点敏捷 -> 0.5%闪避概率
+        float baseEvasion = defense.evasion.GetValue();
+        float bonusEvasion = level.dexterity.GetValue() * 0.5f; // 1点敏捷 -> 0.5%闪避概率
         float totalEvasion = baseEvasion + bonusEvasion;
 
         // 限制闪避概率上限：65%
@@ -83,8 +83,8 @@ public class Entity_Stats : MonoBehaviour
     // 护甲减伤
     public float GetArmorMitigation(float armorReduction)
     {
-        float baseArmor = defense.armor.GetBaseValue();
-        float bonusArmor = level.vitality.GetBaseValue(); // 1点体力 -> 1点护甲
+        float baseArmor = defense.armor.GetValue();
+        float bonusArmor = level.vitality.GetValue(); // 1点体力 -> 1点护甲
         float totalArmor = (baseArmor + bonusArmor);
 
         float reductionMultiplier = 1 - armorReduction; // 实际的护甲系数 = 1 - 护甲穿透率（减少的护甲）
@@ -103,16 +103,47 @@ public class Entity_Stats : MonoBehaviour
     // 护甲穿透
     public float GetArmorReduction()
     {
-        float armorReduction = offense.armorReduction.GetBaseValue();
+        float armorReduction = offense.armorReduction.GetValue();
         float finalArmorReduction = Mathf.Clamp01(armorReduction);
 
         return finalArmorReduction;
     }
 
-    [ContextMenu("Apply Default Stat Setup")]
-    public void SetStatValue()
+    public Stat GetStatByType(StatType type)
     {
-        if (defaultStatDataSO == null) return;
+        switch (type)
+        {
+            case StatType.Strength: return level.strength;
+            case StatType.Dexterity: return level.dexterity;
+            case StatType.Intelligence: return level.intelligence;
+            case StatType.Vitality: return level.vitality;
+
+            case StatType.MaxHealth: return life.maxHealth;
+            case StatType.HealthRegen: return life.healthRegen;
+
+            case StatType.AttackSpeed: return offense.attackSpeed;
+            case StatType.Damage: return offense.damage;
+            case StatType.CritPower: return offense.critPower;
+            case StatType.CritChance: return offense.critChance;
+            case StatType.ArmorReduction: return offense.armorReduction;
+
+            case StatType.Armor: return defense.armor;
+            case StatType.Evasion: return defense.evasion;
+
+            default:
+                Debug.LogWarning($"StatType {type} is not implemented yet.");
+                return null;
+        }
+    }
+
+    [ContextMenu("Apply Default Stat Setup")]
+    public void SetDefaultStatValue()
+    {
+        if (defaultStatDataSO == null)
+        {
+            Debug.Log("No default stat setup assigned.");
+            return;
+        }
 
         // Life
         life.maxHealth.SetBaseValue(defaultStatDataSO.maxHealth);
@@ -123,6 +154,7 @@ public class Entity_Stats : MonoBehaviour
         offense.damage.SetBaseValue(defaultStatDataSO.damage);
         offense.critChance.SetBaseValue(defaultStatDataSO.critChance);
         offense.critPower.SetBaseValue(defaultStatDataSO.critPower);
+        offense.armorReduction.SetBaseValue(defaultStatDataSO.armorReduction);
 
         // Defense
         defense.armor.SetBaseValue(defaultStatDataSO.armor);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chest : MonoBehaviour, IDamagable
+public class Object_Chest : MonoBehaviour, IDamagable
 {
     [SerializeField] private Vector2 knockback = new Vector2(0, 3);
     [SerializeField] private float duration = 1f;
