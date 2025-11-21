@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chest : MonoBehaviour, IDamagable
+public class Object_Chest : MonoBehaviour, IDamagable
 {
     [SerializeField] private Vector2 knockback = new Vector2(0, 3);
     [SerializeField] private float duration = 1f;
@@ -20,9 +20,9 @@ public class Chest : MonoBehaviour, IDamagable
         vfx = GetComponent<Entity_VFX>();
     }
 
-    public void TakeDamage(float damage, Entity damageDealer)
+    public bool TakeDamage(float damage, Transform damageDealer)
     {
-        if (!canAttack) return;
+        if (!canAttack) return false;
 
         vfx.OnDamageVfx();
         rb.velocity = knockback;
@@ -30,6 +30,8 @@ public class Chest : MonoBehaviour, IDamagable
 
         attackCount++;
         TryChangeState(attackCount);
+
+        return true;
     }
 
     private void TryChangeState(int attackCount)

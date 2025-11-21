@@ -15,6 +15,8 @@ public class PlayerState : EntityState
         rb = player.rb;
 
         input = player.input;
+
+        stats = player.stats;
     }
 
     public override void UpdateAnimationParameters()

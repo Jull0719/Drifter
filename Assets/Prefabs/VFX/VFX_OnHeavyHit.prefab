@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aa47d041cb5afdd4798b0d5aee9d3a69, type: 3}
-  m_Color: {r: 0.8396226, g: 0.60991454, b: 0.60991454, a: 1}
+  m_Color: {r: 0.9811321, g: 0.61552155, b: 0.64559937, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -158,5 +158,6 @@ MonoBehaviour:
   xMaxOffset: 0.3
   yMinOffset: -0.3
   yMaxOffset: 0.3
-  isAutoRotate: 0
-  rotation: 200
+  isAutoRotate: 1
+  minRotation: -15
+  maxRotation: 15

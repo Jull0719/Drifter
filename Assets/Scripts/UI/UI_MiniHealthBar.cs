@@ -37,6 +37,7 @@ public class UI_MiniHealthBar : MonoBehaviour
         UpdateHealthBarValue();
     }
 
+    // 更新血条血量
     public void UpdateHealthBarValue()
     {
         healthBar.value = health.GetHealthPercent();
@@ -51,7 +52,6 @@ public class UI_MiniHealthBar : MonoBehaviour
 
         healthTrailCo = StartCoroutine(HealthBarTrailCo());
     }
-
     IEnumerator HealthBarTrailCo()
     {
         while (healthBarTrail.value > healthBar.value)

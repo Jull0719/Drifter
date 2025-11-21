@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy_BattleState : EnemyState
 {
     private float lastTimeWasInBattle;
-    private Player player;
+    private Transform player;
 
     public Enemy_BattleState(Enemy enemy, StateMachine stateMachine, string stateName) : base(enemy, stateMachine, stateName)
     {
@@ -17,7 +17,7 @@ public class Enemy_BattleState : EnemyState
         UpdateBattleTimer();
 
         if (player == null)
-            player = enemy.player;
+            player = enemy.GetPlayerReference();
 
         if (ShouldRetreat())
         {

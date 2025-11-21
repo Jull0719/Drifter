@@ -36,25 +36,15 @@ public class Enemy_Health : Entity_Health, IDamagable
     }
 
     // 受击
-    public override void TakeDamage(float damage, Entity damageDealer)
+    public override bool TakeDamage(float damage, Transform damageDealer)
     {
-        base.TakeDamage(damage, damageDealer);
+        if (base.TakeDamage(damage, damageDealer) == false)
+            return false;
 
         //Debug.Log("Enemy - " + gameObject.name + "受到攻击");
-        if (isDead) return;
+        if (damageDealer.GetComponent<Player>() != null)
+            enemy.TryToEnterBattleState(damageDealer);
 
-        Player player = damageDealer.GetComponent<Player>();
-
-        if (player != null)
-        {
-            // 如果已处于Battle/Attack状态下，则不再进入
-            if (stateMachine.currentState == enemy.battleState || stateMachine.currentState == enemy.attackState)
-                return;
-
-            // 获取Player
-            enemy.GetPlayerReference(player);
-
-            stateMachine.ChangeState(enemy.battleState);
-        }
+        return true;
     }
 }

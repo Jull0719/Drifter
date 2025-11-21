@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy_DeadState : EnemyState
 {
-    private float deadTime;
     private Enemy_VFX vfx;
     private Enemy_Health health;
 
@@ -17,6 +16,11 @@ public class Enemy_DeadState : EnemyState
     public override void OnEnter()
     {
         base.OnEnter();
+        HandleDeath();
+    }
+
+    private void HandleDeath()
+    {
         vfx.Fade(health.GetEnemyDeadTime(), 0);
         stateMachine.SwitchOffStateMachine(false);
     }

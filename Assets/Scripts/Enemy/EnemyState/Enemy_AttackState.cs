@@ -8,6 +8,12 @@ public class Enemy_AttackState : EnemyState
     {
     }
 
+    public override void OnEnter()
+    {
+        base.OnEnter();
+        SyncAttackSpeed();
+    }
+
     public override void OnUpdate()
     {
         base.OnUpdate();
