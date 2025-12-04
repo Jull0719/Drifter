@@ -23,6 +23,7 @@ public class Player : Entity
 
     public PlayerInputSet input { get; private set; }
 
+    #region PlayerState
     public Player_IdleState idleState { get; private set; }
     public Player_MoveState moveState { get; private set; }
     public Player_JumpState jumpState { get; private set; }
@@ -30,6 +31,7 @@ public class Player : Entity
     public Player_AttackState attackState { get; private set; }
     public Player_CounterAttackState counterAttackState { get; private set; }
     public Player_DeadState deadState { get; private set; }
+    #endregion
 
     public Player_Health health { get; private set; }
     public Player_Combat combat { get; private set; }
