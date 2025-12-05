@@ -27,7 +27,7 @@ public class Object_PickupItem : MonoBehaviour
     {
         inventory = collision.GetComponent<Inventory_Base>();
 
-        if (inventory == null || inventory.IsFull()) return;
+        if (inventory == null || inventory.IsFull(item)) return;
 
         inventory.AddItem(item);
         string warningText = "拾取了" + itemDataSO.itemName;

@@ -10,16 +10,10 @@ public class Inventory_Base : MonoBehaviour
     [SerializeField] protected int maxSize = 10;
     public List<Inventory_Item> itemList = new List<Inventory_Item>();
 
-    public void AddItem(Inventory_Item itemToAdd)
-    {
-        itemList.Add(itemToAdd);
-        OnUpdateUI?.Invoke();
-    }
-
     // 检查背包是否已经满了
-    public bool IsFull()
+    public bool IsFull(Inventory_Item item)
     {
-        if (itemList.Count >= maxSize)
+        if (itemList.Count >= maxSize && FindItem(item) == null)
         {
             string warningText = "背包已满";
             UI.instance.SetWarningText(warningText, true);
@@ -27,5 +21,34 @@ public class Inventory_Base : MonoBehaviour
         }
 
         return false;
+    }
+
+    // 查找数据相同的物品
+    public Inventory_Item FindItem(Inventory_Item itemToFind)
+    {
+        //foreach (var item in itemList)
+        //{
+        //    if (item.itemDataSO == itemToFind.itemDataSO && item.CanStacked())
+        //        return item;
+        //}
+
+        //return null;
+
+        return itemList.Find(item => item.itemDataSO == itemToFind.itemDataSO && item.CanStacked());
+    }
+
+    public void AddItem(Inventory_Item itemToAdd)
+    {
+        // 查找可堆叠物品
+        Inventory_Item itemToStack = FindItem(itemToAdd);
+
+        if (itemToStack != null)
+        {
+            itemToStack.AddStack();
+        }
+        else
+            itemList.Add(itemToAdd);
+
+        OnUpdateUI?.Invoke();
     }
 }

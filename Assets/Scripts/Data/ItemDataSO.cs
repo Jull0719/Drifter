@@ -5,4 +5,5 @@ public class ItemDataSO : ScriptableObject
 {
     public string itemName;
     public Sprite itemIcon;
+    public int maxStackSize = 1; // 最大堆叠数
 }
