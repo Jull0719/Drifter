@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Item - Reaper's Fang
   m_EditorClassIdentifier: 
   itemName: "\u6536\u5272\u8005\u4E4B\u523A"
+  itemType: 1
   itemIcon: {fileID: 1930010575, guid: f9a96e407f32a9a4bbe94414ae62a859, type: 3}
+  itemInfo: "\u6536\u5272\u8005\u5DF2\u6B7B\uFF0C\u8FD9\u662F\u5B83\u552F\u4E00\u4E0D\u613F\uFF0C\u4E5F\u65E0\u6CD5\u5E26\u8D70\u7684\u5668\u5B98\u3002\n\u5C0F\u5FC3\uFF0C\u5B83\u6216\u8BB8\u8FD8\u5728\u8DF3\u52A8\u3002"
+  itemPrice: 5000
   maxStackSize: 1

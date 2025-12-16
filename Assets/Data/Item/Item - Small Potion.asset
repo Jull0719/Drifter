@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Item - Small Potion
   m_EditorClassIdentifier: 
   itemName: "\u5C0F\u578B\u751F\u547D\u836F\u6C34"
+  itemType: 0
   itemIcon: {fileID: -2017799774, guid: f9a96e407f32a9a4bbe94414ae62a859, type: 3}
+  itemInfo: "\u7531\u57FA\u7840\u8349\u836F\u8403\u53D6\u800C\u6210\u7684\u7EA2\u8272\u6DB2\u4F53\uFF0C\u80FD\u5728\u77ED\u65F6\u95F4\u5185\u6CBB\u6108\u8F83\u8F7B\u7684\u4F24\u53E3\u3002"
+  itemPrice: 100
   maxStackSize: 5

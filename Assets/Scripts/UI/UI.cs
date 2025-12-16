@@ -5,10 +5,11 @@ using UnityEngine;
 public class UI : MonoBehaviour
 {
     public static UI instance;
+    public UI_ItemToolTip itemToolTip { get; private set; }
 
     [SerializeField] private TextMeshProUGUI warningText;
-
     private Coroutine blinkCo;
+
 
     private void Awake()
     {
@@ -16,6 +17,8 @@ public class UI : MonoBehaviour
             instance = this;
         else
             Destroy(instance);
+
+        itemToolTip = GetComponentInChildren<UI_ItemToolTip>();
     }
 
     public void StartButton()

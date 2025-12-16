@@ -8,9 +8,13 @@ public class UI_Inventory : MonoBehaviour
 
     private Inventory_Base inventory;
 
+    private UI ui;
+
     private void Awake()
     {
         slots = GetComponentsInChildren<UI_Slot>();
+
+        ui = GetComponentInParent<UI>();
 
         inventory = FindFirstObjectByType<Inventory_Base>();
         inventory.OnUpdateUI += UpdateInventoryUI;

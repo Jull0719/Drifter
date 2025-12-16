@@ -26,14 +26,6 @@ public class Inventory_Base : MonoBehaviour
     // 查找数据相同的物品
     public Inventory_Item FindItem(Inventory_Item itemToFind)
     {
-        //foreach (var item in itemList)
-        //{
-        //    if (item.itemDataSO == itemToFind.itemDataSO && item.CanStacked())
-        //        return item;
-        //}
-
-        //return null;
-
         return itemList.Find(item => item.itemDataSO == itemToFind.itemDataSO && item.CanStacked());
     }
 
