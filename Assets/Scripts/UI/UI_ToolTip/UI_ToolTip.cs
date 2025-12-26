@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class UI_ToolTip : MonoBehaviour
 {
-    private RectTransform rect;
+    protected RectTransform rect;
     private Vector3 hidePosition = new Vector3(9999, 9999, 0);
 
     [SerializeField] private float xOffset;
     [SerializeField] private float yOffset;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rect = GetComponent<RectTransform>();
         transform.position = hidePosition;

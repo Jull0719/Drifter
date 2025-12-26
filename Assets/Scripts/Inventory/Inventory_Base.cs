@@ -41,6 +41,8 @@ public class Inventory_Base : MonoBehaviour
         else
             itemList.Add(itemToAdd);
 
-        OnUpdateUI?.Invoke();
+        TriggerUpdateUI();
     }
+
+    public void TriggerUpdateUI() => OnUpdateUI?.Invoke();
 }

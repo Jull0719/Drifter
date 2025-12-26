@@ -6,6 +6,7 @@ public class UI : MonoBehaviour
 {
     public static UI instance;
     public UI_ItemToolTip itemToolTip { get; private set; }
+    public UI_StatToolTip statToolTip { get; private set; }
 
     [SerializeField] private TextMeshProUGUI warningText;
     private Coroutine blinkCo;
@@ -19,6 +20,7 @@ public class UI : MonoBehaviour
             Destroy(instance);
 
         itemToolTip = GetComponentInChildren<UI_ItemToolTip>();
+        statToolTip = GetComponentInChildren<UI_StatToolTip>();
     }
 
     public void StartButton()

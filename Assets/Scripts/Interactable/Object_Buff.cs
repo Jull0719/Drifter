@@ -67,6 +67,6 @@ public class Object_Buff : MonoBehaviour
         foreach (var buff in buffs)
             stats.GetStatByType(buff.type).RemoveModifiers(buffName);
 
-        Destroy(gameObject);
+        Destroy(gameObject, 2);
     }
 }

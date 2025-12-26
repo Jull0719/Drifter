@@ -77,7 +77,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
     }
 
     // 闪避
-    protected bool AttackEvaded() => UnityEngine.Random.Range(0, 100) < stats.GetEvasion();
+    protected bool AttackEvaded() => UnityEngine.Random.Range(0, 100) < stats.GetEvasion() * 100;
 
     // 生命值再生
     private void RegenerateHealth()

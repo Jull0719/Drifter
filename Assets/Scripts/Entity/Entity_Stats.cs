@@ -9,97 +9,79 @@ public class Entity_Stats : MonoBehaviour
     public StatGroup_Defense defense;
     public StatGroup_Level level;
 
-    // 最大生命值
-    public float GetMaxHealth()
-    {
-        float baseHealth = life.maxHealth.GetValue();
-        float bonusHealth = level.vitality.GetValue() * 5; // 1点体力 -> 5点生命值上限
-        float finalHealth = baseHealth + bonusHealth;
-        return finalHealth;
-    }
-
+    // 最大生命值 1点体力 -> 5点生命值上限
+    public float GetMaxHealth() => life.maxHealth.GetValue() + level.vitality.GetValue() * Settings.HealthBonus;
     // 再生生命值
-    public float GetRegenerateHealth()
-    {
-        return life.healthRegen.GetValue();
-    }
+    public float GetRegenerateHealth() => life.healthRegen.GetValue();
 
-    // 物理攻击
+    // 基础攻击
+    public float GetBaseDamage() => offense.damage.GetValue() + level.strength.GetValue() * Settings.DamageBonus;
     public float GetPhysicalDamage(out bool isCrit)
     {
-        float basePhysicalDamage = offense.damage.GetValue();
-        float bonusPhysicalDamage = level.strength.GetValue(); // 1点力量 -> 1点物理攻击
-        float totalPhysicalDamage = basePhysicalDamage + bonusPhysicalDamage;
+        float basePhysicalDamage = GetBaseDamage();
 
-        isCrit = Random.Range(0, 100) < GetCritChance();
+        isCrit = Random.Range(0, 100) < GetCritChance() * 100f;
 
-        float finalPhyscialDamage = isCrit ? totalPhysicalDamage * GetCritPower() : totalPhysicalDamage;
+        float finalPhyscialDamage = isCrit ? basePhysicalDamage * GetCritPower() : basePhysicalDamage;
         return finalPhyscialDamage;
     }
 
-    // 暴击倍率
-    public float GetCritPower()
-    {
-        float baseCritPower = offense.critPower.GetValue(); // 默认为1
-        float bonusCritPower = level.strength.GetValue() * 0.05f; // 1点力量 -> 0.05暴击倍率 （1.05倍基础攻击力）
-        return baseCritPower + bonusCritPower;
-    }
+    // 暴击倍率 1点力量 -> 0.05暴击倍率 （1.05倍基础攻击力） -> 1 + strength * Settings.CritPowerBonus
+    public float GetCritPower() => offense.critPower.GetValue() + level.strength.GetValue() * Settings.CritPowerBonus;
 
-    // 暴击概率
+    // 暴击概率 -> [critChance + dexterity * Settings.CritChanceBonus <= Settings.CritChanceCap]%
     public float GetCritChance()
     {
         float baseCritChance = offense.critChance.GetValue();
-        float bonusCritChance = level.dexterity.GetValue() * 0.3f; // 1点敏捷 -> 0.3%暴击概率
+        float bonusCritChance = level.dexterity.GetValue() * Settings.CritChanceBonus; // 1点敏捷 -> 0.5%暴击概率
         float totalCritChance = baseCritChance + bonusCritChance;
 
-        // 限制暴击概率上限：60%
-        float critChanceCap = 60;
+        // 限制暴击概率上限
+        float critChanceCap = Settings.CritChanceCap;
         float finalCritChance = Mathf.Clamp(totalCritChance, 0, critChanceCap);
 
-        return finalCritChance;
+        return finalCritChance / 100f;
     }
 
-    // 攻击速度
-    public float GetAttackSpeed()
-    {
-        return offense.attackSpeed.GetValue();
-    }
+    // 攻击速度 -> 1
+    public float GetAttackSpeed() => offense.attackSpeed.GetValue();
 
-    // 闪避概率
+    // 闪避概率 -> [evasion + dexterity * Settings.EvasionBonus <= Settings.EvasionCap]%
     public float GetEvasion()
     {
         float baseEvasion = defense.evasion.GetValue();
-        float bonusEvasion = level.dexterity.GetValue() * 0.5f; // 1点敏捷 -> 0.5%闪避概率
+        float bonusEvasion = level.dexterity.GetValue() * Settings.EvasionBonus; // 1点敏捷 -> 0.5%闪避概率
         float totalEvasion = baseEvasion + bonusEvasion;
 
         // 限制闪避概率上限：65%
-        float evasionCap = 65;
+        float evasionCap = Settings.EvasionCap;
         float finalEvasion = Mathf.Clamp(totalEvasion, 0, evasionCap);
 
-        return finalEvasion;
+        return finalEvasion / 100f;
     }
 
-    // 护甲减伤
+    // 基础防御
+    public float GetBaseArmor() => defense.armor.GetValue() + level.vitality.GetValue() * Settings.ArmorBonus;
+
+    // 护甲减伤 -> [armorMitigation <= Settings.ArmorMitigationCap]%
     public float GetArmorMitigation(float armorReduction)
     {
-        float baseArmor = defense.armor.GetValue();
-        float bonusArmor = level.vitality.GetValue(); // 1点体力 -> 1点护甲
-        float totalArmor = (baseArmor + bonusArmor);
+        float baseArmor = GetBaseArmor();
 
         float reductionMultiplier = 1 - armorReduction; // 实际的护甲系数 = 1 - 护甲穿透率（减少的护甲）
-        float effectiveArmor = totalArmor * reductionMultiplier;
+        float effectiveArmor = baseArmor * reductionMultiplier;
 
         // mitigation -> 减伤比例
         float mitigation = effectiveArmor / (100 + effectiveArmor);
 
-        // 限制减伤比例上限：65%
-        float mitigationCap = 0.65f;
+        // 限制减伤比例上限
+        float mitigationCap = Settings.ArmorMitigationCap;
         float finalMitigation = Mathf.Clamp(mitigation, 0, mitigationCap);
 
         return finalMitigation;
     }
 
-    // 护甲穿透
+    // 护甲穿透 -> armorReduction <= 1
     public float GetArmorReduction()
     {
         float armorReduction = offense.armorReduction.GetValue();
@@ -135,7 +117,7 @@ public class Entity_Stats : MonoBehaviour
         }
     }
 
-    [ContextMenu("Apply Default Stat Setup")]
+    [ContextMenu("设置默认数值")]
     public void SetDefaultStatValue()
     {
         if (defaultStatDataSO == null)

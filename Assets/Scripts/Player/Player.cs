@@ -37,6 +37,8 @@ public class Player : Entity
     public Player_Combat combat { get; private set; }
     public Entity_VFX vfx { get; private set; }
 
+    public Inventory_Base inventory { get; private set; }
+
     private Scene m_scene;
     private GameObject[] dialogs;
 
@@ -60,6 +62,8 @@ public class Player : Entity
         fallState = new Player_FallState(this, stateMachine, "jump");
         attackState = new Player_AttackState(this, stateMachine, "attack");
         counterAttackState = new Player_CounterAttackState(this, stateMachine, "counterAttack");
+
+        inventory = GetComponent<Inventory_Base>();
 
         deadState = new Player_DeadState(this, stateMachine, "dead");
 
