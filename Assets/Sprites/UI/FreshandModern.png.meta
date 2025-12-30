@@ -509,7 +509,7 @@ TextureImporter:
         width: 52
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 1, y: 1, z: 1, w: 1}
       outline: []
       physicsShape: []
@@ -517,6 +517,90 @@ TextureImporter:
       bones: []
       spriteID: 85e597b8aa0a47f428420e7683898b37
       internalID: -1575835344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_ExitButton_Dark
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 257
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060cff39a90736244be438157d6c2a2e
+      internalID: 544302105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_ExitButtonDown_Dark
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 257
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b912b336bedb1cf40a4c8dbf3164185a
+      internalID: 500819367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_ExitButton_Light
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 257
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd630512eb99c344abd0f5e0128b9f45
+      internalID: -1813565519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_ExitButtonDown_Light
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 257
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e1fc2447d47e0e4bbf27ab77ed5bdfc
+      internalID: -1217633973
       vertices: []
       indices: 
       edges: []
@@ -540,6 +624,10 @@ TextureImporter:
       UI_Background5: -1575835344
       UI_CoinIcon: 1578405052
       UI_Dark: 1564872308
+      UI_ExitButtonDown_Dark: 500819367
+      UI_ExitButtonDown_Light: -1217633973
+      UI_ExitButton_Dark: 544302105
+      UI_ExitButton_Light: -1813565519
       UI_HealthBar: 14570198
       UI_HealthBar_Background: 1896531759
       UI_Inventory: 423295434

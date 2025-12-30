@@ -6,21 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
-    [Header("移动")]
-    public float moveSpeed = 10;
-    public float airMultiplier = 0.8f;
-    public Vector2 moveInput { get; private set; }
-
-    [Header("跳跃")]
-    public float jumpForce = 12;
-    public bool canDoubleJump = true;
-
-    [Header("攻击")]
-    public float comboLimitedTime = 4; // 组合攻击限制时间
-    public float attackVelocityDuration = 0.2f; // 攻击反馈持续时间
-    public Vector2[] attackVelocity; //攻击反馈
-    private Coroutine queueAttackCo;
-
     public PlayerInputSet input { get; private set; }
 
     #region PlayerState
@@ -38,6 +23,23 @@ public class Player : Entity
     public Entity_VFX vfx { get; private set; }
 
     public Inventory_Base inventory { get; private set; }
+
+    [Header("移动")]
+    public float moveSpeed = 10;
+    public float airMultiplier = 0.8f;
+    public Vector2 moveInput { get; private set; }
+
+    [Header("跳跃")]
+    public float jumpForce = 12;
+    public bool canDoubleJump = true;
+
+    [Header("攻击")]
+    public float comboLimitedTime = 4; // 组合攻击限制时间
+    public float attackVelocityDuration = 0.2f; // 攻击反馈持续时间
+    public Vector2[] attackVelocity; //攻击反馈
+    private Coroutine queueAttackCo;
+
+    public UI ui { get; private set; }
 
     private Scene m_scene;
     private GameObject[] dialogs;
@@ -62,10 +64,11 @@ public class Player : Entity
         fallState = new Player_FallState(this, stateMachine, "jump");
         attackState = new Player_AttackState(this, stateMachine, "attack");
         counterAttackState = new Player_CounterAttackState(this, stateMachine, "counterAttack");
+        deadState = new Player_DeadState(this, stateMachine, "dead");
 
         inventory = GetComponent<Inventory_Base>();
 
-        deadState = new Player_DeadState(this, stateMachine, "dead");
+        ui = FindAnyObjectByType<UI>();
 
         dialogs = GameObject.FindGameObjectsWithTag("dialog");
     }
@@ -76,6 +79,10 @@ public class Player : Entity
 
         input.Gameplay.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         input.Gameplay.Move.canceled += ctx => moveInput = Vector2.zero;
+
+        // UI快捷键
+        input.Gameplay.ToggleInventoryUI.performed += ctx => ui.ToggleInventoryUI();
+        input.Gameplay.ToggleStatUI.performed += ctx => ui.ToggleStatUI();
     }
 
     private void OnDisable()

@@ -34,6 +34,8 @@ public class UI_ItemToolTip : UI_ToolTip
 
         sb.AppendLine("");
 
+        sb.AppendLine(item.itemDataSO.effectDataSO.effectDescription);
+
         return sb.ToString();
     }
 

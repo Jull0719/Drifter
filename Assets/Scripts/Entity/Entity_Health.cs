@@ -89,7 +89,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
     }
 
     // 生命值增加
-    private void IncreaseHealth(float healthAmount)
+    public void IncreaseHealth(float healthAmount)
     {
         if (isDead)
             return;
@@ -105,10 +105,10 @@ public class Entity_Health : MonoBehaviour, IDamagable
     private void ReduceHealth(float damage)
     {
         currentHealth -= damage;
-        OnHealthChange?.Invoke();
 
         if (currentHealth <= 0)
             Die();
+        OnHealthChange?.Invoke();
     }
 
     protected virtual void Die()
@@ -123,6 +123,9 @@ public class Entity_Health : MonoBehaviour, IDamagable
     {
 
     }
+
+    // 获取生命值
+    public float GetCurrentHealth() => currentHealth;
 
     // 计算现在的生命值占比
     public float GetHealthPercent()

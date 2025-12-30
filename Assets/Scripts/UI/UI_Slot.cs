@@ -13,14 +13,18 @@ public class UI_Slot : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     private UI ui;
 
     private RectTransform rect;
+
     private Inventory_Item itemInSlot;
+    private Inventory_Base inventory;
 
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
         ui = GetComponentInParent<UI>();
+        inventory = FindAnyObjectByType<Inventory_Base>();
     }
 
+    // 更新格子显示
     public void UpdateSlot(Inventory_Item item)
     {
         itemInSlot = item;
@@ -46,7 +50,8 @@ public class UI_Slot : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-
+        if (itemInSlot == null || itemInSlot.itemDataSO.itemType == ItemType.Material) return;
+        inventory.TryToUse(itemInSlot);
     }
 
     public void OnPointerExit(PointerEventData eventData)

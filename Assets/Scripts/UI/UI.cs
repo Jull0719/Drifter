@@ -5,6 +5,10 @@ using UnityEngine;
 public class UI : MonoBehaviour
 {
     public static UI instance;
+
+    public UI_Inventory inventoryUI { get; private set; }
+    public UI_PlayerStats statUI { get; private set; }
+
     public UI_ItemToolTip itemToolTip { get; private set; }
     public UI_StatToolTip statToolTip { get; private set; }
 
@@ -18,6 +22,9 @@ public class UI : MonoBehaviour
             instance = this;
         else
             Destroy(instance);
+
+        inventoryUI = GetComponentInChildren<UI_Inventory>(true);
+        statUI = GetComponentInChildren<UI_PlayerStats>(true);
 
         itemToolTip = GetComponentInChildren<UI_ItemToolTip>();
         statToolTip = GetComponentInChildren<UI_StatToolTip>();
@@ -35,6 +42,25 @@ public class UI : MonoBehaviour
         Debug.Log("退出游戏");
         Application.Quit();
     }
+
+    // 关闭或开启指定UI面板
+    public void ToggleUI(GameObject uiObject) => uiObject.SetActive(!uiObject.activeSelf);
+
+    // 背包
+    public void ToggleInventoryUI()
+    {
+        ToggleUI(inventoryUI.gameObject);
+        itemToolTip.ShowToolTip(false, null);
+    }
+
+    // 属性
+    public void ToggleStatUI()
+    {
+        ToggleUI(statUI.gameObject);
+        statToolTip.ShowToolTip(false, null);
+    }
+
+    #region 文字提示
 
     public void SetWarningText(string text, bool isBlink)
     {
@@ -63,4 +89,5 @@ public class UI : MonoBehaviour
             yield return new WaitForSeconds(blinkInterval);
         }
     }
+    #endregion
 }

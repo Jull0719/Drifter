@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_PlayerStats : MonoBehaviour
+public class UI_PlayerStats : UI_Base
 {
     private UI_StatSlot[] statSlots;
     private Inventory_Base inventory;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         statSlots = GetComponentsInChildren<UI_StatSlot>();
         inventory = FindFirstObjectByType<Inventory_Base>();
 

@@ -6,6 +6,7 @@ public class Inventory_Item
     public ItemDataSO itemDataSO;
     public int itemStackSize = 1;
 
+
     public Inventory_Item(ItemDataSO itemDataSO)
     {
         this.itemDataSO = itemDataSO;
