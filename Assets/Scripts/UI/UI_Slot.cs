@@ -56,7 +56,6 @@ public class UI_Slot : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("鼠标退出");
         ui.itemToolTip.ShowToolTip(false, null);
     }
 }

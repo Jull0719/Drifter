@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/Inventory/Item Effect", fileName = "Item Effect - ")]
 public class ItemEffectDataSO : ScriptableObject
 {
     [TextArea] public string effectDescription;
+
+    public virtual bool CanBeUsed()
+    {
+        return true;
+    }
 
     public virtual void Execute()
     {

@@ -23,8 +23,8 @@ public class Inventory_Base : MonoBehaviour
         return false;
     }
 
-    // 查找相同物品
-    public Inventory_Item FindSameItem(Inventory_Item itemToFind)
+    // 查找物品
+    public Inventory_Item FindItem(Inventory_Item itemToFind)
     {
         return itemList.Find(item => item == itemToFind);
     }
@@ -54,14 +54,10 @@ public class Inventory_Base : MonoBehaviour
     // 移除物品
     public void RemoveOneItem(Inventory_Item itemToRemove)
     {
-        var item = FindSameItem(itemToRemove);
+        itemToRemove.RemoveStack();
 
-        if (item == null) return;
-
-        if (item.itemStackSize < 1)
+        if (itemToRemove.itemStackSize < 1)
             itemList.Remove(itemToRemove);
-        else
-            item.RemoveStack();
 
         TriggerUpdateUI();
     }
@@ -69,9 +65,13 @@ public class Inventory_Base : MonoBehaviour
     // 使用物品
     public void TryToUse(Inventory_Item itemToUse)
     {
-        itemToUse.itemDataSO.effectDataSO.Execute();
-
-        RemoveOneItem(itemToUse);
+        if (itemToUse.itemDataSO.effectDataSO.CanBeUsed() == false)
+            return;
+        else
+        {
+            itemToUse.itemDataSO.effectDataSO.Execute();
+            RemoveOneItem(itemToUse);
+        }
     }
 
     // 更新UI
