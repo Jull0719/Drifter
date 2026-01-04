@@ -16,6 +16,11 @@ public class Object_Buff : MonoBehaviour
 
     private Player_Stats stats;
 
+    private void OnValidate()
+    {
+        gameObject.name = "增益 - " + buffName;
+    }
+
     private void Awake()
     {
         startPosition = transform.position;

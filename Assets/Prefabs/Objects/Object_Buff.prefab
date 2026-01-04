@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1913771344895425077}
   - component: {fileID: 4961226595791801878}
   m_Layer: 9
-  m_Name: Object_Buff
+  m_Name: "\u589E\u76CA - Object_Buff"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51de26f3a1d57584987f715f05b756b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBeUsed: 1
   buffName: Object_Buff
   buffDuration: 20
   buffs:

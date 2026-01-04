@@ -23,6 +23,7 @@ public class UI_ToolTip : MonoBehaviour
             transform.position = hidePosition;
     }
 
+    // 更新ToolTip显示的位置
     private void UpdatePosition(RectTransform target)
     {
         // 屏幕宽高
@@ -53,5 +54,11 @@ public class UI_ToolTip : MonoBehaviour
             targetPos.y = targetPos.y - (toolTipHeight - targetHeight) / 2f - yOffset;
 
         rect.position = targetPos;
+    }
+
+    // 带有颜色的字体
+    public string GetColorText(string colorHex, string text)
+    {
+        return $"<color={colorHex}>{text}</color>";
     }
 }

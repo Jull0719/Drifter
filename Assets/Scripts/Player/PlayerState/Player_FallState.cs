@@ -13,12 +13,14 @@ public class Player_FallState : Player_AiredState
         base.OnUpdate();
 
         if (player.groundDetected)
+        {
             stateMachine.ChangeState(player.idleState);
+            player.EnabledDoubleJump(true);
+        }
     }
 
     public override void OnExit()
     {
         base.OnExit();
-        player.EnabledDoubleJump(true);
     }
 }

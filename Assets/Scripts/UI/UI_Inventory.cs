@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class UI_Inventory : UI_Base
 {
-    private UI_Slot[] slots;
+    private UI_ItemSlotParent itemSlotParent;
+    private UI_EquipSlotParent equipSlotParent;
 
     private Inventory_Base inventory;
 
     protected override void Awake()
     {
         base.Awake();
-        slots = GetComponentsInChildren<UI_Slot>();
+
+        itemSlotParent = GetComponentInChildren<UI_ItemSlotParent>();
+        equipSlotParent = GetComponentInChildren<UI_EquipSlotParent>();
 
         inventory = FindFirstObjectByType<Inventory_Base>();
         inventory.OnUpdateUI += UpdateInventoryUI;
@@ -21,12 +24,7 @@ public class UI_Inventory : UI_Base
 
     private void UpdateInventoryUI()
     {
-        for (int i = 0; i < slots.Length; i++)
-        {
-            if (i < inventory.itemList.Count)
-                slots[i].UpdateSlot(inventory.itemList[i]);
-            else
-                slots[i].UpdateSlot(null);
-        }
+        itemSlotParent.UpdateItemSlots(inventory.itemList);
+        equipSlotParent.UpdateEquipSlot(inventory.equipSlotList);
     }
 }

@@ -18,7 +18,7 @@ public class Object_PickupItem : MonoBehaviour
 
     private void OnValidate()
     {
-        gameObject.name = "Object - " + itemDataSO.itemName;
+        gameObject.name = "物品 - " + itemDataSO.itemName;
         sr = GetComponentInChildren<SpriteRenderer>();
         sr.sprite = itemDataSO.itemIcon;
     }

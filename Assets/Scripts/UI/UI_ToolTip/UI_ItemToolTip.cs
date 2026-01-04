@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -20,21 +18,30 @@ public class UI_ItemToolTip : UI_ToolTip
         itemNameText.text = itemDataSO.itemName;
         itemTypeText.text = GetItemType(itemDataSO.itemType);
         itemInfoText.text = GetItemInfo(itemToShow);
-        itemPriceText.text = itemDataSO.itemPrice.ToString();
+        itemPriceText.text = "价格 " + itemDataSO.itemPrice.ToString();
     }
 
     private string GetItemInfo(Inventory_Item item)
     {
         string itemInfo = item.itemDataSO.itemInfo;
 
-        if (item.itemDataSO.itemType == ItemType.Material)
-            return itemInfo;
-
         StringBuilder sb = new StringBuilder(itemInfo);
 
-        sb.AppendLine("");
+        if (item.itemDataSO.itemType == ItemType.Material)
+            return sb.ToString();
 
-        sb.AppendLine(item.itemDataSO.effectDataSO.effectDescription);
+        if (item.itemDataSO.effectDataSO != null)
+        {
+            sb.AppendLine();
+            sb.AppendLine(item.itemDataSO.effectDataSO.effectDescription);
+        }
+
+        if (item.itemModifiers != null)
+        {
+            sb.AppendLine();
+            foreach (var modifier in item.itemModifiers)
+                sb.AppendLine(GetColorText("#FF0000", GetStatType(modifier.statType) + " " + modifier.value));
+        }
 
         return sb.ToString();
     }
@@ -45,6 +52,9 @@ public class UI_ItemToolTip : UI_ToolTip
         {
             ItemType.Consumable => "消耗品",
             ItemType.Material => "材料",
+            ItemType.Weapon => "武器",
+            ItemType.Armor => "防具",
+            ItemType.Accessory => "饰品",
             _ => ""
         };
     }
