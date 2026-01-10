@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Entity_Combat : MonoBehaviour
 {
+    public event Action<float> OnPerformingAttack;
+
     [Header("攻击检测")]
     [SerializeField] protected float attackRadius = 1;
     [SerializeField] protected LayerMask targetLayer;
@@ -29,7 +32,10 @@ public class Entity_Combat : MonoBehaviour
             targetGotHit = damagable.TakeDamage(physcialDamage, transform);
 
             if (targetGotHit)
+            {
+                OnPerformingAttack?.Invoke(physcialDamage);
                 vfx?.CreateOnHitVfx(target.transform, isCrit);
+            }
         }
     }
 

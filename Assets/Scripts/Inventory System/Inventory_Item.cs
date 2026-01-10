@@ -42,6 +42,10 @@ public class Inventory_Item
         }
     }
 
+    // 物品效果
+    public void AddEffect(Player player) => itemDataSO.effectDataSO?.Subscribe(player);
+    public void RemoveEffect() => itemDataSO.effectDataSO?.Unsubscribe();
+
     public bool CanStacked() => itemStackSize < itemDataSO.maxStackSize;
     public void AddStack() => itemStackSize++;
     public void RemoveStack() => itemStackSize--;

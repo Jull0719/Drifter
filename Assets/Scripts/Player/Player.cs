@@ -20,7 +20,8 @@ public class Player : Entity
 
     public Player_Health health { get; private set; }
     public Player_Combat combat { get; private set; }
-    public Entity_VFX vfx { get; private set; }
+    public Player_Stats stats { get; private set; }
+    public Player_VFX vfx { get; private set; }
 
     public Inventory_Base inventory { get; private set; }
 
@@ -54,9 +55,10 @@ public class Player : Entity
 
         input = new PlayerInputSet();
 
-        vfx = GetComponent<Entity_VFX>();
+        vfx = GetComponent<Player_VFX>();
         health = GetComponent<Player_Health>();
         combat = GetComponent<Player_Combat>();
+        stats = GetComponent<Player_Stats>();
 
         idleState = new Player_IdleState(this, stateMachine, "idle");
         moveState = new Player_MoveState(this, stateMachine, "move");

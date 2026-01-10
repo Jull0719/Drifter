@@ -33,7 +33,7 @@ public class UI_ItemToolTip : UI_ToolTip
         if (item.itemDataSO.effectDataSO != null)
         {
             sb.AppendLine();
-            sb.AppendLine(item.itemDataSO.effectDataSO.effectDescription);
+            sb.AppendLine(GetColorText("#00FF00", item.itemDataSO.effectDataSO.effectDescription));
         }
 
         if (item.itemModifiers != null)

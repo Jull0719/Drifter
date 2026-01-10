@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54ed4a7ba6e8c94e82652872115905b, type: 3}
+  m_Name: Equipment Item - Wood Sword
+  m_EditorClassIdentifier: 
+  itemName: "\u6728\u5236\u957F\u5251"
+  itemType: 2
+  itemIcon: {fileID: 537876867, guid: f9a96e407f32a9a4bbe94414ae62a859, type: 3}
+  itemInfo: "\u7531\u6728\u5934\u5236\u6210\u7684\u5251\uFF0C\u653B\u51FB\u529B\u4E00\u822C\u3002"
+  itemPrice: 100
+  maxStackSize: 1
+  effectDataSO: {fileID: 0}
+  modifiers:
+  - statType: 7
+    value: 10

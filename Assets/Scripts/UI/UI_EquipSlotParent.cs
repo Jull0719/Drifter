@@ -6,7 +6,7 @@ public class UI_EquipSlotParent : MonoBehaviour
 {
     private UI_EquipSlot[] uiEquipSlots;
 
-    public void UpdateEquipSlot(List<Inventory_EquipmentSlot> equipList)
+    public void UpdateEquipSlot(List<Inventory_EquipSlot> equipList)
     {
         if (uiEquipSlots == null)
             uiEquipSlots = GetComponentsInChildren<UI_EquipSlot>();

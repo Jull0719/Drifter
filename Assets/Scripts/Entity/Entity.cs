@@ -27,8 +27,6 @@ public class Entity : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public Collider2D col { get; private set; }
 
-    public Entity_Stats stats { get; private set; }
-
     public StateMachine stateMachine { get; private set; }
 
     protected virtual void Awake()
@@ -36,8 +34,6 @@ public class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         col = GetComponent<Collider2D>();
-
-        stats = GetComponent<Entity_Stats>();
 
         stateMachine = new StateMachine();
     }

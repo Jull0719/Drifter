@@ -5,6 +5,7 @@ using UnityEngine;
 public class Entity_Health : MonoBehaviour, IDamagable
 {
     public event Action OnHealthChange;
+    public event Action OnTakingDamage;
 
     [Header("击退")]
     [SerializeField] protected Vector2 knockbackPower = new Vector2(3, 2);
@@ -72,6 +73,8 @@ public class Entity_Health : MonoBehaviour, IDamagable
 
         TakeKnockback(finalPhysicalDamage, damageDealer);
         vfx.OnDamageVfx();
+
+        OnTakingDamage?.Invoke();
 
         return true;
     }

@@ -7,17 +7,17 @@ public class Inventory_Base : MonoBehaviour
     public event Action OnUpdateUI;
 
     // 装备栏
-    public List<Inventory_EquipmentSlot> equipSlotList = new List<Inventory_EquipmentSlot>();
+    public List<Inventory_EquipSlot> equipSlotList = new List<Inventory_EquipSlot>();
 
     // 背包栏
     [SerializeField] protected int maxSize = 10;
     public List<Inventory_Item> itemList = new List<Inventory_Item>();
 
-    private Player_Stats playerStats;
+    private Player player;
 
     private void Awake()
     {
-        playerStats = GetComponent<Player_Stats>();
+        player = GetComponent<Player>();
     }
 
     // 添加物品时，检查背包是否已满
@@ -110,24 +110,28 @@ public class Inventory_Base : MonoBehaviour
 
         // 2.与对应类型格子中的物品发生交换
         var slotToReplace = matchingSlots[0];
+        if (itemToEquip.itemDataSO.itemType == ItemType.Accessory
+            && matchingSlots[0].equipedItem.itemDataSO == itemToEquip.itemDataSO)
+            slotToReplace = matchingSlots[1];
         var itemToUnequip = slotToReplace.equipedItem;
 
         EquipItem(itemToEquip, slotToReplace);
-        UnEquipItem(itemToUnequip);
+        UnEquipItem(itemToUnequip, slotToReplace != null);
     }
 
     // 穿戴装备
-    private void EquipItem(Inventory_Item itemToEquip, Inventory_EquipmentSlot slot)
+    private void EquipItem(Inventory_Item itemToEquip, Inventory_EquipSlot slot)
     {
         slot.equipedItem = itemToEquip;
-        itemToEquip.AddModifiers(playerStats);
+        itemToEquip.AddModifiers(player.stats);
+        itemToEquip.AddEffect(player);
         RemoveItem(itemToEquip);
     }
 
     // 卸除装备
-    public void UnEquipItem(Inventory_Item itemToUnequip)
+    public void UnEquipItem(Inventory_Item itemToUnequip, bool replacingItem = false)
     {
-        if (IsFull(itemToUnequip)) return;
+        if (IsFull(itemToUnequip) && replacingItem == false) return;
 
         foreach (var equipSlot in equipSlotList)
         {
@@ -138,7 +142,8 @@ public class Inventory_Base : MonoBehaviour
             }
         }
 
-        itemToUnequip.RemoveModifiers(playerStats);
+        itemToUnequip.RemoveModifiers(player.stats);
+        itemToUnequip.RemoveEffect();
         AddItem(itemToUnequip);
     }
 

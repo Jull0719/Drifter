@@ -44,6 +44,7 @@ public class Enemy : Entity, ICounterable
     public Enemy_VFX vfx { get; private set; }
     public Enemy_Health health { get; private set; }
     public Entity_Combat combat { get; private set; }
+    public Entity_Stats stats { get; private set; }
 
     protected override void Awake()
     {
@@ -52,6 +53,7 @@ public class Enemy : Entity, ICounterable
         vfx = GetComponent<Enemy_VFX>();
         health = GetComponent<Enemy_Health>();
         combat = GetComponent<Entity_Combat>();
+        stats = GetComponent<Entity_Stats>();
 
         idleState = new Enemy_IdleState(this, stateMachine, "idle");
         moveState = new Enemy_MoveState(this, stateMachine, "move");
