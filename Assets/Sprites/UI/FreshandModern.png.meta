@@ -551,7 +551,7 @@ TextureImporter:
         width: 14
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -572,7 +572,7 @@ TextureImporter:
         width: 14
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -593,7 +593,7 @@ TextureImporter:
         width: 14
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -601,6 +601,48 @@ TextureImporter:
       bones: []
       spriteID: 4e1fc2447d47e0e4bbf27ab77ed5bdfc
       internalID: -1217633973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_InteractableToolTip
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 48
+        width: 56
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c1954c6573ce6c4898e869a70a1c447
+      internalID: 416752504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Slot_Yellow
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eff949c7ffa7ed746b4e6dfd89c864bd
+      internalID: 1988177615
       vertices: []
       indices: 
       edges: []
@@ -630,12 +672,14 @@ TextureImporter:
       UI_ExitButton_Light: -1813565519
       UI_HealthBar: 14570198
       UI_HealthBar_Background: 1896531759
+      UI_InteractableToolTip: 416752504
       UI_Inventory: 423295434
       UI_Player: 713588928
       UI_Quest: 107750361
       UI_Shop: -1742414901
       UI_Slot_Dark: 1405666451
       UI_Slot_Light: -1931836394
+      UI_Slot_Yellow: 1988177615
       UI_Title: 317319269
       UI_Title_Light: -1704505145
       UI_ToolTip: -1102951429

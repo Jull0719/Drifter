@@ -40,6 +40,9 @@ public class Player : Entity
     public Vector2[] attackVelocity; //攻击反馈
     private Coroutine queueAttackCo;
 
+    [Header("交互")]
+    [SerializeField] private LayerMask interactLayer;
+
     public UI ui { get; private set; }
 
     private Scene m_scene;
@@ -85,6 +88,9 @@ public class Player : Entity
         // UI快捷键
         input.Gameplay.ToggleInventoryUI.performed += ctx => ui.ToggleInventoryUI();
         input.Gameplay.ToggleStatUI.performed += ctx => ui.ToggleStatUI();
+
+        // E键交互
+        input.Gameplay.Interact.performed += ctx => TryToInteract();
     }
 
     private void OnDisable()
@@ -193,4 +199,30 @@ public class Player : Entity
 
     // 二段跳
     public void EnabledDoubleJump(bool enable) => canDoubleJump = enable;
+
+    // 交互
+    public void TryToInteract()
+    {
+        float minDistance = float.MaxValue;
+        IInteractable close = null;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1.5f, interactLayer);
+
+        foreach (var col in colliders)
+        {
+            IInteractable interactable = col.GetComponent<IInteractable>();
+            if (interactable == null) continue;
+
+            // 与最近的对象进行交互
+            float distance = Vector2.Distance(transform.position, col.transform.position);
+
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                close = interactable;
+            }
+        }
+
+        if (close != null)
+            close.Interact();
+    }
 }

@@ -80,6 +80,15 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""615a8e71-5f27-495f-81f6-3a7979d3f54b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -247,6 +256,17 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""action"": ""ToggleStatUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8848d3c-a2eb-49e8-91ff-e20d5f788dcc"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -295,6 +315,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         m_Gameplay_CounterAttack = m_Gameplay.FindAction("CounterAttack", throwIfNotFound: true);
         m_Gameplay_ToggleInventoryUI = m_Gameplay.FindAction("ToggleInventoryUI", throwIfNotFound: true);
         m_Gameplay_ToggleStatUI = m_Gameplay.FindAction("ToggleStatUI", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Inventory = m_UI.FindAction("Inventory", throwIfNotFound: true);
@@ -365,6 +386,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_CounterAttack;
     private readonly InputAction m_Gameplay_ToggleInventoryUI;
     private readonly InputAction m_Gameplay_ToggleStatUI;
+    private readonly InputAction m_Gameplay_Interact;
     public struct GameplayActions
     {
         private @PlayerInputSet m_Wrapper;
@@ -375,6 +397,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         public InputAction @CounterAttack => m_Wrapper.m_Gameplay_CounterAttack;
         public InputAction @ToggleInventoryUI => m_Wrapper.m_Gameplay_ToggleInventoryUI;
         public InputAction @ToggleStatUI => m_Wrapper.m_Gameplay_ToggleStatUI;
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -402,6 +425,9 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @ToggleStatUI.started += instance.OnToggleStatUI;
             @ToggleStatUI.performed += instance.OnToggleStatUI;
             @ToggleStatUI.canceled += instance.OnToggleStatUI;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -424,6 +450,9 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @ToggleStatUI.started -= instance.OnToggleStatUI;
             @ToggleStatUI.performed -= instance.OnToggleStatUI;
             @ToggleStatUI.canceled -= instance.OnToggleStatUI;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -504,6 +533,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         void OnCounterAttack(InputAction.CallbackContext context);
         void OnToggleInventoryUI(InputAction.CallbackContext context);
         void OnToggleStatUI(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

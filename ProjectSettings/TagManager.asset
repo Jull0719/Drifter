@@ -27,7 +27,7 @@ TagManager:
   - Enemy
   - Interactable
   - PlayerPickup
-  - 
+  - NPC
   - 
   - 
   - 
@@ -67,9 +67,6 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 909123653
-    locked: 0
-  - name: VFX
-    uniqueID: 591071675
     locked: 0
   - name: Player
     uniqueID: 2334083277

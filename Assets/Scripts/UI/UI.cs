@@ -12,9 +12,10 @@ public class UI : MonoBehaviour
     public UI_ItemToolTip itemToolTip { get; private set; }
     public UI_StatToolTip statToolTip { get; private set; }
 
+    public UI_Dialogue dialogueUI { get; private set; }
+
     [SerializeField] private TextMeshProUGUI warningText;
     private Coroutine blinkCo;
-
 
     private void Awake()
     {
@@ -28,6 +29,8 @@ public class UI : MonoBehaviour
 
         itemToolTip = GetComponentInChildren<UI_ItemToolTip>();
         statToolTip = GetComponentInChildren<UI_StatToolTip>();
+
+        dialogueUI = GetComponentInChildren<UI_Dialogue>(true);
     }
 
     public void StartButton()
