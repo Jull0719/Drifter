@@ -23,7 +23,7 @@ public class Player : Entity
     public Player_Stats stats { get; private set; }
     public Player_VFX vfx { get; private set; }
 
-    public Inventory_Base inventory { get; private set; }
+    public Inventory_Player inventory { get; private set; }
 
     [Header("移动")]
     public float moveSpeed = 10;
@@ -71,7 +71,7 @@ public class Player : Entity
         counterAttackState = new Player_CounterAttackState(this, stateMachine, "counterAttack");
         deadState = new Player_DeadState(this, stateMachine, "dead");
 
-        inventory = GetComponent<Inventory_Base>();
+        inventory = GetComponent<Inventory_Player>();
 
         ui = FindAnyObjectByType<UI>();
 
@@ -86,7 +86,7 @@ public class Player : Entity
         input.Gameplay.Move.canceled += ctx => moveInput = Vector2.zero;
 
         // UI快捷键
-        input.Gameplay.ToggleInventoryUI.performed += ctx => ui.ToggleInventoryUI();
+        input.Gameplay.ToggleInventoryUI.performed += ctx => ui.OpenInventoryUI();
         input.Gameplay.ToggleStatUI.performed += ctx => ui.ToggleStatUI();
 
         // E键交互

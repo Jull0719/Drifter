@@ -14,7 +14,7 @@ public class NPC : MonoBehaviour, IInteractable
     protected Player player;
     protected UI ui;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         ui = FindAnyObjectByType<UI>();
         startPosition = interactionMarker.transform.position;
@@ -62,10 +62,6 @@ public class NPC : MonoBehaviour, IInteractable
 
     public virtual void Interact()
     {
-        if (interactionMarker.activeSelf)
-        {
-            Debug.Log($"你在和{gameObject.name}进行交互");
-            ui.dialogueUI.gameObject.SetActive(true);
-        }
+
     }
 }

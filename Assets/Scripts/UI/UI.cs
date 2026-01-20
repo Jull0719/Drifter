@@ -8,6 +8,8 @@ public class UI : MonoBehaviour
 
     public UI_Inventory inventoryUI { get; private set; }
     public UI_PlayerStats statUI { get; private set; }
+    public UI_Storage storageUI { get; private set; }
+    public UI_Shop shopUI { get; private set; }
 
     public UI_ItemToolTip itemToolTip { get; private set; }
     public UI_StatToolTip statToolTip { get; private set; }
@@ -26,6 +28,8 @@ public class UI : MonoBehaviour
 
         inventoryUI = GetComponentInChildren<UI_Inventory>(true);
         statUI = GetComponentInChildren<UI_PlayerStats>(true);
+        storageUI = GetComponentInChildren<UI_Storage>(true);
+        shopUI = GetComponentInChildren<UI_Shop>(true);
 
         itemToolTip = GetComponentInChildren<UI_ItemToolTip>();
         statToolTip = GetComponentInChildren<UI_StatToolTip>();
@@ -50,7 +54,7 @@ public class UI : MonoBehaviour
     public void ToggleUI(GameObject uiObject) => uiObject.SetActive(!uiObject.activeSelf);
 
     // 背包
-    public void ToggleInventoryUI()
+    public void OpenInventoryUI()
     {
         ToggleUI(inventoryUI.gameObject);
         itemToolTip.ShowToolTip(false, null);
@@ -61,6 +65,12 @@ public class UI : MonoBehaviour
     {
         ToggleUI(statUI.gameObject);
         statToolTip.ShowToolTip(false, null);
+    }
+
+    // 打开仓库
+    public void OpenStorageUI()
+    {
+        storageUI.gameObject.SetActive(true);
     }
 
     #region 文字提示

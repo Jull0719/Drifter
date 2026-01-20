@@ -1,0 +1,28 @@
+﻿using UnityEngine;
+
+public class NPC_InnKeeper : NPC
+{
+    private Inventory_Player inventory;
+    private Inventory_Storage storage;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        storage = GetComponent<Inventory_Storage>();
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+        inventory = collision.GetComponent<Inventory_Player>();
+        storage.SetInventory(inventory);
+    }
+
+    public override void Interact()
+    {
+        base.Interact();
+        ui.storageUI.SetupStorage(storage);
+        ui.OpenStorageUI();
+        ui.OpenInventoryUI();
+    }
+}
