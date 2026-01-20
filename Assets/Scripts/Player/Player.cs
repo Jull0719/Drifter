@@ -86,7 +86,7 @@ public class Player : Entity
         input.Gameplay.Move.canceled += ctx => moveInput = Vector2.zero;
 
         // UI快捷键
-        input.Gameplay.ToggleInventoryUI.performed += ctx => ui.OpenInventoryUI();
+        input.Gameplay.ToggleInventoryUI.performed += ctx => ui.ToggleInventoryUI();
         input.Gameplay.ToggleStatUI.performed += ctx => ui.ToggleStatUI();
 
         // E键交互

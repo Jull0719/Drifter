@@ -18,11 +18,19 @@ public class NPC_InnKeeper : NPC
         storage.SetInventory(inventory);
     }
 
+    protected override void OnTriggerExit2D(Collider2D collision)
+    {
+        base.OnTriggerExit2D(collision);
+
+        ui.SwitchOffTooltip();
+        ui.storageUI.gameObject.SetActive(false);
+    }
+
     public override void Interact()
     {
         base.Interact();
         ui.storageUI.SetupStorage(storage);
         ui.OpenStorageUI();
-        ui.OpenInventoryUI();
+        ui.ToggleInventoryUI();
     }
 }

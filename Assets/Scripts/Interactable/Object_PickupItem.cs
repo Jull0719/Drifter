@@ -8,7 +8,9 @@ public class Object_PickupItem : MonoBehaviour
 
     private SpriteRenderer sr;
 
-    private Inventory_Base inventory;
+    private Inventory_Player inventory;
+    private Inventory_Storage storage;
+
     private Inventory_Item item;
 
     private void Awake()
@@ -25,14 +27,26 @@ public class Object_PickupItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        inventory = collision.GetComponent<Inventory_Base>();
+        inventory = collision.GetComponent<Inventory_Player>();
+        storage = inventory.storage;
 
-        if (inventory == null || inventory.IsFull(item)) return;
+        // 如果是材料，直接加入材料贮藏处
+        if (itemDataSO.itemType == ItemType.Material)
+        {
+            storage.AddToStash(item);
+            PickUpItem();
+            return;
+        }
 
+        if (inventory.IsFull(item)) return;
         inventory.AddItem(item);
+        PickUpItem();
+    }
+
+    public void PickUpItem()
+    {
         string warningText = "拾取了" + itemDataSO.itemName;
         UI.instance.SetWarningText(warningText, false);
-
         Destroy(gameObject);
     }
 }

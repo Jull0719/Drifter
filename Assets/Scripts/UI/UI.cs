@@ -50,11 +50,18 @@ public class UI : MonoBehaviour
         Application.Quit();
     }
 
+    // 关闭ToolTip
+    public void SwitchOffTooltip()
+    {
+        itemToolTip.gameObject.SetActive(false);
+        statToolTip.gameObject.SetActive(false);
+    }
+
     // 关闭或开启指定UI面板
     public void ToggleUI(GameObject uiObject) => uiObject.SetActive(!uiObject.activeSelf);
 
     // 背包
-    public void OpenInventoryUI()
+    public void ToggleInventoryUI()
     {
         ToggleUI(inventoryUI.gameObject);
         itemToolTip.ShowToolTip(false, null);

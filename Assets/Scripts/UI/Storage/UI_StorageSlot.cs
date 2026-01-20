@@ -1,4 +1,5 @@
-﻿using UnityEngine.EventSystems;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UI_StorageSlot : UI_ItemSlot
 {
@@ -6,7 +7,9 @@ public class UI_StorageSlot : UI_ItemSlot
     {
         if (itemInSlot == null) return;
 
-        storage.FromStorageToPlayer(itemInSlot);
+        bool transferFullStack = Input.GetKey(KeyCode.LeftControl);
+
+        storage.FromStorageToPlayer(itemInSlot, transferFullStack);
 
         ui.itemToolTip.ShowToolTip(false, null);
     }

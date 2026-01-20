@@ -86,7 +86,9 @@ public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
     {
         if (itemInSlot == null) return;
 
-        storage.FromPlayerToStorage(itemInSlot);
+        bool transferFullStack = Input.GetKey(KeyCode.LeftControl);
+
+        storage.FromPlayerToStorage(itemInSlot, transferFullStack);
         ui.itemToolTip.ShowToolTip(false, null);
     }
 
