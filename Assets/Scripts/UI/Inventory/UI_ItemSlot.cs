@@ -10,7 +10,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
 
     protected UI ui;
 
-    private RectTransform rect;
+    protected RectTransform rect;
 
     protected Inventory_Item itemInSlot;
     protected Inventory_Player inventory;
@@ -44,7 +44,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
         itemStackSize.text = item.itemStackSize > 1 ? item.itemStackSize.ToString() : "";
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if (itemInSlot == null) return;
 

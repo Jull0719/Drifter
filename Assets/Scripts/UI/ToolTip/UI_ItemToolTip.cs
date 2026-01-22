@@ -9,7 +9,7 @@ public class UI_ItemToolTip : UI_ToolTip
     [SerializeField] private TextMeshProUGUI itemInfoText;
     [SerializeField] private TextMeshProUGUI itemPriceText;
 
-    public void ShowToolTip(bool isShow, RectTransform target, Inventory_Item itemToShow)
+    public void ShowToolTip(bool isShow, RectTransform target, Inventory_Item itemToShow, bool buyPrice = false)
     {
         base.ShowToolTip(isShow, target);
 
@@ -18,7 +18,15 @@ public class UI_ItemToolTip : UI_ToolTip
         itemNameText.text = itemDataSO.itemName;
         itemTypeText.text = GetItemType(itemDataSO.itemType);
         itemInfoText.text = GetItemInfo(itemToShow);
-        itemPriceText.text = "价格 " + itemToShow.sellingPrice.ToString();
+
+        // 物品价格
+        int price = buyPrice ? itemToShow.buyingPrice : itemToShow.sellingPrice;
+
+        string totalPrice = $"{price}({(price * itemToShow.itemStackSize)})";
+
+        string priceText = itemToShow.itemStackSize > 1 ? totalPrice : price.ToString();
+        itemPriceText.text = "价格 " + priceText + " 金币";
+
     }
 
     private string GetItemInfo(Inventory_Item item)
