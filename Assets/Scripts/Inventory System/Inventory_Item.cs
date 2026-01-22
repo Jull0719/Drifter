@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 [Serializable]
 public class Inventory_Item
@@ -9,6 +10,8 @@ public class Inventory_Item
     public ItemModifier[] itemModifiers;
 
     public string itemId;
+    public int buyingPrice { get; private set; } // 买入
+    public int sellingPrice { get; private set; } // 售出
 
     public Inventory_Item(ItemDataSO itemDataSO)
     {
@@ -17,6 +20,10 @@ public class Inventory_Item
         itemModifiers = Equipment()?.modifiers;
 
         itemId = itemDataSO.itemName + " - " + Guid.NewGuid();
+
+        // 价格
+        buyingPrice = itemDataSO.itemPrice;
+        sellingPrice = (int)(itemDataSO.itemPrice * 0.6f);
     }
 
     // 判断是否为装备

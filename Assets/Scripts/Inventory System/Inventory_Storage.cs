@@ -55,6 +55,10 @@ public class Inventory_Storage : Inventory_Base
         TriggerUpdateUI();
     }
 
+    /// <summary>
+    /// 将物品添加到材料贮藏处
+    /// </summary>
+    /// <param name="item">物品</param>
     public void AddToStash(Inventory_Item item)
     {
         var stackableItem = FindStackableItemInStash(item);

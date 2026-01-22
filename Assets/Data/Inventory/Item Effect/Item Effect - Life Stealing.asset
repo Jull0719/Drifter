@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacf7175b68962c46a0e037ffa8d542a, type: 3}
+  m_Name: Item Effect - Life Stealing
+  m_EditorClassIdentifier: 
+  effectDescription: "\u6BCF\u6B21\u653B\u51FB\u4EE520%\u4F24\u5BB3\u503C\u5438\u53D6\u654C\u4EBA\u8840\u91CF\u3002"
+  healthSuckingPercent: 0.2

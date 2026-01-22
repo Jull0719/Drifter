@@ -15,6 +15,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
     protected Inventory_Item itemInSlot;
     protected Inventory_Player inventory;
     protected Inventory_Storage storage;
+    protected Inventory_Shop shop;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
 
         inventory = FindAnyObjectByType<Inventory_Player>();
         storage = FindAnyObjectByType<Inventory_Storage>();
+        shop = FindAnyObjectByType<Inventory_Shop>();
     }
 
     // 更新格子显示
@@ -56,9 +58,19 @@ public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
             HandledStorageSlot(storage);
         // 商店开启时，交易物品
         else if (ui.shopUI.gameObject.activeSelf)
-            HandledShopSlot();
+        {
+            bool leftButton = eventData.button == PointerEventData.InputButton.Left;
+            bool rightButton = eventData.button == PointerEventData.InputButton.Right;
+
+            if (leftButton)
+                HandledItemSlot();
+            else if (rightButton)
+                HandledShopSlot(shop);
+        }
         else
             HandledItemSlot();
+
+        ui.itemToolTip.ShowToolTip(false, null);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -66,7 +78,10 @@ public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
         ui.itemToolTip.ShowToolTip(false, null);
     }
 
-    private void HandledItemSlot()
+    /// <summary>
+    /// 使用物品
+    /// </summary>
+    public void HandledItemSlot()
     {
         if (itemInSlot == null || itemInSlot.itemDataSO.itemType == ItemType.Material) return;
 
@@ -74,8 +89,6 @@ public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
             inventory.TryToUse(itemInSlot);
         else
             inventory.TryToEquipItem(itemInSlot);
-
-        ui.itemToolTip.ShowToolTip(false, null);
     }
 
     /// <summary>
@@ -89,11 +102,18 @@ public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
         bool transferFullStack = Input.GetKey(KeyCode.LeftControl);
 
         storage.FromPlayerToStorage(itemInSlot, transferFullStack);
-        ui.itemToolTip.ShowToolTip(false, null);
     }
 
-    private void HandledShopSlot()
+    /// <summary>
+    /// 卖出物品
+    /// </summary>
+    /// <param name="shop"></param>
+    private void HandledShopSlot(Inventory_Shop shop)
     {
-        Debug.Log("卖出");
+        if (itemInSlot == null) return;
+
+        bool sellFullStack = Input.GetKey(KeyCode.LeftControl);
+
+        shop.TryToSellItem(itemInSlot, sellFullStack);
     }
 }

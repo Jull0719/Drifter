@@ -51,10 +51,10 @@ public class UI : MonoBehaviour
     }
 
     // 关闭ToolTip
-    public void SwitchOffTooltip()
+    public void HideAllTooltip()
     {
-        itemToolTip.gameObject.SetActive(false);
-        statToolTip.gameObject.SetActive(false);
+        itemToolTip.ShowToolTip(false, null);
+        statToolTip.ShowToolTip(false, null);
     }
 
     // 关闭或开启指定UI面板
@@ -78,6 +78,12 @@ public class UI : MonoBehaviour
     public void OpenStorageUI()
     {
         storageUI.gameObject.SetActive(true);
+    }
+
+    // 打开商店
+    public void OpenShopUI()
+    {
+        shopUI.gameObject.SetActive(true);
     }
 
     #region 文字提示

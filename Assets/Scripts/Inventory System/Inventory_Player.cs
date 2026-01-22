@@ -6,6 +6,9 @@ public class Inventory_Player : Inventory_Base
 {
     // 装备栏
     public List<Inventory_EquipSlot> equipSlotList = new List<Inventory_EquipSlot>();
+    // 金钱
+    public int money = 0;
+
     public Inventory_Storage storage { get; private set; }
 
     private Player player;

@@ -22,7 +22,7 @@ public class NPC_InnKeeper : NPC
     {
         base.OnTriggerExit2D(collision);
 
-        ui.SwitchOffTooltip();
+        ui.HideAllTooltip();
         ui.storageUI.gameObject.SetActive(false);
     }
 

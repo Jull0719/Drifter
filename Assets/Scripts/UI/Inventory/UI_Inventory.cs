@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UI_Inventory : UI_Base
@@ -17,7 +18,15 @@ public class UI_Inventory : UI_Base
         equipSlotParent = GetComponentInChildren<UI_EquipSlotParent>();
 
         inventory = FindFirstObjectByType<Inventory_Player>();
+
         inventory.OnUpdateUI += UpdateInventoryUI;
+
+        UpdateInventoryUI();
+    }
+
+    private void OnEnable()
+    {
+        if (inventory == null) return;
 
         UpdateInventoryUI();
     }
@@ -25,6 +34,6 @@ public class UI_Inventory : UI_Base
     private void UpdateInventoryUI()
     {
         itemSlotParent.UpdateItemSlots(inventory.itemList);
-        equipSlotParent?.UpdateEquipSlot(inventory.equipSlotList);
+        equipSlotParent.UpdateEquipSlot(inventory.equipSlotList);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/Inventory/Equipment Item", fileName = "Equipment Item - ")]
+[CreateAssetMenu(menuName = "Data/Inventory/Item/Equipment Item", fileName = "Equipment Item - ")]
 public class EquipmentDataSO : ItemDataSO
 {
     [Header("物品属性")]

@@ -18,7 +18,7 @@ public class UI_ItemToolTip : UI_ToolTip
         itemNameText.text = itemDataSO.itemName;
         itemTypeText.text = GetItemType(itemDataSO.itemType);
         itemInfoText.text = GetItemInfo(itemToShow);
-        itemPriceText.text = "价格 " + itemDataSO.itemPrice.ToString();
+        itemPriceText.text = "价格 " + itemToShow.sellingPrice.ToString();
     }
 
     private string GetItemInfo(Inventory_Item item)

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54ed4a7ba6e8c94e82652872115905b, type: 3}
+  m_Name: "Equipment Item - \u517D\u7259\u9879\u94FE"
+  m_EditorClassIdentifier: 
+  itemName: "\u517D\u7259\u9879\u94FE"
+  itemType: 4
+  itemIcon: {fileID: -1384073382, guid: f9a96e407f32a9a4bbe94414ae62a859, type: 3}
+  itemInfo: "\u6765\u81EA\u8FDC\u53E4\u7684\u529B\u91CF\u3002"
+  maxStackSize: 1
+  itemPrice: 100
+  minStackSizeInShop: 1
+  maxStackSizeInShop: 1
+  effectDataSO: {fileID: 0}
+  modifiers:
+  - statType: 5
+    value: 2
+  - statType: 6
+    value: 0.1
