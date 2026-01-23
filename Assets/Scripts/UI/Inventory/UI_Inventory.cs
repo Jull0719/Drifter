@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class UI_Inventory : UI_Base
 {
+    [SerializeField] private TextMeshProUGUI moneyText;
     private UI_ItemSlotParent itemSlotParent;
     private UI_EquipSlotParent equipSlotParent;
 
@@ -35,5 +36,7 @@ public class UI_Inventory : UI_Base
     {
         itemSlotParent.UpdateItemSlots(inventory.itemList);
         equipSlotParent.UpdateEquipSlot(inventory.equipSlotList);
+
+        moneyText.text = inventory.money.ToString();
     }
 }

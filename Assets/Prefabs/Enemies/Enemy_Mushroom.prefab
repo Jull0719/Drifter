@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 8266861580008729577}
   - component: {fileID: 506019257895999440}
   - component: {fileID: 4086614416241035060}
+  - component: {fileID: 2569353295675343803}
   m_Layer: 7
   m_Name: Enemy_Mushroom
   m_TagString: Untagged
@@ -409,7 +410,7 @@ MonoBehaviour:
       modifiers: []
   offense:
     damage:
-      baseValue: 50
+      baseValue: 20
       modifiers: []
     attackSpeed:
       baseValue: 1
@@ -463,6 +464,23 @@ MonoBehaviour:
   damageVfxDuration: 0.3
   stunnedIcon: {fileID: 3937435707869394234}
   attackAlert: {fileID: 7615495096184127062}
+--- !u!114 &2569353295675343803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4176409366116635519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f854321773d834a81296d05625ba4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItemPrefab: {fileID: 4246363045996632216, guid: 111d4ab5df5796b44b46d17af2fe94a0,
+    type: 3}
+  maxDropAmount: 2
+  maxDropRarity: 120
+  dropData: {fileID: 11400000, guid: 31a4fc2bc28b7fa44930801af1fc28ac, type: 2}
 --- !u!1 &5532783422255788075
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +554,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 909123653
-  m_SortingLayer: -3
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: f8b30c2afe165d645b54d500a9c30862,
     type: 3}

@@ -20,6 +20,8 @@ MonoBehaviour:
   itemPrice: 100
   minStackSizeInShop: 1
   maxStackSizeInShop: 1
+  rarity: 70
+  dropRate: 0.31
   effectDataSO: {fileID: 0}
   modifiers:
   - statType: 5

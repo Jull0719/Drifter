@@ -83,12 +83,26 @@ public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
     /// </summary>
     public void HandledItemSlot()
     {
-        if (itemInSlot == null || itemInSlot.itemDataSO.itemType == ItemType.Material) return;
+        if (itemInSlot == null) return;
 
-        if (itemInSlot.itemDataSO.itemType == ItemType.Consumable)
-            inventory.TryToUse(itemInSlot);
+        // 同时按下LeftControl和鼠标，可以删除物品
+        bool deleteInput = Input.GetKey(KeyCode.LeftControl);
+        var itemToRemove = itemInSlot;
+
+        if (deleteInput)
+        {
+            inventory.RemoveOneItem(itemInSlot);
+            inventory.GetComponent<Player_DropManager>().CreateDropItem(itemToRemove);
+        }
         else
-            inventory.TryToEquipItem(itemInSlot);
+        {
+            if (itemInSlot.itemDataSO.itemType == ItemType.Material)
+                return;
+            else if (itemInSlot.itemDataSO.itemType == ItemType.Consumable)
+                inventory.TryToUse(itemInSlot);
+            else
+                inventory.TryToEquipItem(itemInSlot);
+        }
     }
 
     /// <summary>

@@ -8,21 +8,30 @@ public class Object_Chest : MonoBehaviour, IDamagable
     [SerializeField] private float duration = 1f;
     private int attackCount;
     private bool canAttack = true;
+    private bool canDrop = true;
 
     private Animator anim;
     private Rigidbody2D rb;
     private Entity_VFX vfx;
+    private Entity_DropManager dropManager;
 
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         vfx = GetComponent<Entity_VFX>();
+        dropManager = GetComponent<Entity_DropManager>();
     }
 
     public bool TakeDamage(float damage, Transform damageDealer)
     {
         if (!canAttack) return false;
+
+        if (canDrop)
+        {
+            dropManager.DropItems();
+            canDrop = false;
+        }
 
         vfx.OnDamageVfx();
         rb.velocity = knockback;

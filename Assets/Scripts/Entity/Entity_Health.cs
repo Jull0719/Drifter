@@ -26,6 +26,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
     protected Entity entity;
     protected Entity_VFX vfx;
     protected Entity_Stats stats;
+    protected Entity_DropManager dropManager;
 
     protected Rigidbody2D rb;
 
@@ -34,6 +35,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
         entity = GetComponent<Entity>();
         vfx = GetComponent<Entity_VFX>();
         stats = GetComponent<Entity_Stats>();
+        dropManager = GetComponent<Entity_DropManager>();
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -120,6 +122,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
         currentHealth = 0;
 
         OnDie();
+        dropManager?.DropItems();
     }
 
     public virtual void OnDie()

@@ -16,8 +16,11 @@ MonoBehaviour:
   itemType: 0
   itemIcon: {fileID: -2087398300, guid: f9a96e407f32a9a4bbe94414ae62a859, type: 3}
   itemInfo: "\u5C06\u5FC3\u4E2D\u6012\u706B\u5316\u4E3A\u5229\u5203\u950B\u8292\u3002\u77ED\u6682\u7684\u65F6\u6548\u5185\uFF0C\u6362\u6765\u8DB3\u4EE5\u9006\u8F6C\u6218\u5C40\u7684\u81F4\u547D\u8FDE\u51FB\u3002"
-  maxStackSize: 2
+  maxStackSize: 5
   itemPrice: 100
   minStackSizeInShop: 1
-  maxStackSizeInShop: 2
+  maxStackSizeInShop: 5
+  rarity: 70
+  dropRate: 0.31
+  maxDropRate: 0.7
   effectDataSO: {fileID: 11400000, guid: cfc7ad692f80eab41b905e80e29d9146, type: 2}
