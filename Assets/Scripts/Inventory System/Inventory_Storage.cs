@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory_Storage : Inventory_Base
@@ -67,6 +68,9 @@ public class Inventory_Storage : Inventory_Base
             stackableItem.AddStack();
         else
             materialStashList.Add(item);
+
+        // 将物品按照名称进行排序
+        materialStashList = materialStashList.OrderBy(item => item.itemDataSO.itemName).ToList();
     }
 
     public Inventory_Item FindStackableItemInStash(Inventory_Item itemToFind)

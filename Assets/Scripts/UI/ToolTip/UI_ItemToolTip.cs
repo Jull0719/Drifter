@@ -14,8 +14,9 @@ public class UI_ItemToolTip : UI_ToolTip
         base.ShowToolTip(isShow, target);
 
         ItemDataSO itemDataSO = itemToShow.itemDataSO;
+        string nameColor = GetColorStringByRarity(itemDataSO);
+        itemNameText.text = GetColorText(nameColor, itemDataSO.itemName);
 
-        itemNameText.text = itemDataSO.itemName;
         itemTypeText.text = GetItemType(itemDataSO.itemType);
         itemInfoText.text = GetItemInfo(itemToShow);
 
@@ -102,5 +103,20 @@ public class UI_ItemToolTip : UI_ToolTip
             default:
                 return false;
         }
+    }
+
+    // 根据不同稀有度返回对应的字体颜色
+    public string GetColorStringByRarity(ItemDataSO itemDataSO)
+    {
+        int rarity = itemDataSO.rarity;
+
+        if (rarity <= 50) return "white";
+        if (rarity <= 70) return "green";
+        if (rarity <= 90) return "blue";
+        if (rarity <= 95) return "purple";
+        if (rarity <= 100) return "red";
+
+        Debug.Log($"没有为{rarity}添加对应的颜色");
+        return "white";
     }
 }
