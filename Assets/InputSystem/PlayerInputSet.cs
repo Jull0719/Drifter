@@ -64,24 +64,6 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ToggleInventoryUI"",
-                    ""type"": ""Button"",
-                    ""id"": ""8fa4d788-7776-42c3-b1a8-27a4e91a2720"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ToggleStatUI"",
-                    ""type"": ""Button"",
-                    ""id"": ""f7ac2c49-0f2a-40f3-ac64-f9b576368795"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""615a8e71-5f27-495f-81f6-3a7979d3f54b"",
@@ -237,28 +219,6 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""627bbb36-e63a-4124-96fe-7175f604221e"",
-                    ""path"": ""<Keyboard>/b"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse & Keyboard"",
-                    ""action"": ""ToggleInventoryUI"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f2a98f99-1990-4582-81fb-78277e52a4c4"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse & Keyboard"",
-                    ""action"": ""ToggleStatUI"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""c8848d3c-a2eb-49e8-91ff-e20d5f788dcc"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -275,9 +235,27 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             ""id"": ""cbae8b12-c58f-4251-a91b-a9637ee27b9f"",
             ""actions"": [
                 {
-                    ""name"": ""Inventory"",
+                    ""name"": ""OptionsUI"",
                     ""type"": ""Button"",
-                    ""id"": ""d26317ea-d83f-479e-bfa1-4148478a8c13"",
+                    ""id"": ""bbfcd7d0-9c79-4525-89a4-538d48b74fe5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StatUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""f90ed063-10f5-4dba-8514-5ceb6558134c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InventoryUI"",
+                    ""type"": ""Button"",
+                    ""id"": ""2670ab18-b990-4a88-b71a-edf5fd9dd6fe"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -287,12 +265,34 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""0f1853f5-67a4-4ccd-bb40-cc14761b33a5"",
+                    ""id"": ""eaa69da0-e560-477f-a611-f9265a33d6c4"",
                     ""path"": ""<Keyboard>/b"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse & Keyboard"",
-                    ""action"": ""Inventory"",
+                    ""action"": ""InventoryUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ce4d214-a60d-44b1-a5ba-962808fc2d25"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""StatUI"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6db1d026-634f-4d67-bfec-82ce30d83968"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""OptionsUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -313,12 +313,12 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_CounterAttack = m_Gameplay.FindAction("CounterAttack", throwIfNotFound: true);
-        m_Gameplay_ToggleInventoryUI = m_Gameplay.FindAction("ToggleInventoryUI", throwIfNotFound: true);
-        m_Gameplay_ToggleStatUI = m_Gameplay.FindAction("ToggleStatUI", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Inventory = m_UI.FindAction("Inventory", throwIfNotFound: true);
+        m_UI_OptionsUI = m_UI.FindAction("OptionsUI", throwIfNotFound: true);
+        m_UI_StatUI = m_UI.FindAction("StatUI", throwIfNotFound: true);
+        m_UI_InventoryUI = m_UI.FindAction("InventoryUI", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -384,8 +384,6 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Attack;
     private readonly InputAction m_Gameplay_CounterAttack;
-    private readonly InputAction m_Gameplay_ToggleInventoryUI;
-    private readonly InputAction m_Gameplay_ToggleStatUI;
     private readonly InputAction m_Gameplay_Interact;
     public struct GameplayActions
     {
@@ -395,8 +393,6 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
         public InputAction @CounterAttack => m_Wrapper.m_Gameplay_CounterAttack;
-        public InputAction @ToggleInventoryUI => m_Wrapper.m_Gameplay_ToggleInventoryUI;
-        public InputAction @ToggleStatUI => m_Wrapper.m_Gameplay_ToggleStatUI;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -419,12 +415,6 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @CounterAttack.started += instance.OnCounterAttack;
             @CounterAttack.performed += instance.OnCounterAttack;
             @CounterAttack.canceled += instance.OnCounterAttack;
-            @ToggleInventoryUI.started += instance.OnToggleInventoryUI;
-            @ToggleInventoryUI.performed += instance.OnToggleInventoryUI;
-            @ToggleInventoryUI.canceled += instance.OnToggleInventoryUI;
-            @ToggleStatUI.started += instance.OnToggleStatUI;
-            @ToggleStatUI.performed += instance.OnToggleStatUI;
-            @ToggleStatUI.canceled += instance.OnToggleStatUI;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
@@ -444,12 +434,6 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @CounterAttack.started -= instance.OnCounterAttack;
             @CounterAttack.performed -= instance.OnCounterAttack;
             @CounterAttack.canceled -= instance.OnCounterAttack;
-            @ToggleInventoryUI.started -= instance.OnToggleInventoryUI;
-            @ToggleInventoryUI.performed -= instance.OnToggleInventoryUI;
-            @ToggleInventoryUI.canceled -= instance.OnToggleInventoryUI;
-            @ToggleStatUI.started -= instance.OnToggleStatUI;
-            @ToggleStatUI.performed -= instance.OnToggleStatUI;
-            @ToggleStatUI.canceled -= instance.OnToggleStatUI;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
@@ -474,12 +458,16 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
-    private readonly InputAction m_UI_Inventory;
+    private readonly InputAction m_UI_OptionsUI;
+    private readonly InputAction m_UI_StatUI;
+    private readonly InputAction m_UI_InventoryUI;
     public struct UIActions
     {
         private @PlayerInputSet m_Wrapper;
         public UIActions(@PlayerInputSet wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Inventory => m_Wrapper.m_UI_Inventory;
+        public InputAction @OptionsUI => m_Wrapper.m_UI_OptionsUI;
+        public InputAction @StatUI => m_Wrapper.m_UI_StatUI;
+        public InputAction @InventoryUI => m_Wrapper.m_UI_InventoryUI;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -489,16 +477,28 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
-            @Inventory.started += instance.OnInventory;
-            @Inventory.performed += instance.OnInventory;
-            @Inventory.canceled += instance.OnInventory;
+            @OptionsUI.started += instance.OnOptionsUI;
+            @OptionsUI.performed += instance.OnOptionsUI;
+            @OptionsUI.canceled += instance.OnOptionsUI;
+            @StatUI.started += instance.OnStatUI;
+            @StatUI.performed += instance.OnStatUI;
+            @StatUI.canceled += instance.OnStatUI;
+            @InventoryUI.started += instance.OnInventoryUI;
+            @InventoryUI.performed += instance.OnInventoryUI;
+            @InventoryUI.canceled += instance.OnInventoryUI;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
         {
-            @Inventory.started -= instance.OnInventory;
-            @Inventory.performed -= instance.OnInventory;
-            @Inventory.canceled -= instance.OnInventory;
+            @OptionsUI.started -= instance.OnOptionsUI;
+            @OptionsUI.performed -= instance.OnOptionsUI;
+            @OptionsUI.canceled -= instance.OnOptionsUI;
+            @StatUI.started -= instance.OnStatUI;
+            @StatUI.performed -= instance.OnStatUI;
+            @StatUI.canceled -= instance.OnStatUI;
+            @InventoryUI.started -= instance.OnInventoryUI;
+            @InventoryUI.performed -= instance.OnInventoryUI;
+            @InventoryUI.canceled -= instance.OnInventoryUI;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -531,12 +531,12 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnCounterAttack(InputAction.CallbackContext context);
-        void OnToggleInventoryUI(InputAction.CallbackContext context);
-        void OnToggleStatUI(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
-        void OnInventory(InputAction.CallbackContext context);
+        void OnOptionsUI(InputAction.CallbackContext context);
+        void OnStatUI(InputAction.CallbackContext context);
+        void OnInventoryUI(InputAction.CallbackContext context);
     }
 }

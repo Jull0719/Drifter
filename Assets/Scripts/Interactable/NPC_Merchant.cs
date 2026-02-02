@@ -23,15 +23,15 @@ public class NPC_Merchant : NPC
     {
         base.OnTriggerExit2D(collision);
 
-        ui.HideAllTooltip();
-        ui.shopUI.gameObject.SetActive(false);
+        //ui.OpenShopUI(false);
     }
 
     public override void Interact()
     {
         base.Interact();
         ui.shopUI.SetupShop(shop);
-        ui.OpenShopUI();
-        ui.ToggleInventoryUI();
+        ui.OpenShopUI(true);
+        if (!ui.inventoryUI.gameObject.activeSelf)
+            ui.ToggleInventoryUI();
     }
 }

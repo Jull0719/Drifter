@@ -63,9 +63,15 @@ public class Inventory_Player : Inventory_Base
     // 穿戴装备
     private void EquipItem(Inventory_Item itemToEquip, Inventory_EquipSlot slot)
     {
+        float healthPercent = player.health.GetHealthPercent();
+
         slot.equipedItem = itemToEquip;
-        itemToEquip.AddModifiers(player.stats);
         itemToEquip.AddEffect(player);
+        itemToEquip.AddModifiers(player.stats);
+
+        // 更新Player血量
+        player.health.TriggerUpdateHealth();
+
         RemoveItem(itemToEquip);
     }
 
@@ -73,6 +79,8 @@ public class Inventory_Player : Inventory_Base
     public void UnEquipItem(Inventory_Item itemToUnequip, bool replacingItem = false)
     {
         if (IsFull(itemToUnequip) && replacingItem == false) return;
+
+        float healthPercent = player.health.GetHealthPercent();
 
         foreach (var equipSlot in equipSlotList)
         {
@@ -83,8 +91,12 @@ public class Inventory_Player : Inventory_Base
             }
         }
 
-        itemToUnequip.RemoveModifiers(player.stats);
         itemToUnequip.RemoveEffect();
+        itemToUnequip.RemoveModifiers(player.stats);
+
+        // 更新Player血量
+        player.health.TriggerUpdateHealth();
+
         AddItem(itemToUnequip);
     }
 }

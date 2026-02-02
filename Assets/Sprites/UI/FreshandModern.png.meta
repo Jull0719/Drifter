@@ -647,6 +647,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UI_Button_Dark
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 256
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b58dd03f5b4371a478b7cb3c43830f86
+      internalID: -1484942251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_SliderHandle
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 256
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40097762e900c894fa85c746198bbe04
+      internalID: -1007872584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -664,6 +706,7 @@ TextureImporter:
       UI_Background3: -1738055421
       UI_Background4: -1978413310
       UI_Background5: -1575835344
+      UI_Button_Dark: -1484942251
       UI_CoinIcon: 1578405052
       UI_Dark: 1564872308
       UI_ExitButtonDown_Dark: 500819367
@@ -677,6 +720,7 @@ TextureImporter:
       UI_Player: 713588928
       UI_Quest: 107750361
       UI_Shop: -1742414901
+      UI_SliderHandle: -1007872584
       UI_Slot_Dark: 1405666451
       UI_Slot_Light: -1931836394
       UI_Slot_Yellow: 1988177615

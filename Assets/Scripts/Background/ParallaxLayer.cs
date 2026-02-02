@@ -8,6 +8,7 @@ public class ParallaxLayer
 {
     [SerializeField] private Transform trans;
     [SerializeField] private float multiplier;
+    [SerializeField] private float xOffset;
     private float imageFullWidth;
     private float imageHalfWidth;
 
@@ -25,8 +26,8 @@ public class ParallaxLayer
     // 比较摄像机和图片的左右边界
     public void LoopBackground(float cameraLeftEdge, float cameraRightEdge)
     {
-        float imageLeftEdge = trans.position.x - imageHalfWidth;
-        float imageRightEdge = trans.position.x + imageHalfWidth;
+        float imageLeftEdge = trans.position.x - imageHalfWidth + xOffset;
+        float imageRightEdge = trans.position.x + imageHalfWidth - xOffset;
 
         if (imageLeftEdge > cameraRightEdge)
             trans.position += Vector3.left * imageFullWidth;

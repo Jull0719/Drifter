@@ -5,13 +5,13 @@ using UnityEngine;
 public class UI_PlayerStats : UI_Base
 {
     private UI_StatSlot[] statSlots;
-    private Inventory_Base inventory;
+    private Inventory_Player inventory;
 
     protected override void Awake()
     {
         base.Awake();
         statSlots = GetComponentsInChildren<UI_StatSlot>();
-        inventory = FindFirstObjectByType<Inventory_Base>();
+        inventory = FindFirstObjectByType<Inventory_Player>();
 
         inventory.OnUpdateUI += UpdateStatSlots;
     }

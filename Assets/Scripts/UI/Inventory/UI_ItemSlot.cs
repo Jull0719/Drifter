@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
 {
     [SerializeField] protected Image itemIcon;
+    [SerializeField] protected Image defaultIcon;
     [SerializeField] protected TextMeshProUGUI itemStackSize;
 
     protected UI ui;
@@ -31,8 +32,9 @@ public class UI_ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
     public virtual void UpdateSlot(Inventory_Item item)
     {
         itemInSlot = item;
+        defaultIcon?.gameObject.SetActive(itemInSlot == null);
 
-        if (item == null)
+        if (itemInSlot == null)
         {
             itemStackSize.text = "";
             itemIcon.color = Color.clear;

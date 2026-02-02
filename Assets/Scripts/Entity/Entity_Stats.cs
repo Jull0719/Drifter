@@ -11,6 +11,7 @@ public class Entity_Stats : MonoBehaviour
 
     // 最大生命值 1点体力 -> 5点生命值上限
     public float GetMaxHealth() => life.maxHealth.GetValue() + level.vitality.GetValue() * Settings.HealthBonus;
+
     // 再生生命值
     public float GetRegenerateHealth() => life.healthRegen.GetValue();
 

@@ -56,12 +56,16 @@ public class Player : Entity
     {
         base.Awake();
 
-        input = new PlayerInputSet();
-
         vfx = GetComponent<Player_VFX>();
         health = GetComponent<Player_Health>();
         combat = GetComponent<Player_Combat>();
         stats = GetComponent<Player_Stats>();
+        inventory = GetComponent<Inventory_Player>();
+
+        ui = FindAnyObjectByType<UI>();
+
+        input = new PlayerInputSet();
+        ui.SetupUIControls(input);
 
         idleState = new Player_IdleState(this, stateMachine, "idle");
         moveState = new Player_MoveState(this, stateMachine, "move");
@@ -70,10 +74,6 @@ public class Player : Entity
         attackState = new Player_AttackState(this, stateMachine, "attack");
         counterAttackState = new Player_CounterAttackState(this, stateMachine, "counterAttack");
         deadState = new Player_DeadState(this, stateMachine, "dead");
-
-        inventory = GetComponent<Inventory_Player>();
-
-        ui = FindAnyObjectByType<UI>();
 
         dialogs = GameObject.FindGameObjectsWithTag("dialog");
     }
@@ -84,10 +84,6 @@ public class Player : Entity
 
         input.Gameplay.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         input.Gameplay.Move.canceled += ctx => moveInput = Vector2.zero;
-
-        // UI快捷键
-        input.Gameplay.ToggleInventoryUI.performed += ctx => ui.ToggleInventoryUI();
-        input.Gameplay.ToggleStatUI.performed += ctx => ui.ToggleStatUI();
 
         // E键交互
         input.Gameplay.Interact.performed += ctx => TryToInteract();

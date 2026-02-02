@@ -22,7 +22,8 @@ MonoBehaviour:
   maxStackSizeInShop: 1
   rarity: 90
   dropRate: 0.11
-  effectDataSO: {fileID: 0}
+  maxDropRate: 0.7
+  effectDataSO: {fileID: 11400000, guid: cd8bcbd9267a7cd46ae2b4b581fb29be, type: 2}
   modifiers:
   - statType: 11
     value: 100

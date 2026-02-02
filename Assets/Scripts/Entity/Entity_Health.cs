@@ -38,12 +38,19 @@ public class Entity_Health : MonoBehaviour, IDamagable
         dropManager = GetComponent<Entity_DropManager>();
 
         rb = GetComponent<Rigidbody2D>();
-
-        currentHealth = stats.GetMaxHealth();
     }
 
     protected virtual void Start()
     {
+        SetupHealth();
+    }
+
+    private void SetupHealth()
+    {
+        if (stats == null) return;
+
+        currentHealth = stats.GetMaxHealth();
+
         InvokeRepeating(nameof(RegenerateHealth), 0, healthRegenInterval);
     }
 
@@ -103,7 +110,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
         float maxHealth = stats.GetMaxHealth();
 
         currentHealth = Mathf.Min(maxHealth, newHealth);
-        OnHealthChange?.Invoke();
+        TriggerUpdateHealth();
     }
 
     // 生命值减少
@@ -113,7 +120,7 @@ public class Entity_Health : MonoBehaviour, IDamagable
 
         if (currentHealth <= 0)
             Die();
-        OnHealthChange?.Invoke();
+        TriggerUpdateHealth();
     }
 
     protected virtual void Die()
@@ -132,6 +139,13 @@ public class Entity_Health : MonoBehaviour, IDamagable
 
     // 获取生命值
     public float GetCurrentHealth() => currentHealth;
+
+    // 根据百分比设定生命值
+    //public void SetHealthByPercent(float percent)
+    //{
+    //    currentHealth = stats.GetMaxHealth() * Mathf.Clamp01(percent);
+    //    OnHealthChange?.Invoke();
+    //}
 
     // 计算现在的生命值占比
     public float GetHealthPercent()
@@ -160,5 +174,11 @@ public class Entity_Health : MonoBehaviour, IDamagable
         Vector2 knockback = IsHeavyHit(damage) ? heavyKnockbackPower : knockbackPower;
         knockback.x *= direction;
         return knockback;
+    }
+
+    // 血量变化事件的广播
+    public void TriggerUpdateHealth()
+    {
+        OnHealthChange?.Invoke();
     }
 }

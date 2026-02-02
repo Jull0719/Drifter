@@ -22,15 +22,15 @@ public class NPC_InnKeeper : NPC
     {
         base.OnTriggerExit2D(collision);
 
-        ui.HideAllTooltip();
-        ui.storageUI.gameObject.SetActive(false);
+        //ui.OpenStorageUI(false);
     }
 
     public override void Interact()
     {
         base.Interact();
         ui.storageUI.SetupStorage(storage);
-        ui.OpenStorageUI();
-        ui.ToggleInventoryUI();
+        ui.OpenStorageUI(true);
+        if (!ui.inventoryUI.gameObject.activeSelf)
+            ui.ToggleInventoryUI();
     }
 }
