@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory_Base : MonoBehaviour
+public class Inventory_Base : MonoBehaviour, ISaveable
 {
     public event Action OnUpdateUI;
 
@@ -76,4 +76,14 @@ public class Inventory_Base : MonoBehaviour
 
     // 更新UI
     public void TriggerUpdateUI() => OnUpdateUI?.Invoke();
+
+    public virtual void SaveData(ref GameData saveData)
+    {
+
+    }
+
+    public virtual void LoadData(GameData loadData)
+    {
+
+    }
 }

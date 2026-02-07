@@ -99,4 +99,16 @@ public class Inventory_Player : Inventory_Base
 
         AddItem(itemToUnequip);
     }
+
+    public override void SaveData(ref GameData saveData)
+    {
+        saveData.money = money;
+    }
+
+    public override void LoadData(GameData loadData)
+    {
+        money = loadData.money;
+        player.ui.inGameUI.UpdateUI();
+        player.inventory.TriggerUpdateUI();
+    }
 }
