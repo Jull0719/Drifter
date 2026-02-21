@@ -100,14 +100,51 @@ public class Inventory_Player : Inventory_Base
         AddItem(itemToUnequip);
     }
 
-    public override void SaveData(ref GameData saveData)
+    public override void SaveData(ref GameData data)
     {
-        saveData.money = money;
+        data.itemsDict.Clear();
+
+        data.money = money;
+
+        foreach (var item in itemList)
+        {
+            if (item != null && item.itemDataSO != null)
+            {
+                string saveId = item.itemDataSO.saveId;
+
+                if (!data.itemsDict.ContainsKey(saveId))
+                    data.itemsDict[saveId] = 0;
+
+                data.itemsDict[saveId] += item.itemStackSize;
+            }
+        }
     }
 
-    public override void LoadData(GameData loadData)
+    public override void LoadData(GameData data)
     {
-        money = loadData.money;
+        itemList.Clear();
+
+        money = data.money;
+
+        foreach (var item in data.itemsDict)
+        {
+            string saveId = item.Key;
+            int itemSize = item.Value;
+
+            var itemDataSO = itemDataBase.FindItemDataById(saveId);
+            if (itemDataSO == null)
+            {
+                Debug.LogWarning("没有找到对应的物品");
+                continue;
+            }
+
+            for (int i = 0; i < itemSize; i++)
+            {
+                var itemToLoad = new Inventory_Item(itemDataSO);
+                AddItem(itemToLoad);
+            }
+        }
+
         player.ui.inGameUI.UpdateUI();
         player.inventory.TriggerUpdateUI();
     }

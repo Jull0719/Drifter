@@ -8763,6 +8763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSize: 18
+  itemDataBase: {fileID: 0}
   itemList: []
   materialStashList: []
 --- !u!114 &312813277
@@ -34567,7 +34568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd79b1fecfa3a3499d4f373b7710729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldEncrypt: 1
+  shouldEncrypt: 0
 --- !u!4 &1065585699
 Transform:
   m_ObjectHideFlags: 0
@@ -45162,6 +45163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSize: 24
+  itemDataBase: {fileID: 0}
   itemList: []
   shopData: {fileID: 11400000, guid: 31a4fc2bc28b7fa44930801af1fc28ac, type: 2}
   minItemsAmount: 4
@@ -49857,6 +49859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSize: 18
+  itemDataBase: {fileID: 11400000, guid: 31a4fc2bc28b7fa44930801af1fc28ac, type: 2}
   itemList: []
   equipSlotList:
   - slotType: 2

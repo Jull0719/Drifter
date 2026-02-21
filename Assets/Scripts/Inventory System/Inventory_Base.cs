@@ -8,6 +8,7 @@ public class Inventory_Base : MonoBehaviour, ISaveable
 
     // 背包栏
     [SerializeField] protected int maxSize = 10;
+    public ItemDataBaseSO itemDataBase;
     public List<Inventory_Item> itemList = new List<Inventory_Item>();
 
     protected virtual void Awake()

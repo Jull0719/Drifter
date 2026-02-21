@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEditor;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/Inventory/Item/Material Item", fileName = "Material Item - ")]
 public class ItemDataSO : ScriptableObject
 {
     [Header("基本信息")]
     public string itemName;
+    public string saveId;
     public ItemType itemType;
     public Sprite itemIcon;
     [TextArea] public string itemInfo;
@@ -26,6 +29,11 @@ public class ItemDataSO : ScriptableObject
     private void OnValidate()
     {
         dropRate = GetDropRate();
+
+#if UNITY_EDITOR
+        string path = AssetDatabase.GetAssetPath(this);
+        saveId = AssetDatabase.AssetPathToGUID(path);
+#endif
     }
 
     /// <summary>
