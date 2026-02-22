@@ -1,28 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d54ed4a7ba6e8c94e82652872115905b, type: 3}
-  m_Name: "Equipment Item - \u5E78\u8FD0\u6307\u73AF"
-  m_EditorClassIdentifier: 
-  itemName: "\u5E78\u8FD0\u6307\u73AF"
-  itemType: 4
-  itemIcon: {fileID: 447079919, guid: f9a96e407f32a9a4bbe94414ae62a859, type: 3}
-  itemInfo: "\u80FD\u5E26\u6765\u4E00\u5B9A\u5E78\u8FD0\u6548\u679C\u7684\u6307\u73AF\u3002"
-  maxStackSize: 1
-  itemPrice: 100
-  minStackSizeInShop: 1
-  maxStackSizeInShop: 1
-  rarity: 65
-  dropRate: 0.36
-  effectDataSO: {fileID: 0}
-  modifiers:
-  - statType: 9
-    value: 10
+version https://git-lfs.github.com/spec/v1
+oid sha256:fb4ec4c4e01fdf01ec5116172a01abc5938a5c445e477efe02ba1cebe6278406
+size 843

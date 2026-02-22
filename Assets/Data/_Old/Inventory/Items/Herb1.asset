@@ -1,20 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d78151f61ac33b489cbc74cfca9d043, type: 3}
-  m_Name: Herb1
-  m_EditorClassIdentifier: 
-  itemName: "\u8349\u4E4C\u53F6"
-  itemImage: {fileID: 21300010, guid: 74673f9934429b64cb1f34ae3f958274, type: 3}
-  itemHeld: 0
-  itemInfo: "\u8349\u4E4C\u53F6"
-  itemPrice: 0
-  equip: 0
+version https://git-lfs.github.com/spec/v1
+oid sha256:5752d5c3924e2a41976b19885d5702b50141d8e8ec2795d8f90be33677d4b2be
+size 601

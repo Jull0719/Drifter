@@ -77,4 +77,88 @@ public class Inventory_Storage : Inventory_Base
     {
         return materialStashList.Find(item => item.itemDataSO == itemToFind.itemDataSO && item.CanStacked());
     }
+
+    public override void SaveData(ref GameData data)
+    {
+        data.storageDict.Clear();
+        data.stashDict.Clear();
+
+        // 仓库
+        foreach (var item in itemList)
+        {
+            if (item != null && item.itemDataSO != null)
+            {
+                string saveId = item.itemDataSO.saveId;
+                int itemSize = item.itemStackSize;
+
+                if (!data.storageDict.ContainsKey(saveId))
+                    data.storageDict[saveId] = 0;
+
+                data.storageDict[saveId] += itemSize;
+            }
+        }
+
+        // 材料贮藏室
+        foreach (var item in materialStashList)
+        {
+            if (item != null && item.itemDataSO != null)
+            {
+                string saveId = item.itemDataSO.saveId;
+                int itemSize = item.itemStackSize;
+
+                if (!data.stashDict.ContainsKey(saveId))
+                    data.stashDict[saveId] = 0;
+
+                data.stashDict[saveId] += itemSize;
+            }
+        }
+    }
+
+    public override void LoadData(GameData data)
+    {
+        itemList.Clear();
+        materialStashList.Clear();
+
+        // 仓库
+        foreach (var item in data.storageDict)
+        {
+            string saveId = item.Key;
+            int itemSize = item.Value;
+
+            var itemDataSO = itemDataBase.FindItemDataById(saveId);
+            if (itemDataSO == null)
+            {
+                Debug.LogWarning("找不到对应的物品数据");
+                continue;
+            }
+
+            var itemToLoad = new Inventory_Item(itemDataSO);
+            for (int i = 0; i < itemSize; i++)
+            {
+                AddItem(itemToLoad);
+            }
+        }
+
+        // 物品贮藏室
+        foreach (var item in data.stashDict)
+        {
+            string saveId = item.Key;
+            int itemSize = item.Value;
+
+            var itemDataSO = itemDataBase.FindItemDataById(saveId);
+            if (itemDataSO == null)
+            {
+                Debug.LogWarning("找不到对应的物品数据");
+                continue;
+            }
+
+            var itemToLoad = new Inventory_Item(itemDataSO);
+            for (int i = 0; i < itemSize; i++)
+            {
+                AddToStash(itemToLoad);
+            }
+        }
+
+        TriggerUpdateUI();
+    }
 }

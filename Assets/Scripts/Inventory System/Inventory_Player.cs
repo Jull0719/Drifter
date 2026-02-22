@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class Inventory_Player : Inventory_Base
@@ -102,31 +103,57 @@ public class Inventory_Player : Inventory_Base
 
     public override void SaveData(ref GameData data)
     {
-        data.itemsDict.Clear();
-
         data.money = money;
 
+        data.inventoryDict.Clear();
+        data.equipmentDict.Clear();
+
+        // 物品存储
         foreach (var item in itemList)
         {
             if (item != null && item.itemDataSO != null)
             {
                 string saveId = item.itemDataSO.saveId;
 
-                if (!data.itemsDict.ContainsKey(saveId))
-                    data.itemsDict[saveId] = 0;
+                if (!data.inventoryDict.ContainsKey(saveId))
+                    data.inventoryDict[saveId] = 0;
 
-                data.itemsDict[saveId] += item.itemStackSize;
+                data.inventoryDict[saveId] += item.itemStackSize;
+            }
+        }
+
+        // 装备存储
+        foreach (var equipSlot in equipSlotList)
+        {
+            if (equipSlot.HasItem())
+            {
+                string saveId = equipSlot.equipedItem.itemDataSO.saveId;
+
+                if (!data.equipmentDict.ContainsKey(saveId))
+                    data.equipmentDict[saveId] = 0;
+
+                data.equipmentDict[saveId]++;
             }
         }
     }
 
     public override void LoadData(GameData data)
     {
-        itemList.Clear();
-
         money = data.money;
 
-        foreach (var item in data.itemsDict)
+        itemList.Clear();
+        foreach (var equipSlot in equipSlotList)
+        {
+            if (equipSlot.HasItem())
+            {
+                equipSlot.equipedItem.RemoveModifiers(player.stats);
+                equipSlot.equipedItem.RemoveEffect();
+                equipSlot.equipedItem = null;
+            }
+        }
+
+        // 物品
+        foreach (var item in data.inventoryDict)
         {
             string saveId = item.Key;
             int itemSize = item.Value;
@@ -134,14 +161,34 @@ public class Inventory_Player : Inventory_Base
             var itemDataSO = itemDataBase.FindItemDataById(saveId);
             if (itemDataSO == null)
             {
-                Debug.LogWarning("没有找到对应的物品");
+                Debug.LogWarning("找不到对应的物品数据");
                 continue;
             }
 
+            var itemToLoad = new Inventory_Item(itemDataSO);
             for (int i = 0; i < itemSize; i++)
             {
-                var itemToLoad = new Inventory_Item(itemDataSO);
                 AddItem(itemToLoad);
+            }
+        }
+
+        // 装备
+        foreach (var equipment in data.equipmentDict)
+        {
+            string saveId = equipment.Key;
+            int itemSize = equipment.Value;
+
+            var itemDataSO = itemDataBase.FindItemDataById(saveId);
+            if (itemDataSO == null)
+            {
+                Debug.LogWarning("找不到对应的物品数据");
+                continue;
+            }
+
+            var itemToEquipment = new Inventory_Item(itemDataSO);
+            for (int i = 0; i < itemSize; i++)
+            {
+                TryToEquipItem(itemToEquipment);
             }
         }
 
