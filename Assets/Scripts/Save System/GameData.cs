@@ -1,4 +1,6 @@
 ﻿// 用于存储游戏中需要保存和加载的数据
+using UnityEngine;
+
 public class GameData
 {
     // ---- 背包数据 -----
@@ -14,6 +16,9 @@ public class GameData
     public SerializableDictionary<string, int> storageDict;
     // 材料贮藏室
     public SerializableDictionary<string, int> stashDict;
+
+    // 存档点位置
+    public Vector3 savedCheckPoint;
 
     public GameData()
     {

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
+    public static Player Instance { get; private set; }
+
     public PlayerInputSet input { get; private set; }
 
     #region PlayerState
@@ -55,6 +57,8 @@ public class Player : Entity
     protected override void Awake()
     {
         base.Awake();
+
+        Instance = this;
 
         vfx = GetComponent<Player_VFX>();
         health = GetComponent<Player_Health>();
@@ -221,4 +225,7 @@ public class Player : Entity
         if (close != null)
             close.Interact();
     }
+
+    // 传送
+    public void TeleportPlayer(Vector3 position) => transform.position = position;
 }

@@ -5,12 +5,19 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
+    public static SaveManager instance;
+
     [SerializeField] private bool shouldEncrypt = false;
     private string fileName = "DrifterData.json";
 
     private List<ISaveable> allSaveables;
     private GameData gameData;
     private FileDataHandler fileDataHandler;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private IEnumerator Start()
     {
@@ -33,6 +40,8 @@ public class SaveManager : MonoBehaviour
     {
         SaveGame();
     }
+
+    public GameData GetGameData() => gameData;
 
     private List<ISaveable> FindAllSaveables()
     {
