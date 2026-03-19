@@ -244,7 +244,7 @@ Transform:
   - {fileID: 3807017945611319673}
   - {fileID: 740342123429097740}
   - {fileID: 304379593289739827}
-  - {fileID: 1697872956934620633}
+  - {fileID: 5106575935977017889}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &8130807618933747709
@@ -410,7 +410,7 @@ MonoBehaviour:
       modifiers: []
   offense:
     damage:
-      baseValue: 20
+      baseValue: 10
       modifiers: []
     attackSpeed:
       baseValue: 1
@@ -831,9 +831,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aed70ac151a20e4889cb4bbc2b4327e, type: 3}
---- !u!4 &1697872956934620633 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3706718339199186670, guid: 1aed70ac151a20e4889cb4bbc2b4327e,
+--- !u!224 &5106575935977017889 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7079329893263597846, guid: 1aed70ac151a20e4889cb4bbc2b4327e,
     type: 3}
   m_PrefabInstance: {fileID: 2657377516711326519}
   m_PrefabAsset: {fileID: 0}
