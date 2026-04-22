@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cbd73bd658c69a04b8060b6f83e6eddc
+guid: 692186eb8c9c07744a1fe1a65aeef202
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,11 +119,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_0
+      name: Interactive1_PassBySway_right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a19864c982d1be438f293aa39a7560e
-      internalID: -425623432
+      spriteID: 7f3ce891b0a54c243802313ac94881bd
+      internalID: -1888877637
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_1
+      name: Interactive1_PassBySway_right_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6251651ee4e34a745a902f6c8b65239c
-      internalID: -761628423
+      spriteID: b9006c81acc8d4b4189301d9da254fa5
+      internalID: 1956393981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_2
+      name: Interactive1_PassBySway_right_2
       rect:
         serializedVersion: 2
         x: 128
@@ -179,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16562d679ce00f64d99356c1c90c5559
-      internalID: 302778665
+      spriteID: 7db5439fe89ef934eb589ce90af9f46e
+      internalID: -2111914957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_3
+      name: Interactive1_PassBySway_right_3
       rect:
         serializedVersion: 2
         x: 192
@@ -200,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b9fdb114487a4b4ab82302b7f81ca1a
-      internalID: -800758229
+      spriteID: f6729331b7c5d7b43a8ef7b22a4ceeb5
+      internalID: -1971883459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_4
+      name: Interactive1_PassBySway_right_4
       rect:
         serializedVersion: 2
         x: 256
@@ -221,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84e115dd9e051a44b9ca8b11f1fd66d4
-      internalID: -199424703
+      spriteID: 8eb98f8285ff59341852634abfbfaf0f
+      internalID: -560706842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_5
+      name: Interactive1_PassBySway_right_5
       rect:
         serializedVersion: 2
         x: 320
@@ -242,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cf5fc456d6350f488382d6a89b9b5c7
-      internalID: -712189335
+      spriteID: a1b4a2b2b5168bb4fa70bc8141209e3b
+      internalID: 1748157830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_6
+      name: Interactive1_PassBySway_right_6
       rect:
         serializedVersion: 2
         x: 384
@@ -263,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 052510c021dc6ba4bafd314fa921abd4
-      internalID: 784386535
+      spriteID: b8f89eceec479d342bc5395c364e1a6a
+      internalID: 928667280
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_7
+      name: Interactive1_PassBySway_right_7
       rect:
         serializedVersion: 2
         x: 448
@@ -284,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a36f58a3963fcaa4980c8f8531ce9f03
-      internalID: 434148301
+      spriteID: 48537018c805da049964c01f74434418
+      internalID: -1131094646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_8
+      name: Interactive1_PassBySway_right_8
       rect:
         serializedVersion: 2
         x: 512
@@ -305,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1de70c5f84bfa274481b804f18762947
-      internalID: -249624752
+      spriteID: f575a9c684be61d46958b8f79abb2b8c
+      internalID: -1264115812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_9
+      name: Interactive1_PassBySway_right_9
       rect:
         serializedVersion: 2
         x: 576
@@ -326,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afd682546d04f3a4e9d2843852e09ad1
-      internalID: 221439527
+      spriteID: 0ffa569b56585c342b36924ccd63c2e7
+      internalID: -1959904933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_10
+      name: Interactive1_PassBySway_right_10
       rect:
         serializedVersion: 2
         x: 640
@@ -347,14 +360,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18b9bfe24a7ac89428fe47594aaaa39a
-      internalID: -198961777
+      spriteID: 87e04fcb6c7a59146adb78b78b049eff
+      internalID: 1462469080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_11
+      name: Interactive1_PassBySway_right_11
       rect:
         serializedVersion: 2
         x: 704
@@ -368,14 +381,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21dd3cfe65673e84996fa4e909cdcee4
-      internalID: -887254271
+      spriteID: 646e487d5f6f38f4ba5bbec377113420
+      internalID: -1325042829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_12
+      name: Interactive1_PassBySway_right_12
       rect:
         serializedVersion: 2
         x: 768
@@ -389,14 +402,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdf047d00a7ecd04ab31ee4f8111bc85
-      internalID: -2075351059
+      spriteID: b418579479d5fed43aaec402bdc3d544
+      internalID: 1571480004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_13
+      name: Interactive1_PassBySway_right_13
       rect:
         serializedVersion: 2
         x: 832
@@ -410,14 +423,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f069b3decde64247a94d12ea3bf4360
-      internalID: 563822801
+      spriteID: 559015501e657744ba154bd50a2cb636
+      internalID: 729403967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_14
+      name: Interactive1_PassBySway_right_14
       rect:
         serializedVersion: 2
         x: 896
@@ -431,14 +444,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75ef6272a4f04d441832ec30dac3370f
-      internalID: 700856209
+      spriteID: 1090a2a400eaa524ea4f1984fd2a71de
+      internalID: 99080708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedPulsing_15
+      name: Interactive1_PassBySway_right_15
       rect:
         serializedVersion: 2
         x: 960
@@ -452,8 +465,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b49a81e21111c564ca3e96b9e540f64a
-      internalID: -1616625092
+      spriteID: 13ad739a8052a9743873d6c74e4392f9
+      internalID: -1709756370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interactive1_PassBySway_right_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e89f193e845a294b87b28969ff9214b
+      internalID: 1589339738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interactive1_PassBySway_right_17
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2709d1d128e68ed43babd30e6b7e2980
+      internalID: -1884570775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Interactive1_PassBySway_right_18
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03efdaa75d3b9af428f7a7e0522d7ab0
+      internalID: 1603882146
       vertices: []
       indices: 
       edges: []
@@ -469,22 +545,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle2_MushroomBreath_PronouncedPulsing_0: -425623432
-      Idle2_MushroomBreath_PronouncedPulsing_1: -761628423
-      Idle2_MushroomBreath_PronouncedPulsing_10: -198961777
-      Idle2_MushroomBreath_PronouncedPulsing_11: -887254271
-      Idle2_MushroomBreath_PronouncedPulsing_12: -2075351059
-      Idle2_MushroomBreath_PronouncedPulsing_13: 563822801
-      Idle2_MushroomBreath_PronouncedPulsing_14: 700856209
-      Idle2_MushroomBreath_PronouncedPulsing_15: -1616625092
-      Idle2_MushroomBreath_PronouncedPulsing_2: 302778665
-      Idle2_MushroomBreath_PronouncedPulsing_3: -800758229
-      Idle2_MushroomBreath_PronouncedPulsing_4: -199424703
-      Idle2_MushroomBreath_PronouncedPulsing_5: -712189335
-      Idle2_MushroomBreath_PronouncedPulsing_6: 784386535
-      Idle2_MushroomBreath_PronouncedPulsing_7: 434148301
-      Idle2_MushroomBreath_PronouncedPulsing_8: -249624752
-      Idle2_MushroomBreath_PronouncedPulsing_9: 221439527
+      Interactive1_PassBySway_right_0: -1888877637
+      Interactive1_PassBySway_right_1: 1956393981
+      Interactive1_PassBySway_right_10: 1462469080
+      Interactive1_PassBySway_right_11: -1325042829
+      Interactive1_PassBySway_right_12: 1571480004
+      Interactive1_PassBySway_right_13: 729403967
+      Interactive1_PassBySway_right_14: 99080708
+      Interactive1_PassBySway_right_15: -1709756370
+      Interactive1_PassBySway_right_16: 1589339738
+      Interactive1_PassBySway_right_17: -1884570775
+      Interactive1_PassBySway_right_18: 1603882146
+      Interactive1_PassBySway_right_2: -2111914957
+      Interactive1_PassBySway_right_3: -1971883459
+      Interactive1_PassBySway_right_4: -560706842
+      Interactive1_PassBySway_right_5: 1748157830
+      Interactive1_PassBySway_right_6: 928667280
+      Interactive1_PassBySway_right_7: -1131094646
+      Interactive1_PassBySway_right_8: -1264115812
+      Interactive1_PassBySway_right_9: -1959904933
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

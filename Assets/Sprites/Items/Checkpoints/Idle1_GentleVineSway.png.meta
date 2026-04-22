@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cf796dda78e111a4b860ba6049143bbb
+guid: 667d6ff1b92ce0d46ad8a5749d3470df
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,11 +119,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Interactive1_PassBySway_left_0
+      name: Idle1_GentleVineSway_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da02831fae2ce914898ac620faf521ee
-      internalID: -145499396
+      spriteID: 501fb4549bf12b64ca6c7dac846794a7
+      internalID: 863100012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactive1_PassBySway_left_1
+      name: Idle1_GentleVineSway_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c251a1fc9c8f4a24eb74ead3a1c81028
-      internalID: -1047155303
+      spriteID: df330f7c01ef93042ab000eabd4aa285
+      internalID: 69246960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactive1_PassBySway_left_2
+      name: Idle1_GentleVineSway_2
       rect:
         serializedVersion: 2
         x: 128
@@ -179,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d0ef55ae08c4d742b5a6f09ae9631c4
-      internalID: -1046561635
+      spriteID: ab74fc0f8ffa0464b902410da23eda36
+      internalID: -1283457937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactive1_PassBySway_left_3
+      name: Idle1_GentleVineSway_3
       rect:
         serializedVersion: 2
         x: 192
@@ -200,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a73df63a741278f429f1716ffa24ae5a
-      internalID: 1449486248
+      spriteID: 7fd516aeccac21d49b43ca4fcd7a58df
+      internalID: 205771110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactive1_PassBySway_left_4
+      name: Idle1_GentleVineSway_4
       rect:
         serializedVersion: 2
         x: 256
@@ -221,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45411bcdbe513ee46937a1a9ebd4d979
-      internalID: 1192075599
+      spriteID: f9c972fa3c2bf64478d2fd843bb9fdf3
+      internalID: 2062552216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactive1_PassBySway_left_5
+      name: Idle1_GentleVineSway_5
       rect:
         serializedVersion: 2
         x: 320
@@ -242,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97cdd5fa09290e54a8b8d4604ec05a3e
-      internalID: -1139030757
+      spriteID: a2ddbd5f09e26e842b90d18b8c2bd2b6
+      internalID: -1579972464
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactive1_PassBySway_left_6
+      name: Idle1_GentleVineSway_6
       rect:
         serializedVersion: 2
         x: 384
@@ -263,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b3681ec489612c43bf1f0e2e7612a5c
-      internalID: -229234720
+      spriteID: 0e74355fc31e2d44baf7b3539a002488
+      internalID: -622454670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactive1_PassBySway_left_7
+      name: Idle1_GentleVineSway_7
       rect:
         serializedVersion: 2
         x: 448
@@ -284,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad6c1e8aafe2e4341b8b7331524fe77a
-      internalID: -1468323712
+      spriteID: 22ed9ce1d86a8ab408c7d0e251801ea5
+      internalID: -152462374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactive1_PassBySway_left_8
+      name: Idle1_GentleVineSway_8
       rect:
         serializedVersion: 2
         x: 512
@@ -305,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c2faf34fea91424898b3bfb8fbfa4cb
-      internalID: 1403863674
+      spriteID: 837b25aeb383b5d46ac3c742f552ec73
+      internalID: 61774834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactive1_PassBySway_left_9
+      name: Idle1_GentleVineSway_9
       rect:
         serializedVersion: 2
         x: 576
@@ -326,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef41eb07da2b42e40827f08ba9087121
-      internalID: 262902425
+      spriteID: ee816b04608ed3b44a97e4dfcffbe14a
+      internalID: 728965144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Interactive1_PassBySway_left_10
+      name: Idle1_GentleVineSway_10
       rect:
         serializedVersion: 2
         x: 640
@@ -347,176 +360,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 199cb85085e061447b9dde2150cb1ba6
-      internalID: 926113147
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Interactive1_PassBySway_left_11
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ff58e006e1e767a4e83a526f6f8fddc5
-      internalID: 1246910893
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Interactive1_PassBySway_left_12
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6611a5cc51a6ede4aac4c880614fb6a8
-      internalID: 962320967
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Interactive1_PassBySway_left_13
-      rect:
-        serializedVersion: 2
-        x: 832
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd1ba17649afabb47a15c272252b80c6
-      internalID: 1590943009
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Interactive1_PassBySway_left_14
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f759b6511b7119e4aa95e316539ca48a
-      internalID: -2140344315
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Interactive1_PassBySway_left_15
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb6c002641627064dbe7ac343f9c2d0f
-      internalID: -1011796739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Interactive1_PassBySway_left_16
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 81ca5b45a64b3cc4db9c72d3f2af65fc
-      internalID: -1950624508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Interactive1_PassBySway_left_17
-      rect:
-        serializedVersion: 2
-        x: 1088
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a7b60dbb75b35a45b64f66e6cc3803c
-      internalID: 1460446845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Interactive1_PassBySway_left_18
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1fd0fe5934a55a74abeb1ddf729607d4
-      internalID: 337484939
+      spriteID: 1ad168b7757543e4a86c7160a6590002
+      internalID: 1920075186
       vertices: []
       indices: 
       edges: []
@@ -532,25 +377,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Interactive1_PassBySway_left_0: -145499396
-      Interactive1_PassBySway_left_1: -1047155303
-      Interactive1_PassBySway_left_10: 926113147
-      Interactive1_PassBySway_left_11: 1246910893
-      Interactive1_PassBySway_left_12: 962320967
-      Interactive1_PassBySway_left_13: 1590943009
-      Interactive1_PassBySway_left_14: -2140344315
-      Interactive1_PassBySway_left_15: -1011796739
-      Interactive1_PassBySway_left_16: -1950624508
-      Interactive1_PassBySway_left_17: 1460446845
-      Interactive1_PassBySway_left_18: 337484939
-      Interactive1_PassBySway_left_2: -1046561635
-      Interactive1_PassBySway_left_3: 1449486248
-      Interactive1_PassBySway_left_4: 1192075599
-      Interactive1_PassBySway_left_5: -1139030757
-      Interactive1_PassBySway_left_6: -229234720
-      Interactive1_PassBySway_left_7: -1468323712
-      Interactive1_PassBySway_left_8: 1403863674
-      Interactive1_PassBySway_left_9: 262902425
+      Idle1_GentleVineSway_0: 863100012
+      Idle1_GentleVineSway_1: 69246960
+      Idle1_GentleVineSway_10: 1920075186
+      Idle1_GentleVineSway_2: -1283457937
+      Idle1_GentleVineSway_3: 205771110
+      Idle1_GentleVineSway_4: 2062552216
+      Idle1_GentleVineSway_5: -1579972464
+      Idle1_GentleVineSway_6: -622454670
+      Idle1_GentleVineSway_7: -152462374
+      Idle1_GentleVineSway_8: 61774834
+      Idle1_GentleVineSway_9: 728965144
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

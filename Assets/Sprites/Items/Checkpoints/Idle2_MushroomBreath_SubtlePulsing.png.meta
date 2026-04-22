@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 09ce3d392a860384bb0c5985feaefc6f
+guid: fd2bc2d8540413e47b760a28806cb69b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,11 +119,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_0
+      name: Idle2_MushroomBreath_SubtlePulsing_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12a8601c18d602444a09930115b6be36
-      internalID: -1237621655
+      spriteID: bd856b513faa292458d6a2091ac86aed
+      internalID: 1118940036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_1
+      name: Idle2_MushroomBreath_SubtlePulsing_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba209978e73584c42a97510273dbcb10
-      internalID: 1684281476
+      spriteID: e2e8e2311c1fad246b5ea1690042f840
+      internalID: 221765241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_2
+      name: Idle2_MushroomBreath_SubtlePulsing_2
       rect:
         serializedVersion: 2
         x: 128
@@ -179,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f86465f7e4f9a54bac248ba3aff93f2
-      internalID: 2017347007
+      spriteID: 1b2ab4b88071ab44a8c78b64289c60d5
+      internalID: -178862915
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_3
+      name: Idle2_MushroomBreath_SubtlePulsing_3
       rect:
         serializedVersion: 2
         x: 192
@@ -200,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb9bd822889b4f44da7fb6d881317bed
-      internalID: 444249590
+      spriteID: 199842a9fd545544ba8196a4586a6318
+      internalID: 416434168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_4
+      name: Idle2_MushroomBreath_SubtlePulsing_4
       rect:
         serializedVersion: 2
         x: 256
@@ -221,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ea4daac5b29c324da49d569c54097eb
-      internalID: 886244867
+      spriteID: 7593e39b55b6b4a4e88733739607baa0
+      internalID: 2089612385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_5
+      name: Idle2_MushroomBreath_SubtlePulsing_5
       rect:
         serializedVersion: 2
         x: 320
@@ -242,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dedf831bf37beed4fbd6331fa425ceae
-      internalID: 921434695
+      spriteID: 5f7cc8c296ed6714d8a92523aaf157a2
+      internalID: -2102601573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_6
+      name: Idle2_MushroomBreath_SubtlePulsing_6
       rect:
         serializedVersion: 2
         x: 384
@@ -263,14 +276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6b438748c405574d8f6007ccb8480b1
-      internalID: -1337087620
+      spriteID: a05544be74f260e40a1e8bb63083ea42
+      internalID: 1187757102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_7
+      name: Idle2_MushroomBreath_SubtlePulsing_7
       rect:
         serializedVersion: 2
         x: 448
@@ -284,14 +297,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba218f21dc7cecb488949a483a099a6a
-      internalID: 2056738537
+      spriteID: f5708fff3f4ceea428c05aaf4d1473a2
+      internalID: 1855641838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_8
+      name: Idle2_MushroomBreath_SubtlePulsing_8
       rect:
         serializedVersion: 2
         x: 512
@@ -305,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05dbee853bae5fe40b6ce44e42ee1fff
-      internalID: -1707039825
+      spriteID: 03d6d73fbb6f683489d37eb951255ae4
+      internalID: -1858066690
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_9
+      name: Idle2_MushroomBreath_SubtlePulsing_9
       rect:
         serializedVersion: 2
         x: 576
@@ -326,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 623a0093a13dd89429179cf10681773a
-      internalID: -220441058
+      spriteID: 6adac352464cf0249bc0f4b568e0b11e
+      internalID: 1480171257
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_10
+      name: Idle2_MushroomBreath_SubtlePulsing_10
       rect:
         serializedVersion: 2
         x: 640
@@ -347,14 +360,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 179f4209d67077442b674437eb7876ab
-      internalID: 1539701636
+      spriteID: 1d2b098958760184a9619bf7a328857e
+      internalID: 403198080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_11
+      name: Idle2_MushroomBreath_SubtlePulsing_11
       rect:
         serializedVersion: 2
         x: 704
@@ -368,14 +381,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2105cfc14ccd32d4a8f72c43963be662
-      internalID: -1771197115
+      spriteID: da2fb204a07d8b445a4fd210fd963ce9
+      internalID: 1795657605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_12
+      name: Idle2_MushroomBreath_SubtlePulsing_12
       rect:
         serializedVersion: 2
         x: 768
@@ -389,14 +402,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90e04adc8d82471488f87a3d3e4c2e0c
-      internalID: 1893148462
+      spriteID: afd49fb69797ade448aa48c0d54f02b8
+      internalID: -1550281454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_13
+      name: Idle2_MushroomBreath_SubtlePulsing_13
       rect:
         serializedVersion: 2
         x: 832
@@ -410,14 +423,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20874cd05653a2e45844d48bdf0e2d6b
-      internalID: -1596089341
+      spriteID: 83ebe431cce79c241bd113f4e8db6880
+      internalID: -2077699777
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_14
+      name: Idle2_MushroomBreath_SubtlePulsing_14
       rect:
         serializedVersion: 2
         x: 896
@@ -431,14 +444,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8e1765344ad2ea4286aaf5efb326039
-      internalID: -1895191082
+      spriteID: 2010c78a7b74edb45bb53edcd4862ea4
+      internalID: -2075022719
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle2_MushroomBreath_PronouncedSteady_15
+      name: Idle2_MushroomBreath_SubtlePulsing_15
       rect:
         serializedVersion: 2
         x: 960
@@ -452,8 +465,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b93a2552301663a4a995ff959f4fb25d
-      internalID: 698052679
+      spriteID: ff88d51231c8f1f4f8f543854a71e5d3
+      internalID: 1035809671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle2_MushroomBreath_SubtlePulsing_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c1ac3df10f6cd44098aab2f89ced321
+      internalID: -828283842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle2_MushroomBreath_SubtlePulsing_17
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 052e860219ff08c4588c40f7e01e9c42
+      internalID: 1619501798
       vertices: []
       indices: 
       edges: []
@@ -469,22 +524,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle2_MushroomBreath_PronouncedSteady_0: -1237621655
-      Idle2_MushroomBreath_PronouncedSteady_1: 1684281476
-      Idle2_MushroomBreath_PronouncedSteady_10: 1539701636
-      Idle2_MushroomBreath_PronouncedSteady_11: -1771197115
-      Idle2_MushroomBreath_PronouncedSteady_12: 1893148462
-      Idle2_MushroomBreath_PronouncedSteady_13: -1596089341
-      Idle2_MushroomBreath_PronouncedSteady_14: -1895191082
-      Idle2_MushroomBreath_PronouncedSteady_15: 698052679
-      Idle2_MushroomBreath_PronouncedSteady_2: 2017347007
-      Idle2_MushroomBreath_PronouncedSteady_3: 444249590
-      Idle2_MushroomBreath_PronouncedSteady_4: 886244867
-      Idle2_MushroomBreath_PronouncedSteady_5: 921434695
-      Idle2_MushroomBreath_PronouncedSteady_6: -1337087620
-      Idle2_MushroomBreath_PronouncedSteady_7: 2056738537
-      Idle2_MushroomBreath_PronouncedSteady_8: -1707039825
-      Idle2_MushroomBreath_PronouncedSteady_9: -220441058
+      Idle2_MushroomBreath_SubtlePulsing_0: 1118940036
+      Idle2_MushroomBreath_SubtlePulsing_1: 221765241
+      Idle2_MushroomBreath_SubtlePulsing_10: 403198080
+      Idle2_MushroomBreath_SubtlePulsing_11: 1795657605
+      Idle2_MushroomBreath_SubtlePulsing_12: -1550281454
+      Idle2_MushroomBreath_SubtlePulsing_13: -2077699777
+      Idle2_MushroomBreath_SubtlePulsing_14: -2075022719
+      Idle2_MushroomBreath_SubtlePulsing_15: 1035809671
+      Idle2_MushroomBreath_SubtlePulsing_16: -828283842
+      Idle2_MushroomBreath_SubtlePulsing_17: 1619501798
+      Idle2_MushroomBreath_SubtlePulsing_2: -178862915
+      Idle2_MushroomBreath_SubtlePulsing_3: 416434168
+      Idle2_MushroomBreath_SubtlePulsing_4: 2089612385
+      Idle2_MushroomBreath_SubtlePulsing_5: -2102601573
+      Idle2_MushroomBreath_SubtlePulsing_6: 1187757102
+      Idle2_MushroomBreath_SubtlePulsing_7: 1855641838
+      Idle2_MushroomBreath_SubtlePulsing_8: -1858066690
+      Idle2_MushroomBreath_SubtlePulsing_9: 1480171257
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
