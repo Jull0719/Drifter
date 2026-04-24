@@ -19,6 +19,14 @@ public class Player_Health : Entity_Health
         player = entity as Player;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Die();
+        }
+    }
+
     // 死亡
     public override void OnDie()
     {
@@ -26,5 +34,8 @@ public class Player_Health : Entity_Health
 
         OnPlayerDeath?.Invoke();
         player.stateMachine.ChangeState(player.deadState);
+
+        GameManager.instance.SetPlayerDeathPosition(transform.position);
+        GameManager.instance.ReStart();
     }
 }

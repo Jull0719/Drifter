@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Object_Waypoint : MonoBehaviour
+public class Object_Waypoint : MonoBehaviour, IInteractable
 {
     [SerializeField] string sceneToTransfer;
     [SerializeField] WaypointType currentWaypointType;
@@ -23,6 +23,7 @@ public class Object_Waypoint : MonoBehaviour
         if (!canBeTriggered)
             return;
         SaveManager.instance.SaveGame();
+
         GameManager.instance.ChangeScene(sceneToTransfer, connectWaypointType);
     }
 
@@ -35,6 +36,12 @@ public class Object_Waypoint : MonoBehaviour
     public void SetTriggered(bool canBeTriggered) => this.canBeTriggered = canBeTriggered;
     public Vector3 GetRespawnPosition()
     {
+        canBeTriggered = false;
         return respawnPoint == null ? transform.position : respawnPoint.position;
+    }
+
+    public void Interact()
+    {
+        GameManager.instance.ChangeScene(sceneToTransfer, connectWaypointType);
     }
 }
