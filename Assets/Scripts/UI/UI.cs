@@ -49,18 +49,6 @@ public class UI : MonoBehaviour
         dialogueUI = GetComponentInChildren<UI_Dialogue>(true);
     }
 
-    public void StartButton()
-    {
-        Debug.Log("开始游戏");
-        // 加载场景1
-    }
-
-    public void QuitButton()
-    {
-        Debug.Log("退出游戏");
-        Application.Quit();
-    }
-
     // 设置UI面板的按键
     public void SetupUIControls(PlayerInputSet inputSet)
     {

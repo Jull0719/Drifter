@@ -51,7 +51,7 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
-        UI.instance.SetWarningText("已储存游戏", false);
+        //UI.instance.SetWarningText("已储存游戏", false);
 
         foreach (var saveable in allSaveables)
             saveable.SaveData(ref gameData);
@@ -73,7 +73,7 @@ public class SaveManager : MonoBehaviour
         foreach (var saveable in allSaveables)
             saveable.LoadData(gameData);
 
-        UI.instance.SetWarningText("已加载游戏", false);
+        //UI.instance.SetWarningText("已加载游戏", false);
     }
 
     [ContextMenu("删除游戏数据")]
