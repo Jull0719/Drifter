@@ -17,8 +17,8 @@ public class GameData
     // 材料贮藏室
     public SerializableDictionary<string, int> stashDict;
 
-    // 存档点位置
-    public Vector3 savedCheckPoint;
+    // 存档点
+    public SerializableDictionary<string, bool> unlockedCheckpointDict;
 
     public GameData()
     {
@@ -27,5 +27,7 @@ public class GameData
 
         storageDict = new SerializableDictionary<string, int>();
         stashDict = new SerializableDictionary<string, int>();
+
+        unlockedCheckpointDict = new SerializableDictionary<string, bool>();
     }
 }
