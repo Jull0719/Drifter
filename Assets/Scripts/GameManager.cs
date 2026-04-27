@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour, ISaveable
 {
     public static GameManager instance;
-    Vector3 lastPlayerPosition;
-    string lastSceneName;
+    private Vector3 lastPlayerPosition;
+    private string lastSceneName;
+    private bool dataLoaded;
 
     private void Awake()
     {
@@ -44,15 +45,23 @@ public class GameManager : MonoBehaviour, ISaveable
 
     IEnumerator ChangeSceneCo(string scene, WaypointType waypointType)
     {
-        // TODO: Fade In
+        var fadeUI = FindFadeScreen();
 
-        yield return new WaitForSeconds(1.0f);
+        fadeUI.FadeOut();
+        yield return fadeUI.fadeCo;
 
         SceneManager.LoadScene(scene);
 
-        // TODO: Fade Out
+        dataLoaded = false; // 当数据加载完成时，标记为true
+        yield return null;
 
-        yield return new WaitForSeconds(0.2f);
+        while (dataLoaded == false)
+        {
+            yield return null;
+        }
+
+        fadeUI = FindFadeScreen();
+        fadeUI.FadeIn();
 
         Player player = Player.Instance;
 
@@ -63,6 +72,14 @@ public class GameManager : MonoBehaviour, ISaveable
 
         if (position != Vector3.zero)
             player.TeleportPlayer(position);
+    }
+
+    private UI_FadeScreen FindFadeScreen()
+    {
+        if (UI.instance != null)
+            return UI.instance.fadeUI;
+        else
+            return FindFirstObjectByType<UI_FadeScreen>();
     }
 
     private Vector3 GetNewPlayerPosition(WaypointType type)
@@ -77,7 +94,7 @@ public class GameManager : MonoBehaviour, ISaveable
                 .ToList();
 
             var checkpoints = GameObject.FindObjectsByType<Object_Checkpoint>(FindObjectsSortMode.None)
-                .Where(cp => data.unlockedCheckpointDict[cp.GetCheckpointId()])
+                .Where(cp => data.unlockedCheckpointDict.TryGetValue(cp.GetCheckpointId(), out bool unlocked) && unlocked)
                 .Select(cp => cp.GetRespawnPosition())
                 .ToList();
 
@@ -117,6 +134,7 @@ public class GameManager : MonoBehaviour, ISaveable
 
         data.lastPlayerPosition = Player.Instance.transform.position;
         data.lastSceneName = currentScene;
+        dataLoaded = false;
     }
 
     public void LoadData(GameData data)
@@ -126,5 +144,7 @@ public class GameManager : MonoBehaviour, ISaveable
 
         if (string.IsNullOrEmpty(lastSceneName))
             lastSceneName = "Level1_Town";
+
+        dataLoaded = true;
     }
 }

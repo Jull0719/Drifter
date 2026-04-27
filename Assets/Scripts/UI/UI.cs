@@ -17,6 +17,7 @@ public class UI : MonoBehaviour
     public UI_Options optionsUI { get; private set; }
     public UI_InGame inGameUI { get; private set; }
     public UI_DeathScreen deadUI { get; private set; }
+    public UI_FadeScreen fadeUI { get; private set; }
 
     public UI_ItemToolTip itemToolTip { get; private set; }
     public UI_StatToolTip statToolTip { get; private set; }
@@ -41,6 +42,7 @@ public class UI : MonoBehaviour
         inGameUI = GetComponentInChildren<UI_InGame>(true);
         optionsUI = GetComponentInChildren<UI_Options>(true);
         deadUI = GetComponentInChildren<UI_DeathScreen>(true);
+        fadeUI = GetComponentInChildren<UI_FadeScreen>(true);
 
         storageUI = GetComponentInChildren<UI_Storage>(true);
         shopUI = GetComponentInChildren<UI_Shop>(true);
@@ -103,6 +105,7 @@ public class UI : MonoBehaviour
     {
         inventoryUI.transform.SetAsLastSibling();
         SetTooltipsAsLastSibling();
+        fadeUI.transform.SetAsLastSibling();
 
         inventoryUIEnabled = !inventoryUIEnabled;
         inventoryUI.gameObject.SetActive(inventoryUIEnabled);
@@ -116,6 +119,7 @@ public class UI : MonoBehaviour
     {
         statUI.transform.SetAsLastSibling();
         SetTooltipsAsLastSibling();
+        fadeUI.transform.SetAsLastSibling();
 
         statUIEnabled = !statUIEnabled;
         statUI.gameObject.SetActive(statUIEnabled);
