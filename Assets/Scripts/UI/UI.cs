@@ -16,6 +16,7 @@ public class UI : MonoBehaviour
     public UI_Shop shopUI { get; private set; }
     public UI_Options optionsUI { get; private set; }
     public UI_InGame inGameUI { get; private set; }
+    public UI_DeathScreen deadUI { get; private set; }
 
     public UI_ItemToolTip itemToolTip { get; private set; }
     public UI_StatToolTip statToolTip { get; private set; }
@@ -39,6 +40,7 @@ public class UI : MonoBehaviour
         statUI = GetComponentInChildren<UI_PlayerStats>(true);
         inGameUI = GetComponentInChildren<UI_InGame>(true);
         optionsUI = GetComponentInChildren<UI_Options>(true);
+        deadUI = GetComponentInChildren<UI_DeathScreen>(true);
 
         storageUI = GetComponentInChildren<UI_Storage>(true);
         shopUI = GetComponentInChildren<UI_Shop>(true);
@@ -68,7 +70,7 @@ public class UI : MonoBehaviour
                 }
             }
 
-            ToggleOptionsUI();
+            OpenOptionsUI();
         };
     }
 
@@ -122,27 +124,40 @@ public class UI : MonoBehaviour
         //StopPlayerControlsIfNeeded();
     }
 
-    // 选项菜单
-    public void ToggleOptionsUI()
+    // 关闭其他UI，只开启指定UI
+    public void SwitchTo(GameObject objectToSwitchOn)
     {
         foreach (var element in uiElements)
             element.SetActive(false);
 
+        objectToSwitchOn.SetActive(true);
+    }
+
+    // 打开死亡页面
+    public void OpenDeadUI()
+    {
+        SwitchTo(deadUI.gameObject);
+        input.Disable(); // TODO:如果是游戏手柄则还需要调整
+    }
+
+    // 选项菜单
+    public void OpenOptionsUI()
+    {
+        SwitchTo(optionsUI.gameObject);
+
         HideAllTooltip();
         StopPlayerControls(true);
-        optionsUI.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
+
 
     // 返回游戏
     public void SwitchToInGameUI()
     {
-        foreach (var element in uiElements)
-            element.SetActive(false);
+        SwitchTo(inGameUI.gameObject);
 
         HideAllTooltip();
         StopPlayerControls(false);
-        inGameUI.gameObject.SetActive(true);
         Time.timeScale = 1;
 
         inventoryUIEnabled = false;

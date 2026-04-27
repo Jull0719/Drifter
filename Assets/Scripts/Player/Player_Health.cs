@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class Player_Health : Entity_Health
 {
@@ -15,19 +16,18 @@ public class Player_Health : Entity_Health
         player = entity as Player;
     }
 
-<<<<<<< HEAD
     protected override void Start()
     {
         base.Start();
         healthBar = GetComponentInChildren<UI_MiniHealthBar>(true);
-=======
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
             Die();
         }
->>>>>>> feature/场景管理
     }
 
     // 死亡
@@ -38,8 +38,7 @@ public class Player_Health : Entity_Health
         OnPlayerDeath?.Invoke();
         player.stateMachine.ChangeState(player.deadState);
 
-        GameManager.instance.SetPlayerDeathPosition(transform.position);
-        GameManager.instance.ReStart();
+        player.ui.OpenDeadUI();
     }
 
     internal void EnabledMiniHealthBar(bool enabled)

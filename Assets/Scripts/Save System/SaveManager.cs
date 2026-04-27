@@ -57,6 +57,8 @@ public class SaveManager : MonoBehaviour
             saveable.SaveData(ref gameData);
 
         fileDataHandler.SaveData(gameData);
+
+        Debug.Log("数据已储存");
     }
 
     public void LoadGame()
@@ -74,6 +76,7 @@ public class SaveManager : MonoBehaviour
             saveable.LoadData(gameData);
 
         //UI.instance.SetWarningText("已加载游戏", false);
+        Debug.Log("数据已加载");
     }
 
     [ContextMenu("删除游戏数据")]

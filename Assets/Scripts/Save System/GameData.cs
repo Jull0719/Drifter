@@ -20,6 +20,11 @@ public class GameData
     // 存档点
     public SerializableDictionary<string, bool> unlockedCheckpointDict;
 
+    // 记录上一次Player在的场景
+    public string lastSceneName;
+    // 记录上一次Player的位置
+    public Vector3 lastPlayerPosition;
+
     public GameData()
     {
         inventoryDict = new SerializableDictionary<string, int>();

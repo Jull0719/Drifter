@@ -4,7 +4,13 @@ public class UI_MainMenu : MonoBehaviour
 {
     public void StartNewGameBTN()
     {
-        Debug.Log("开始游戏");
+        SaveManager.instance.DeleteSaveData();
+        GameManager.instance.ChangeScene("Level1_Town", WaypointType.None);
+    }
+
+    public void ContinueGameBTN()
+    {
+        GameManager.instance.ContinueGame();
     }
 
     public void QuitGameBTN()

@@ -17,4 +17,7 @@ public class UI_Options : MonoBehaviour
 
     // 关闭/开启血条
     public void ToggleMiniHealthBar(bool enabled) => player.health.EnabledMiniHealthBar(enabled);
+
+    // 返回主菜单
+    public void ReturnToMainMenuBTN() => GameManager.instance.ChangeScene("MainMenu", WaypointType.None);
 }

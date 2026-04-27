@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Data;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour, ISaveable
 {
     public static GameManager instance;
-    Vector3 lastDeathPosition;
+    Vector3 lastPlayerPosition;
+    string lastSceneName;
 
     private void Awake()
     {
@@ -20,18 +22,23 @@ public class GameManager : MonoBehaviour, ISaveable
         DontDestroyOnLoad(gameObject);
     }
 
+    public void ContinueGame()
+    {
+        ChangeScene(lastSceneName, WaypointType.None);
+    }
+
     public void ReStart()
     {
-        SaveManager.instance.SaveGame();
-
         string sceneName = SceneManager.GetActiveScene().name;
         ChangeScene(sceneName, WaypointType.None);
     }
 
-    public Vector3 SetPlayerDeathPosition(Vector3 position) => lastDeathPosition = position;
+    //public Vector3 SetPlayerPosition(Vector3 position) => lastPlayerPosition = position;
 
     public void ChangeScene(string sceneToTransfer, WaypointType waypointType)
     {
+        SaveManager.instance.SaveGame();
+        Time.timeScale = 1;
         StartCoroutine(ChangeSceneCo(sceneToTransfer, waypointType));
     }
 
@@ -47,10 +54,15 @@ public class GameManager : MonoBehaviour, ISaveable
 
         yield return new WaitForSeconds(0.2f);
 
+        Player player = Player.Instance;
+
+        if (player == null)
+            yield break;
+
         var position = GetNewPlayerPosition(waypointType);
 
         if (position != Vector3.zero)
-            Player.Instance.TeleportPlayer(position);
+            player.TeleportPlayer(position);
     }
 
     private Vector3 GetNewPlayerPosition(WaypointType type)
@@ -75,7 +87,7 @@ public class GameManager : MonoBehaviour, ISaveable
                 return Vector3.zero;
 
             return positions
-                .OrderBy(pos => Vector3.Distance(lastDeathPosition, pos))
+                .OrderBy(pos => Vector3.Distance(lastPlayerPosition, pos))
                 .First();
         }
 
@@ -98,11 +110,21 @@ public class GameManager : MonoBehaviour, ISaveable
 
     public void SaveData(ref GameData data)
     {
+        string currentScene = SceneManager.GetActiveScene().name;
 
+        if (currentScene == "MainMenu")
+            return;
+
+        data.lastPlayerPosition = Player.Instance.transform.position;
+        data.lastSceneName = currentScene;
     }
 
     public void LoadData(GameData data)
     {
+        lastPlayerPosition = data.lastPlayerPosition;
+        lastSceneName = data.lastSceneName;
 
+        if (string.IsNullOrEmpty(lastSceneName))
+            lastSceneName = "Level1_Town";
     }
 }
