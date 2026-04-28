@@ -9,7 +9,7 @@ public class UI_FadeScreen : MonoBehaviour
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        canvasGroup.alpha = 1;
+        //canvasGroup.alpha = 1;
     }
 
     /// <summary>
