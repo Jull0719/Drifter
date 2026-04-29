@@ -9,6 +9,7 @@ public class UI_MainMenu : MonoBehaviour
 
     public void StartNewGameBTN()
     {
+        AudioManager.instance.PlayGlobalSfx("UI_Click");
         SaveManager.instance.DeleteSaveData();
         GameManager.instance.ChangeScene("Level1_Town", WaypointType.None);
     }

@@ -8141,11 +8141,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 506019257895999440, guid: a3ec3e4a81875fb45bf66294142451da,
-        type: 3}
-      propertyPath: defense.evasion.baseValue
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 4176409366116635519, guid: a3ec3e4a81875fb45bf66294142451da,
         type: 3}
       propertyPath: m_Name
