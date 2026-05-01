@@ -4,8 +4,9 @@ public class UI_MainMenu : MonoBehaviour
 {
     private void Start()
     {
+        transform.root.GetComponentInChildren<UI_FadeScreen>().FadeIn();
+        transform.root.GetComponentInChildren<UI_Options>(true).LoadVolume();
         AudioManager.instance.StartBGM("MainMenu_BGM");
-        transform.root.GetComponentInChildren<UI_FadeScreen>().FadeIn();       
     }
 
     public void StartNewGameBTN()

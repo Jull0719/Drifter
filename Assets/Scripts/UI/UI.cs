@@ -67,11 +67,13 @@ public class UI : MonoBehaviour
             {
                 if (element.activeSelf)
                 {
+                    Time.timeScale = 1;
                     SwitchToInGameUI();
                     return;
                 }
             }
 
+            Time.timeScale = 0;
             OpenOptionsUI();
         };
     }
@@ -158,10 +160,9 @@ public class UI : MonoBehaviour
     // 返回游戏
     public void SwitchToInGameUI()
     {
-        SwitchTo(inGameUI.gameObject);
-
         HideAllTooltip();
         StopPlayerControls(false);
+        SwitchTo(inGameUI.gameObject);
         Time.timeScale = 1;
 
         inventoryUIEnabled = false;

@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        // 自动播放音乐
+        // 自动循环播放音乐
         if (!bgmSource.isPlaying && bgmShouldPlay)
         {
             if (!String.IsNullOrEmpty(currentMusicName))
@@ -40,8 +40,8 @@ public class AudioManager : MonoBehaviour
         }
 
         // 自动停止音乐
-        if (bgmSource.isPlaying && !bgmShouldPlay)
-            StopBGM();
+        //if (bgmSource.isPlaying && !bgmShouldPlay)
+        //    StopBGM();
     }
 
     // 停止播放背景音乐

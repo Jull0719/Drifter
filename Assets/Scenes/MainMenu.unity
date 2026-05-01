@@ -4601,8 +4601,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0349f9bae6eabf7478eb0214dceba8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  bgmParameter: BGM_Volume
+  bgmSlider: {fileID: 5389253524372803825}
+  sfxParameter: SFX_Volume
+  sfxSlider: {fileID: 4774313712229004628}
+  audioMixer: {fileID: 24100000, guid: ce7a38304c986404faa775b2ea06ac20, type: 2}
+  mixerMultiplier: 25
   healthBarToggle: {fileID: 1701231751741772714}
 --- !u!224 &2975557291690605817
 RectTransform:
@@ -5182,13 +5186,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 3381032229984279324}
   m_HandleRect: {fileID: 4088323739124304594}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.859
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2932736997136829988}
+        m_TargetAssemblyTypeName: UI_Options, Assembly-CSharp
+        m_MethodName: SetSFXVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &4791299741330586989
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5422,13 +5438,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 633084925988883348}
   m_HandleRect: {fileID: 8295891603292586054}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.341
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2932736997136829988}
+        m_TargetAssemblyTypeName: UI_Options, Assembly-CSharp
+        m_MethodName: SetBGMVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &5394356164975179046
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5461,7 +5489,7 @@ GameObject:
   - component: {fileID: 8936597556012471404}
   - component: {fileID: 5356999287817782627}
   m_Layer: 5
-  m_Name: UI_BGMTitle
+  m_Name: UI_SFXTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6172,7 +6200,7 @@ GameObject:
   - component: {fileID: 6960177620747636554}
   - component: {fileID: 4774313712229004628}
   m_Layer: 5
-  m_Name: UI_BGMSlider
+  m_Name: UI_SFXSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
