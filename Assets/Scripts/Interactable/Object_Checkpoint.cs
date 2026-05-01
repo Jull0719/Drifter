@@ -7,6 +7,7 @@ public class Object_Checkpoint : MonoBehaviour, ISaveable
     [SerializeField] Transform respawnPosition;
 
     Animator animator;
+    AudioSource audioSource;
 
     public bool isActive { get; private set; }
 
@@ -21,6 +22,7 @@ public class Object_Checkpoint : MonoBehaviour, ISaveable
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponentInChildren<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,6 +34,12 @@ public class Object_Checkpoint : MonoBehaviour, ISaveable
     {
         isActive = active;
         animator.SetBool("isActive", active);
+
+        if (isActive && !audioSource.isPlaying)
+            audioSource.Play();
+        
+        if (!isActive)
+            audioSource.Stop();
     }
 
     public string GetCheckpointId() => checkpointId;
@@ -52,6 +60,6 @@ public class Object_Checkpoint : MonoBehaviour, ISaveable
     public void LoadData(GameData data)
     {
         bool active = data.unlockedCheckpointDict.TryGetValue(checkpointId, out active);
-        ActivateCheckPoint(active);
+        ActivateCheckPoint(true);
     }
 }

@@ -71,7 +71,9 @@ public class GameManager : MonoBehaviour, ISaveable
         var position = GetNewPlayerPosition(waypointType);
 
         if (position != Vector3.zero)
+        {
             player.TeleportPlayer(position);
+        }
     }
 
     private UI_FadeScreen FindFadeScreen()

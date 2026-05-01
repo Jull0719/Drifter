@@ -10,11 +10,13 @@ public class Entity_Combat : MonoBehaviour
     [SerializeField] protected LayerMask targetLayer;
     [SerializeField] protected Transform attackPoint;
 
+    protected Entity_SFX sfx;
     protected Entity_VFX vfx;
     protected Entity_Stats stats;
 
     private void Awake()
     {
+        sfx = GetComponentInChildren<Entity_SFX>();
         vfx = GetComponent<Entity_VFX>();
         stats = GetComponent<Entity_Stats>();
     }
@@ -35,8 +37,12 @@ public class Entity_Combat : MonoBehaviour
             {
                 OnPerformingAttack?.Invoke(physcialDamage);
                 vfx?.CreateOnHitVfx(target.transform, isCrit);
+                sfx?.PlayAttackHit();
             }
         }
+
+        if (!targetGotHit)
+            sfx?.PlayAttackMiss();
     }
 
     // 攻击检测

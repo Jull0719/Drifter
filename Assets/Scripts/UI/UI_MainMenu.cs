@@ -4,11 +4,14 @@ public class UI_MainMenu : MonoBehaviour
 {
     private void Start()
     {
-        transform.root.GetComponentInChildren<UI_FadeScreen>().FadeIn();       
+        transform.root.GetComponentInChildren<UI_FadeScreen>().FadeIn();
+        transform.root.GetComponentInChildren<UI_Options>(true).LoadVolume();
+        AudioManager.instance.StartBGM("MainMenu_BGM");
     }
 
     public void StartNewGameBTN()
     {
+        AudioManager.instance.PlayGlobalSfx("UI_Click");
         SaveManager.instance.DeleteSaveData();
         GameManager.instance.ChangeScene("Level1_Town", WaypointType.None);
     }
