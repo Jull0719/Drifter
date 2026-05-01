@@ -4,6 +4,7 @@ public class UI_MainMenu : MonoBehaviour
 {
     private void Start()
     {
+        AudioManager.instance.StartBGM("MainMenu_BGM");
         transform.root.GetComponentInChildren<UI_FadeScreen>().FadeIn();       
     }
 

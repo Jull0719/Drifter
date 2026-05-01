@@ -60,6 +60,6 @@ public class Object_Checkpoint : MonoBehaviour, ISaveable
     public void LoadData(GameData data)
     {
         bool active = data.unlockedCheckpointDict.TryGetValue(checkpointId, out active);
-        ActivateCheckPoint(active);
+        ActivateCheckPoint(true);
     }
 }

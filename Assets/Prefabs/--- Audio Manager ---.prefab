@@ -48,7 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioDB: {fileID: 11400000, guid: 6e8a954505e0bf24b8cbd697a69dae39, type: 2}
   sfxSource: {fileID: 3747399714982387440}
-  bgSource: {fileID: 2165137626615729043}
+  bgmSource: {fileID: 2165137626615729043}
+  bgmShouldPlay: 0
 --- !u!1 &1387956421071469444
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +189,7 @@ GameObject:
   - component: {fileID: 5970908335811164912}
   - component: {fileID: 2165137626615729043}
   m_Layer: 0
-  m_Name: BG_Source
+  m_Name: BGM_Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,10 +221,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

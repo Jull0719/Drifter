@@ -4,6 +4,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/Audio DataBase", fileName = "Audio DataBase")]
 public class AudioDataBaseSO : ScriptableObject
 {
+    [Header("BGM")]
+    public List<AudioClipData> menuBgm;
+    public List<AudioClipData> levelsBgm;
+
+    [Header("SFX")]
     public List<AudioClipData> player;
     public List<AudioClipData> ui;
 
@@ -12,6 +17,9 @@ public class AudioDataBaseSO : ScriptableObject
     private void OnEnable()
     {
         audioCollections = new Dictionary<string, AudioClipData>();
+
+        AddToCollections(menuBgm);
+        AddToCollections(levelsBgm);
 
         AddToCollections(player);
         AddToCollections(ui);
