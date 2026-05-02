@@ -496,6 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHearingRange: 15
+  walk: Player_Walk
   attackHit: Player_AttackHit
   attackMiss: Player_AttackMiss
   showGizmos: 1
@@ -903,6 +904,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8396711108186415349}
     m_Modifications:
+    - target: {fileID: 2137646809605943998, guid: 1aed70ac151a20e4889cb4bbc2b4327e,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 909123653
+      objectReference: {fileID: 0}
     - target: {fileID: 3558717216150926019, guid: 1aed70ac151a20e4889cb4bbc2b4327e,
         type: 3}
       propertyPath: m_Name

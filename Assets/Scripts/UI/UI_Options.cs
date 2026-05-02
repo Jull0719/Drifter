@@ -11,7 +11,7 @@ public class UI_Options : MonoBehaviour
     [Header("SFX")]
     [SerializeField] private string sfxParameter;
     [SerializeField] private Slider sfxSlider;
-    
+
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private float mixerMultiplier = 25;
 
@@ -28,7 +28,7 @@ public class UI_Options : MonoBehaviour
     private void OnDisable()
     {
         PlayerPrefs.SetFloat(bgmParameter, bgmSlider.value);
-        PlayerPrefs.SetFloat(sfxParameter, sfxSlider.value);    
+        PlayerPrefs.SetFloat(sfxParameter, sfxSlider.value);
         PlayerPrefs.SetInt(Settings.ShowMiniHealthBarParameter, healthBarToggle.isOn ? 1 : 0);
     }
 
@@ -55,13 +55,41 @@ public class UI_Options : MonoBehaviour
     // 加载音量
     public void LoadVolume()
     {
-        bgmSlider.value = PlayerPrefs.GetFloat(bgmParameter, Settings.defaultVolume);
-        sfxSlider.value = PlayerPrefs.GetFloat(sfxParameter, Settings.defaultVolume);
+        bgmSlider.value = PlayerPrefs.GetFloat(bgmParameter, Settings.DefaultVolume);
+        sfxSlider.value = PlayerPrefs.GetFloat(sfxParameter, Settings.DefaultVolume);
     }
 
     // 关闭/开启血条
-    public void ToggleMiniHealthBar(bool enabled) => player?.health.EnabledMiniHealthBar(enabled);
+    public void ToggleMiniHealthBar(bool enabled)
+    {
+        AudioManager.instance.PlayGlobalSfx(Settings.ButtonSFXName);
+        player?.health.EnabledMiniHealthBar(enabled);
+    }
+
+    // 保存游戏按钮
+    public void SaveGameBTN()
+    {
+        AudioManager.instance.PlayGlobalSfx(Settings.ButtonSFXName);
+        SaveManager.instance.SaveGame();
+    }
+
+    public void ReturnInGameBTN()
+    {
+        AudioManager.instance.PlayGlobalSfx(Settings.ButtonSFXName);
+        UI.instance.SwitchToInGameUI();
+    }
+
+    // 删除存档
+    public void DeleteSaveDataBTN()
+    {
+        AudioManager.instance.PlayGlobalSfx(Settings.ButtonSFXName);
+        SaveManager.instance.DeleteSaveData();
+    }
 
     // 返回主菜单
-    public void ReturnToMainMenuBTN() => GameManager.instance.ChangeScene("MainMenu", WaypointType.None);
+    public void ReturnToMainMenuBTN()
+    {
+        AudioManager.instance.PlayGlobalSfx(Settings.ButtonSFXName);
+        GameManager.instance.ChangeScene("MainMenu", WaypointType.None);
+    }
 }

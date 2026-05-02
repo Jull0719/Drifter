@@ -120,7 +120,7 @@ public class AudioManager : MonoBehaviour
         {
             time += Time.deltaTime;
             audioSource.volume = Mathf.Lerp(startVolume, targetVolume, time / duration);
-            Debug.Log(audioSource.volume);
+            //Debug.Log(audioSource.volume);
             yield return null;
         }
         audioSource.volume = targetVolume;

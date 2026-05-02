@@ -504,6 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHearingRange: 10
+  walk: Player_Walk
   attackHit: Player_AttackHit
   attackMiss: Player_AttackMiss
   showGizmos: 0

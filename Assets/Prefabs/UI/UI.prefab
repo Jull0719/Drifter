@@ -3116,9 +3116,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SaveManager, Assembly-CSharp
-        m_MethodName: DeleteSaveData
+      - m_Target: {fileID: 3260896090544513153}
+        m_TargetAssemblyTypeName: UI_Options, Assembly-CSharp
+        m_MethodName: DeleteSaveDataBTN
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16148,9 +16148,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8119973481209652894}
-        m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: SwitchToInGameUI
+      - m_Target: {fileID: 3260896090544513153}
+        m_TargetAssemblyTypeName: UI_Options, Assembly-CSharp
+        m_MethodName: ReturnInGameBTN
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

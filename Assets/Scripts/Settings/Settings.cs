@@ -17,5 +17,7 @@
     public const string ShowMiniHealthBarParameter = "showHealthBar"; // 记录Toggle的值以控制血条显示或隐藏
 
     // ----- Audio System -----
-    public const float defaultVolume = 0.6f;
+    public const float DefaultVolume = 0.6f;
+
+    public const string ButtonSFXName = "UI_Click";
 }
