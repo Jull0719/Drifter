@@ -20,6 +20,10 @@ public class Player_Health : Entity_Health
     {
         base.Start();
         healthBar = GetComponentInChildren<UI_MiniHealthBar>(true);
+
+        // 根据toggle的值禁用/启用血条
+        var enabled = PlayerPrefs.GetInt(Settings.ShowMiniHealthBarParameter, 1) == 1;
+        EnabledMiniHealthBar(enabled);
     }
 
     private void Update()

@@ -14,7 +14,6 @@ public class UI_Options : MonoBehaviour
     
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private float mixerMultiplier = 25;
-    [SerializeField] private float defaultVal = 0.6f;
 
     [SerializeField] private Toggle healthBarToggle;
 
@@ -23,12 +22,14 @@ public class UI_Options : MonoBehaviour
     private void OnEnable()
     {
         LoadVolume();
+        healthBarToggle.SetIsOnWithoutNotify(PlayerPrefs.GetInt(Settings.ShowMiniHealthBarParameter) == 1);
     }
 
     private void OnDisable()
     {
         PlayerPrefs.SetFloat(bgmParameter, bgmSlider.value);
         PlayerPrefs.SetFloat(sfxParameter, sfxSlider.value);    
+        PlayerPrefs.SetInt(Settings.ShowMiniHealthBarParameter, healthBarToggle.isOn ? 1 : 0);
     }
 
     private void Start()
@@ -54,12 +55,12 @@ public class UI_Options : MonoBehaviour
     // 加载音量
     public void LoadVolume()
     {
-        bgmSlider.value = PlayerPrefs.GetFloat(bgmParameter, defaultVal);
-        sfxSlider.value = PlayerPrefs.GetFloat(sfxParameter, defaultVal);
+        bgmSlider.value = PlayerPrefs.GetFloat(bgmParameter, Settings.defaultVolume);
+        sfxSlider.value = PlayerPrefs.GetFloat(sfxParameter, Settings.defaultVolume);
     }
 
     // 关闭/开启血条
-    public void ToggleMiniHealthBar(bool enabled) => player.health.EnabledMiniHealthBar(enabled);
+    public void ToggleMiniHealthBar(bool enabled) => player?.health.EnabledMiniHealthBar(enabled);
 
     // 返回主菜单
     public void ReturnToMainMenuBTN() => GameManager.instance.ChangeScene("MainMenu", WaypointType.None);

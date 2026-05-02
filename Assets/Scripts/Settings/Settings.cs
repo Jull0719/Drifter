@@ -12,4 +12,10 @@
     public const float CritChanceCap = 65; // 暴击概率上限
     public const float ArmorMitigationCap = 70; // 减伤护甲上限
     public const float EvasionCap = 65; // 闪避率上限
+
+    // ----- UI -----
+    public const string ShowMiniHealthBarParameter = "showHealthBar"; // 记录Toggle的值以控制血条显示或隐藏
+
+    // ----- Audio System -----
+    public const float defaultVolume = 0.6f;
 }
