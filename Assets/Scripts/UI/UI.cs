@@ -191,6 +191,16 @@ public class UI : MonoBehaviour
             HideAllTooltip();
     }
 
+    // 打开对话框
+    public void OpenDialogueUI(DialogueLineSO firstLine)
+    {
+        HideAllTooltip();
+        StopPlayerControls(true);
+
+        dialogueUI.gameObject.SetActive(true);
+        dialogueUI.PlayDialogueLine(firstLine);
+    }
+
     // 关闭ToolTip
     public void HideAllTooltip()
     {

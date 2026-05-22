@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_Dialogue : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("说话人信息")]
+    [SerializeField] private Image speakerPortrait;
+    [SerializeField] private TextMeshProUGUI speakerName;
+    [Space]
+    [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI dialogueChoices;
 
-    // Update is called once per frame
-    void Update()
+    public void PlayDialogueLine(DialogueLineSO line)
     {
-        
+        speakerPortrait.sprite = line.speaker.speakerPortrait;
+        speakerName.text = line.speaker.speakerName;
+        dialogueText.text = line.GetRandomLine();
     }
 }
