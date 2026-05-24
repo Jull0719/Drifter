@@ -11684,6 +11684,7 @@ MonoBehaviour:
   speakerName: {fileID: 424229954052449469}
   dialogueText: {fileID: 8785028897723765303}
   dialogueChoices: {fileID: 8181237807570809456}
+  textSpeed: 0.1
 --- !u!1 &3057416233637332211
 GameObject:
   m_ObjectHideFlags: 0

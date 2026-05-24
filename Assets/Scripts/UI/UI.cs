@@ -76,6 +76,13 @@ public class UI : MonoBehaviour
             Time.timeScale = 0;
             OpenOptionsUI();
         };
+
+        // 显示整句话
+        input.UI.DialogueInteraction.performed += ctx =>
+        {
+            if (dialogueUI.gameObject.activeInHierarchy) 
+                dialogueUI.DialogueInteraction();
+        };
     }
 
     // 禁用或启用角色输入

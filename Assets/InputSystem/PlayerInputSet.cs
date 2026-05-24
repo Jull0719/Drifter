@@ -260,6 +260,15 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DialogueInteraction"",
+                    ""type"": ""Button"",
+                    ""id"": ""363585d1-3d3d-43c9-bda7-424ed34f09bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -295,6 +304,17 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""action"": ""OptionsUI"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ce6a474-7736-459d-abb0-fc9810044199"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""DialogueInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -319,6 +339,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         m_UI_OptionsUI = m_UI.FindAction("OptionsUI", throwIfNotFound: true);
         m_UI_StatUI = m_UI.FindAction("StatUI", throwIfNotFound: true);
         m_UI_InventoryUI = m_UI.FindAction("InventoryUI", throwIfNotFound: true);
+        m_UI_DialogueInteraction = m_UI.FindAction("DialogueInteraction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -461,6 +482,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_OptionsUI;
     private readonly InputAction m_UI_StatUI;
     private readonly InputAction m_UI_InventoryUI;
+    private readonly InputAction m_UI_DialogueInteraction;
     public struct UIActions
     {
         private @PlayerInputSet m_Wrapper;
@@ -468,6 +490,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         public InputAction @OptionsUI => m_Wrapper.m_UI_OptionsUI;
         public InputAction @StatUI => m_Wrapper.m_UI_StatUI;
         public InputAction @InventoryUI => m_Wrapper.m_UI_InventoryUI;
+        public InputAction @DialogueInteraction => m_Wrapper.m_UI_DialogueInteraction;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -486,6 +509,9 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @InventoryUI.started += instance.OnInventoryUI;
             @InventoryUI.performed += instance.OnInventoryUI;
             @InventoryUI.canceled += instance.OnInventoryUI;
+            @DialogueInteraction.started += instance.OnDialogueInteraction;
+            @DialogueInteraction.performed += instance.OnDialogueInteraction;
+            @DialogueInteraction.canceled += instance.OnDialogueInteraction;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -499,6 +525,9 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @InventoryUI.started -= instance.OnInventoryUI;
             @InventoryUI.performed -= instance.OnInventoryUI;
             @InventoryUI.canceled -= instance.OnInventoryUI;
+            @DialogueInteraction.started -= instance.OnDialogueInteraction;
+            @DialogueInteraction.performed -= instance.OnDialogueInteraction;
+            @DialogueInteraction.canceled -= instance.OnDialogueInteraction;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -538,5 +567,6 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         void OnOptionsUI(InputAction.CallbackContext context);
         void OnStatUI(InputAction.CallbackContext context);
         void OnInventoryUI(InputAction.CallbackContext context);
+        void OnDialogueInteraction(InputAction.CallbackContext context);
     }
 }
