@@ -31,11 +31,11 @@ public class NPC_Merchant : NPC
     public override void Interact()
     {
         base.Interact();
-        //ui.shopUI.SetupShop(shop);
         //ui.OpenShopUI(true);
         //if (!ui.inventoryUI.gameObject.activeSelf)
         //    ui.ToggleInventoryUI();
 
         ui.OpenDialogueUI(firstLine);
+        ui.shopUI.SetupShop(shop);
     }
 }

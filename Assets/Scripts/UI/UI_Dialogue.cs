@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -16,22 +15,41 @@ public class UI_Dialogue : MonoBehaviour
     [SerializeField] private float textSpeed = 0.1f;
     private string fullTextToShow;
     private Coroutine typeTextCo;
+    [Header("当前对话")]
+    private DialogueLineSO currentLine;
+    private bool canInteract;
+    private bool waitToConfirm;
 
     public void PlayDialogueLine(DialogueLineSO line)
     {
+        currentLine = line;
+        canInteract = false;
+
         speakerPortrait.sprite = line.speaker.speakerPortrait;
         speakerName.text = line.speaker.speakerName;
 
         fullTextToShow = line.GetRandomLine();
         typeTextCo = StartCoroutine(TypeTextCo(fullTextToShow));
+
+        StartCoroutine(EnableInteractionCo());
     }
 
     public void DialogueInteraction()
     {
-        if (typeTextCo != null && dialogueText.text.Length > 5)
+        if (canInteract == false)
+            return;
+
+        if (typeTextCo != null)
         {
             completeTyping();
+            waitToConfirm = true;
             return;
+        }
+
+        if (waitToConfirm)
+        {
+            waitToConfirm = false;
+            HandleNextAction();
         }
     }
 
@@ -42,6 +60,7 @@ public class UI_Dialogue : MonoBehaviour
         {
             StopCoroutine(typeTextCo);
             dialogueText.text = fullTextToShow;
+            typeTextCo = null;
         }
     }
 
@@ -54,5 +73,27 @@ public class UI_Dialogue : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(textSpeed);
         }
+
+        waitToConfirm = true;
+        typeTextCo = null;
+    }
+
+    // 对话响应
+    private void HandleNextAction()
+    {
+        switch (currentLine.actionType)
+        {
+            case DialogueActionType.OpenShop:
+                UI.instance.SwitchToInGameUI();
+                UI.instance.OpenShopUI(true);
+                UI.instance.ToggleInventoryUI();
+                break;
+        }
+    }
+
+    IEnumerator EnableInteractionCo()
+    {
+        yield return null;
+        canInteract = true;
     }
 }
