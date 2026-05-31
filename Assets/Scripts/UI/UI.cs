@@ -83,6 +83,15 @@ public class UI : MonoBehaviour
             if (dialogueUI.gameObject.activeInHierarchy) 
                 dialogueUI.DialogueInteraction();
         };
+
+        // 选择对话
+        input.UI.DialogueNavigation.performed += ctx =>
+        {
+            int direction = Mathf.RoundToInt(ctx.ReadValue<float>());
+
+            if (dialogueUI.gameObject.activeInHierarchy)
+                dialogueUI.DialogueNavigation(direction);
+        };
     }
 
     // 禁用或启用角色输入

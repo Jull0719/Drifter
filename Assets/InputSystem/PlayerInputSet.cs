@@ -269,6 +269,15 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DialogueNavigation"",
+                    ""type"": ""Value"",
+                    ""id"": ""59c6115b-07b9-4bf2-9054-406cbd0ecb7a"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -315,6 +324,72 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
                     ""action"": ""DialogueInteraction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""e3084b8b-4f5d-4904-bdf4-ee2388a1e80d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DialogueNavigation"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""18743471-6807-42f5-a16e-c1072f9c7b84"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DialogueNavigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""4af27a14-dde4-4cf9-b12b-0c08f12621eb"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""DialogueNavigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""abbf5e9e-fe2c-4379-9284-6cadc9551a7f"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DialogueNavigation"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""fa46c2d5-9008-4aec-b715-e5e1118967b9"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DialogueNavigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""6d5ef580-f768-4939-952f-f87715c0904b"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""DialogueNavigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -340,6 +415,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         m_UI_StatUI = m_UI.FindAction("StatUI", throwIfNotFound: true);
         m_UI_InventoryUI = m_UI.FindAction("InventoryUI", throwIfNotFound: true);
         m_UI_DialogueInteraction = m_UI.FindAction("DialogueInteraction", throwIfNotFound: true);
+        m_UI_DialogueNavigation = m_UI.FindAction("DialogueNavigation", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -483,6 +559,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_StatUI;
     private readonly InputAction m_UI_InventoryUI;
     private readonly InputAction m_UI_DialogueInteraction;
+    private readonly InputAction m_UI_DialogueNavigation;
     public struct UIActions
     {
         private @PlayerInputSet m_Wrapper;
@@ -491,6 +568,7 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         public InputAction @StatUI => m_Wrapper.m_UI_StatUI;
         public InputAction @InventoryUI => m_Wrapper.m_UI_InventoryUI;
         public InputAction @DialogueInteraction => m_Wrapper.m_UI_DialogueInteraction;
+        public InputAction @DialogueNavigation => m_Wrapper.m_UI_DialogueNavigation;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -512,6 +590,9 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @DialogueInteraction.started += instance.OnDialogueInteraction;
             @DialogueInteraction.performed += instance.OnDialogueInteraction;
             @DialogueInteraction.canceled += instance.OnDialogueInteraction;
+            @DialogueNavigation.started += instance.OnDialogueNavigation;
+            @DialogueNavigation.performed += instance.OnDialogueNavigation;
+            @DialogueNavigation.canceled += instance.OnDialogueNavigation;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -528,6 +609,9 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
             @DialogueInteraction.started -= instance.OnDialogueInteraction;
             @DialogueInteraction.performed -= instance.OnDialogueInteraction;
             @DialogueInteraction.canceled -= instance.OnDialogueInteraction;
+            @DialogueNavigation.started -= instance.OnDialogueNavigation;
+            @DialogueNavigation.performed -= instance.OnDialogueNavigation;
+            @DialogueNavigation.canceled -= instance.OnDialogueNavigation;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -568,5 +652,6 @@ public partial class @PlayerInputSet: IInputActionCollection2, IDisposable
         void OnStatUI(InputAction.CallbackContext context);
         void OnInventoryUI(InputAction.CallbackContext context);
         void OnDialogueInteraction(InputAction.CallbackContext context);
+        void OnDialogueNavigation(InputAction.CallbackContext context);
     }
 }

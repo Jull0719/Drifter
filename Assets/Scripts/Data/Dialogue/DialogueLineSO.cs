@@ -11,15 +11,16 @@ public class DialogueLineSO : ScriptableObject
     [TextArea] public string[] textLine;
 
     [Header("对话响应")]
-    public DialogueActionType actionType; 
+    [TextArea] public string actionLine;
+    public DialogueActionType actionType;
 
     [Header("回答设置")]
     public bool playerCanAnswer; // 如果Player可以回答，设置为true
-    public DialogueLineSO[] answerLine;
+    public DialogueLineSO[] choiceLines;
+
+    // 获取第一句话
+    public string GetFirstLine() => textLine[0];
 
     // 随机获取一条对话
-    public string GetRandomLine()
-    {
-        return textLine[Random.Range(0, textLine.Length)];
-    }
+    public string GetRandomLine() => textLine[Random.Range(0, textLine.Length)];
 }
