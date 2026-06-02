@@ -31,6 +31,7 @@ public class UI_Dialogue : MonoBehaviour
         currentLine = line;
         currentChoices = line.choiceLines;
         canInteract = false;
+        selectedChoiceIndex = 0;
 
         speakerPortrait.sprite = line.speaker.speakerPortrait;
         speakerName.text = line.speaker.speakerName;
@@ -51,7 +52,15 @@ public class UI_Dialogue : MonoBehaviour
         if (typeTextCo != null)
         {
             completeTyping();
-            waitToConfirm = true;
+
+            if (currentLine.actionType == DialogueActionType.PlayerMakeChoice)
+            {
+                selectedChoice = null;
+                HandleNextAction();
+            }
+            else
+                waitToConfirm = true;
+
             return;
         }
 
@@ -96,7 +105,15 @@ public class UI_Dialogue : MonoBehaviour
             yield return new WaitForSeconds(textSpeed);
         }
 
-        waitToConfirm = true;
+        if (currentLine.actionType == DialogueActionType.PlayerMakeChoice)
+        {
+            yield return new WaitForSeconds(0.2f);
+            selectedChoice = null;
+            HandleNextAction();
+        }
+        else
+            waitToConfirm = true;
+
         typeTextCo = null;
     }
 
@@ -112,16 +129,16 @@ public class UI_Dialogue : MonoBehaviour
                 break;
             case DialogueActionType.PlayerMakeChoice:
                 if (selectedChoice == null)
-                {
-                    selectedChoiceIndex = 0;
                     ShowChoices();
-                }
                 else
                 {
                     DialogueLineSO selectedChoice = currentChoices[selectedChoiceIndex];
                     PlayDialogueLine(selectedChoice);
                     selectedChoice = null;
                 }
+                break;
+            case DialogueActionType.CloseDialogue:
+                UI.instance.SwitchToInGameUI();
                 break;
         }
     }
@@ -142,7 +159,7 @@ public class UI_Dialogue : MonoBehaviour
             if (i < currentChoices.Length)
             {
                 DialogueLineSO choice = currentChoices[i];
-                string choiceText = choice.GetFirstLine();
+                string choiceText = choice.playerChoiceAnswer;
 
                 dialogueChoicesText[i].gameObject.SetActive(true);
                 dialogueChoicesText[i].text = selectedChoiceIndex == i ?

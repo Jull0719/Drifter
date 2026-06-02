@@ -15,7 +15,7 @@ public class DialogueLineSO : ScriptableObject
     public DialogueActionType actionType;
 
     [Header("回答设置")]
-    public bool playerCanAnswer; // 如果Player可以回答，设置为true
+    [TextArea] public string playerChoiceAnswer;
     public DialogueLineSO[] choiceLines;
 
     // 获取第一句话
