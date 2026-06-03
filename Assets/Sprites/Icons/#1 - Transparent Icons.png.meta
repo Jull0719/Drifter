@@ -119,6 +119,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -181,27 +194,6 @@ TextureImporter:
       bones: []
       spriteID: 29c9986c9f4c3ce49909e92d9dfc6596
       internalID: -8891313
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: '#1 - Transparent Icons_3'
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 835
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25dda2b1e9b1f2a4f95a5e43a0fd5a88
-      internalID: 1737736181
       vertices: []
       indices: 
       edges: []
@@ -543,7 +535,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: '#1 - Transparent Icons_20'
+      name: Jump
       rect:
         serializedVersion: 2
         x: 128
@@ -879,7 +871,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: '#1 - Transparent Icons_36'
+      name: Dash
       rect:
         serializedVersion: 2
         x: 416
@@ -1441,27 +1433,6 @@ TextureImporter:
       bones: []
       spriteID: 1cb1faaf60554e54f9fc765a961b25cb
       internalID: -2027611143
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: '#1 - Transparent Icons_63'
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 675
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a22737c36666ec04080027ac31c59b1c
-      internalID: 1871321207
       vertices: []
       indices: 
       edges: []
@@ -3583,27 +3554,6 @@ TextureImporter:
       bones: []
       spriteID: 4bfb7253a2046564da642c2ace4eac18
       internalID: 728343091
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ruby
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 451
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2aef57a64b390554d9409a71bf51adc8
-      internalID: -806660396
       vertices: []
       indices: 
       edges: []
@@ -6086,6 +6036,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Interact
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 835
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee33b4bf5c91b7f4a91f73bfdde1be08
+      internalID: 938689428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Attack
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 676
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cd4acd95294e864e9f9b9cd97b6c013
+      internalID: -1235690914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '#1 - Transparent Icons_165'
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 451
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88d7c7eae42969044a5446d627f627b7
+      internalID: -589631696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -6171,6 +6184,7 @@ TextureImporter:
       '#1 - Transparent Icons_162': 1635927989
       '#1 - Transparent Icons_163': 77344406
       '#1 - Transparent Icons_164': 728343091
+      '#1 - Transparent Icons_165': -589631696
       '#1 - Transparent Icons_166': -1325399160
       '#1 - Transparent Icons_167': -1908864102
       '#1 - Transparent Icons_168': -1081831528
@@ -6209,7 +6223,6 @@ TextureImporter:
       '#1 - Transparent Icons_198': -1023067052
       '#1 - Transparent Icons_199': 2068455519
       '#1 - Transparent Icons_2': -8891313
-      '#1 - Transparent Icons_20': -1181131846
       '#1 - Transparent Icons_200': -1691782364
       '#1 - Transparent Icons_201': 252543934
       '#1 - Transparent Icons_202': 1322375039
@@ -6303,14 +6316,12 @@ TextureImporter:
       '#1 - Transparent Icons_282': 971938946
       '#1 - Transparent Icons_283': 842575773
       '#1 - Transparent Icons_29': -386619405
-      '#1 - Transparent Icons_3': 1737736181
       '#1 - Transparent Icons_30': -431398407
       '#1 - Transparent Icons_31': -780928355
       '#1 - Transparent Icons_32': -1260825778
       '#1 - Transparent Icons_33': -1389668580
       '#1 - Transparent Icons_34': 1125493658
       '#1 - Transparent Icons_35': -58290715
-      '#1 - Transparent Icons_36': 154538454
       '#1 - Transparent Icons_37': -1067096069
       '#1 - Transparent Icons_38': 595966837
       '#1 - Transparent Icons_39': 1912470671
@@ -6340,7 +6351,6 @@ TextureImporter:
       '#1 - Transparent Icons_60': 927527328
       '#1 - Transparent Icons_61': -772682855
       '#1 - Transparent Icons_62': -2027611143
-      '#1 - Transparent Icons_63': 1871321207
       '#1 - Transparent Icons_64': -48345687
       '#1 - Transparent Icons_65': -2086102330
       '#1 - Transparent Icons_66': -1858096307
@@ -6380,7 +6390,10 @@ TextureImporter:
       '#1 - Transparent Icons_97': -1448490892
       '#1 - Transparent Icons_98': -31091070
       '#1 - Transparent Icons_99': 1784074826
-      Ruby: -806660396
+      Attack: -1235690914
+      Dash: 154538454
+      Interact: 938689428
+      Jump: -1181131846
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
