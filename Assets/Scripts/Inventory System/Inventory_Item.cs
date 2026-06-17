@@ -4,14 +4,15 @@ using UnityEngine;
 [Serializable]
 public class Inventory_Item
 {
+    private string itemId;
+
     public ItemDataSO itemDataSO;
     public int itemStackSize = 1;
 
-    public ItemModifier[] itemModifiers;
-
-    public string itemId;
     public int buyingPrice { get; private set; } // 买入
     public int sellingPrice { get; private set; } // 售出
+
+    public ItemModifier[] itemModifiers { get; private set; }
 
     public Inventory_Item(ItemDataSO itemDataSO)
     {

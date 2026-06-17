@@ -3,6 +3,8 @@ using UnityEngine.UIElements;
 
 public class NPC : MonoBehaviour, IInteractable
 {
+    [SerializeField] private string targetId;
+
     [SerializeField] private Transform npc;
     [SerializeField] protected GameObject interactionMarker;
 

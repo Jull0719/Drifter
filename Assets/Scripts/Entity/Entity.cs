@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    public string targetId;
+
     public event Action OnFlipped;
 
     [SerializeField] protected bool facingRight = true;
